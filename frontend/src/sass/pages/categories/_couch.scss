@@ -1,0 +1,11 @@
+@use '../../abstracts/' as *;
+
+.couches {
+  .bg-img {
+    position: relative;
+    min-height: 60vh;
+    background: var(--clr-neutral-300) url(../assets/img/couch7.webp);
+    @include image-property(initial);
+    width: 100%;
+  }
+}

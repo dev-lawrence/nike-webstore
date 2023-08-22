@@ -1,0 +1,154 @@
+@use '../abstracts' as *;
+
+#footer-section {
+  background-color: var(--clr-neutral-400);
+  padding: 5rem 0 2rem;
+  position: relative;
+  margin-top: 5rem;
+
+  a,
+  p {
+    font-size: calc($fs-400 - 0.13rem);
+  }
+
+  a {
+    color: var(--clr-neutral-100);
+  }
+
+  p {
+    color: var(--clr-neutral-100);
+  }
+
+  h3 {
+    color: var(--clr-neutral-100);
+    text-transform: capitalize;
+    margin-bottom: 1rem;
+  }
+
+  .m-b {
+    margin-bottom: 2rem;
+  }
+
+  .about {
+    p {
+      margin-bottom: 1rem;
+    }
+  }
+
+  .menu--links,
+  .social-links,
+  .copyright {
+    a {
+      transition: color 0.2s ease-in-out;
+
+      &:hover {
+        color: var(--clr-primary-400);
+      }
+    }
+  }
+
+  .menu--links {
+    @include medium {
+      margin-left: 1.5rem;
+    }
+    li {
+      margin-bottom: 0.6rem;
+    }
+  }
+
+  .social-links {
+    a {
+      margin-right: 1rem;
+    }
+  }
+
+  .copyright {
+    text-align: center;
+    padding: 3rem 0 0;
+
+    .author {
+      padding-left: 0.5rem;
+      transition: color 0.2s ease-in;
+
+      &:hover {
+        color: var(--clr-primary-400);
+      }
+    }
+  }
+
+  // to top arrow
+  @keyframes goTop {
+    from {
+      transform: translateY(-30px);
+    }
+
+    to {
+      transform: translateY(0px);
+    }
+  }
+
+  .page-up {
+    span {
+      position: fixed;
+      bottom: 1rem;
+      right: 1rem;
+      z-index: 100;
+      background-color: var(--clr-neutral-900);
+      color: var(--clr-neutral-100);
+      opacity: 0;
+      visibility: hidden;
+      height: 40px;
+      width: 40px;
+      line-height: 0;
+      text-align: center;
+      @include flex(center, center);
+      border-radius: $radius-500;
+      cursor: pointer;
+      transition: opacity 0.2s ease-in, background-color 0.2s ease-in;
+
+      .up-icon {
+        font-size: $fs-600;
+      }
+
+      &.showArrow {
+        animation: goTop 0.5s linear;
+        opacity: 0.5;
+        visibility: visible;
+      }
+
+      &:hover {
+        background-color: var(--clr-primary-400);
+        opacity: 1;
+      }
+    }
+  }
+
+  //MEDIA QUERY
+  @include medium {
+    .grid {
+      @include grid(repeat(2, 1fr), 2rem);
+    }
+
+    .other-links {
+      margin-left: 0;
+    }
+
+    .quick-menu {
+      justify-self: flex-end;
+    }
+
+    .social-links {
+      justify-self: flex-end;
+    }
+  }
+
+  @include large {
+    .grid {
+      @include grid(repeat(4, 1fr), 2rem);
+    }
+
+    .other-links {
+      justify-self: flex-end;
+    }
+  }
+}

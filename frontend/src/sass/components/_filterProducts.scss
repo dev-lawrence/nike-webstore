@@ -1,0 +1,35 @@
+@use '../abstracts' as *;
+
+.filter-products {
+  margin-bottom: 2rem;
+
+  .d-flex {
+    @include flex(center, center);
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .filter-btn {
+    @include flex(center, center);
+    border: none;
+    font-family: inherit;
+    flex-direction: column;
+    background-color: var(--clr-neutral-900);
+    color: var(--clr-neutral-100);
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    border-radius: 0.3rem;
+    // margin-left: 1rem;
+    text-transform: capitalize;
+    transition: background-color 0.2s ease-in;
+
+    &:hover {
+      background-color: var(--clr-primary-400);
+    }
+
+    &.active {
+      background-color: var(--clr-primary-400);
+      color: var(--clr-neutral-100);
+    }
+  }
+}

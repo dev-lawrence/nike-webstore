@@ -1,0 +1,33 @@
+@use '../abstracts' as *;
+
+.featured-product {
+  .title {
+    margin-bottom: 1.5rem;
+
+    @include small {
+      h2 {
+        margin-bottom: 0.5rem;
+      }
+    }
+  }
+
+  .products {
+    max-width: 400px;
+    margin-inline: auto;
+
+    @include medium {
+      max-width: 100%;
+    }
+  }
+}
+
+// Breakpoints for the products
+@include medium {
+  .products {
+    @include grid(
+      repeat(auto-fit, minmax(250px, 1fr)),
+      map-get($gap-map, 'gap-6')
+    );
+    column-gap: map-get($gap-map, 'gap-2');
+  }
+}

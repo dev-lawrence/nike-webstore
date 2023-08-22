@@ -1,0 +1,36 @@
+@use '../abstracts' as *;
+
+.orders {
+  padding: 8rem 1rem;
+  height: 100vh;
+
+  .id {
+    font-size: 1rem;
+    width: 10px;
+  }
+
+  .order {
+    margin-bottom: 1rem;
+  }
+
+  &-container {
+    background-color: var(--clr-neutral-100);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 0.4rem;
+    padding: 2rem;
+    max-width: 800px;
+    margin-inline: auto;
+  }
+
+  img {
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 0.2rem;
+  }
+
+  .item {
+    @include flex(center, flex-start);
+    gap: 2rem;
+  }
+}

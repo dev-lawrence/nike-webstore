@@ -1,0 +1,88 @@
+@use '../abstracts' as *;
+
+.about {
+  .bg-img {
+    position: relative;
+    min-height: 60vh;
+    background: var(--clr-neutral-300) url(../assets/img/table10.webp);
+    @include image-property(initial);
+    width: 100%;
+  }
+
+  .btn {
+    span {
+      margin-right: 0.5rem;
+    }
+  }
+
+  .about-info {
+    margin-top: 2rem;
+
+    h2 {
+      text-transform: capitalize;
+      margin-bottom: 1.5rem;
+      text-align: left;
+    }
+
+    p {
+      margin-bottom: 1.5rem;
+    }
+  }
+
+  .img {
+    margin-top: 4rem;
+
+    @include medium {
+      margin-top: 0;
+    }
+
+    img {
+      border-radius: $radius-300;
+    }
+  }
+
+  .grid-reverse {
+    margin-top: 5rem;
+  }
+
+  //MEDIA QUERY
+  @include medium {
+    .grid {
+      @include grid(repeat(2, 1fr), 3rem);
+      padding-top: 3rem;
+
+      .img {
+        height: 100%;
+
+        img {
+          height: 100%;
+        }
+      }
+    }
+
+    .grid-reverse {
+      .about-info {
+        grid-column: 2/3;
+      }
+
+      .img {
+        grid-row: 1/2;
+      }
+    }
+
+    .about-info {
+      margin-top: -1rem;
+    }
+  }
+
+  @include large {
+    .about-info {
+      margin-top: 0;
+
+      p {
+        line-height: 1.7;
+        margin-bottom: 2rem;
+      }
+    }
+  }
+}

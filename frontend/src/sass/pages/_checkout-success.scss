@@ -1,0 +1,16 @@
+@use '../abstracts' as *;
+
+.checkout-success {
+  text-align: center;
+  padding-top: 7rem;
+
+  h2 {
+    font-size: 1.3rem;
+  }
+
+  img {
+    width: 400px;
+    margin-inline: auto;
+    transform: translateY(-2rem);
+  }
+}

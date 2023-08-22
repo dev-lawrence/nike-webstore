@@ -1,0 +1,129 @@
+@use '../abstracts' as *;
+
+.shop {
+  .bg-img {
+    position: relative;
+    min-height: 60vh;
+    background: var(--clr-neutral-300) url(../assets/img/shop.webp);
+    @include image-property(initial);
+    width: 100%;
+  }
+
+  .searched-item {
+    strong {
+      text-transform: uppercase;
+    }
+  }
+
+  .heading-flex {
+    @include flex(center, space-between);
+    margin: 2rem 0 3rem;
+  }
+
+  .title {
+    margin-bottom: 0;
+    text-align: left;
+  }
+
+  .shop-select {
+    width: 50%;
+    height: 44px;
+    position: relative;
+
+    @include medium {
+      width: 30%;
+    }
+
+    select {
+      width: 100%;
+      height: 100%;
+      padding: 8px;
+      border: 1.5px solid var(--clr-neutral-900);
+      border-radius: 0.3rem;
+      background-color: transparent;
+      color: #333;
+      cursor: pointer;
+      outline: none;
+      appearance: none;
+      font-family: inherit;
+      font-size: $fs-200;
+    }
+
+    .arrow {
+      position: absolute;
+      right: 0.5rem;
+      top: 50%;
+      transform: translateY(-50%);
+      pointer-events: none;
+    }
+  }
+
+  .shop-container {
+    position: relative;
+
+    .products {
+      padding-bottom: 4rem;
+    }
+  }
+
+  .shop-flex {
+    position: relative;
+    .sidebar {
+      background-color: var(--clr-neutral-100);
+      border-radius: 0.4rem;
+      padding-block: 2rem;
+      padding-left: 1rem;
+      margin-bottom: 3rem;
+      overflow: hidden;
+
+      h3 {
+        margin-bottom: 1rem;
+      }
+
+      //  Filter Products
+      .filter-products {
+        @include flex(flex-start, flex-start);
+        flex-direction: column;
+        margin-bottom: 0;
+        transition: color 0.3s ease-in;
+
+        .category {
+          font-size: $fs-300;
+          cursor: pointer;
+          font-weight: 500;
+
+          &:not(:last-child) {
+            margin-bottom: 0.7rem;
+          }
+
+          &:hover {
+            color: var(--clr-primary-400);
+          }
+
+          &.active {
+            color: var(--clr-primary-400);
+          }
+        }
+      }
+    }
+  }
+}
+
+// Breakpoints
+@include large {
+  .shop-flex {
+    @include flex(flex-start, space-between);
+    gap: 2rem;
+
+    .sidebar {
+      width: 50%;
+    }
+
+    .no-img {
+      position: absolute;
+      top: -2rem;
+      left: 63%;
+      width: 320px;
+    }
+  }
+}

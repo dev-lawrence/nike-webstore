@@ -1,0 +1,34 @@
+//FLEX
+@mixin flex($align, $justify) {
+  display: flex;
+  align-items: $align;
+  justify-content: $justify;
+}
+
+//GRID
+@mixin grid($gtc, $gap) {
+  display: grid;
+  grid-template-columns: $gtc;
+  gap: $gap;
+}
+
+//IMAGE PROPERTY
+@mixin image-property($attachment) {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  background-attachment: $attachment;
+}
+
+@mixin img($br) {
+  overflow: hidden;
+  border-radius: $br;
+
+  img {
+    transition: transform 0.5s ease-in-out;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+}

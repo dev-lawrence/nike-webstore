@@ -1,0 +1,31 @@
+// RADIUS
+$radius-sm: 1rem;
+$radius-300: 0.8rem;
+$radius-400: 0.6rem;
+$radius-450: 0.625rem;
+$radius-500: 50%;
+
+// GAP
+$gap-start: 1.5rem;
+$gap-increment: 0.5rem;
+$gap-count: 8;
+
+$gap-map: ();
+
+@for $i from 1 through $gap-count {
+  $gap-var: $gap-start + ($gap-increment * ($i - 1));
+  $gap-name: 'gap-#{$i}';
+
+  $gap-map: map-merge(
+    $gap-map,
+    (
+      $gap-name: $gap-var,
+    )
+  );
+}
+
+@each $gap-name, $gap-var in $gap-map {
+  #{$gap-name} {
+    margin: $gap-var;
+  }
+}

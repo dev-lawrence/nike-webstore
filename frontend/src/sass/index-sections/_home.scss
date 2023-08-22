@@ -1,0 +1,95 @@
+@use '../abstracts' as *;
+
+.home {
+  position: relative;
+
+  .hero {
+    z-index: 1;
+
+    .content {
+      max-width: 600px;
+      margin-right: auto;
+      padding-top: 6.5rem;
+      color: var(--clr-neutral-900);
+
+      h1 {
+        font-size: $fs-800;
+        line-height: 1.2;
+        margin-bottom: 0.5rem;
+
+        @include small {
+          font-size: $fs-700;
+        }
+
+        @include extra-large {
+          font-size: 3.125rem;
+        }
+      }
+
+      p {
+        margin-bottom: 1rem;
+        max-width: 400px;
+        margin-right: auto;
+      }
+    }
+  }
+
+  .services {
+    &-container {
+      @include flex(center, center);
+      text-align: center;
+
+      @include medium {
+        display: block;
+      }
+    }
+
+    img {
+      background-color: transparent;
+      height: 90px;
+      width: 90px;
+      padding: 0.7rem 1rem;
+      margin-inline: auto;
+      margin-bottom: 0.5rem;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .service {
+      h3 {
+        font-size: $fs-450;
+        font-weight: 500;
+      }
+
+      &:not(:last-child) {
+        margin-bottom: 2.5rem;
+      }
+
+      @include medium {
+        &:not(:last-child) {
+          margin-bottom: 0;
+        }
+      }
+
+      &:hover img {
+        transform: scale(1.1);
+        background-color: var(--clr-neutral-100);
+        border-radius: $radius-500;
+      }
+    }
+  }
+}
+
+// Breakpoints for the services
+@include medium {
+  .services-content {
+    @include grid(repeat(2, 1fr), map-get($gap-map, 'gap-3'));
+    column-gap: map-get($gap-map, 'gap-1');
+  }
+}
+
+@include large {
+  .services-content {
+    @include grid(repeat(4, 1fr), map-get($gap-map, 'gap-3'));
+    column-gap: map-get($gap-map, 'gap-1');
+  }
+}

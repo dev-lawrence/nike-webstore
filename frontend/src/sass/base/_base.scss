@@ -1,0 +1,36 @@
+@use '../abstracts' as *;
+
+body {
+  background-color: var(--clr-neutral-300);
+  color: var(--clr-neutral-400);
+  font-family: $primary-font;
+  line-height: 1.6;
+  font-size: 1rem;
+  text-size-adjust: 100%;
+}
+
+.container {
+  padding: 0rem 1rem;
+
+  @include landscape {
+    width: 576px;
+    margin: 0 auto;
+  }
+
+  @include medium {
+    width: 760px;
+    margin: 0 auto;
+  }
+
+  @include large {
+    width: 960px;
+  }
+
+  @include extra-large {
+    width: 1100px;
+  }
+
+  @include huge {
+    width: 1200px;
+  }
+}

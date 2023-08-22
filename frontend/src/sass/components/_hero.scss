@@ -1,0 +1,11 @@
+@use '../abstracts' as *;
+
+.hero {
+  position: relative;
+  background: var(--clr-neutral-300) url(../assets/img/hero-bg.webp);
+  @include image-property(initial);
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  @include flex(center, center);
+}

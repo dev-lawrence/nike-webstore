@@ -1,0 +1,44 @@
+@use '../abstracts' as *;
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  left: 50%;
+  bottom: -2rem;
+  transform: translateX(-50%);
+
+  @include extra-large {
+    left: 65%;
+  }
+
+  li {
+    margin-inline: 0.7rem;
+  }
+
+  span {
+    color: var(--clr-neutral-900);
+    border: 1px solid var(--clr-neutral-900);
+    border-radius: 0.2rem;
+    height: 30px;
+    width: 30px;
+    line-height: 30px;
+    text-align: center;
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background-color: var(--clr-primary-400);
+      color: var(--clr-neutral-100);
+      border-color: transparent;
+    }
+  }
+
+  .active {
+    background-color: var(--clr-primary-400);
+    color: var(--clr-neutral-100);
+    border-color: transparent;
+  }
+}

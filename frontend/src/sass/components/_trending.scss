@@ -1,0 +1,70 @@
+@use '../abstracts' as *;
+
+.trending {
+  .title {
+    margin-bottom: 0.5rem;
+
+    @include small {
+      margin-bottom: 1rem;
+
+      h2 {
+        max-width: 30px;
+        margin-left: auto;
+      }
+    }
+
+    @include extra-small {
+      margin-bottom: 0rem;
+    }
+  }
+
+  .d-flex {
+    @include flex(center, space-between);
+    margin-bottom: 3rem;
+  }
+
+  .splide__arrows {
+    position: absolute;
+    top: -4.6rem;
+    right: 0;
+
+    @include medium {
+      top: -4.4rem;
+    }
+  }
+
+  .splide__arrow {
+    margin-left: 0.5rem;
+    border: none;
+    background-color: var(--clr-neutral-900);
+    padding: 0.5rem;
+    opacity: 1;
+    height: 2rem;
+    width: 2rem;
+    border-radius: 0.2rem;
+    cursor: pointer;
+    font-size: $fs-200;
+    transition: background-color 0.3s ease-in-out;
+
+    svg {
+      fill: var(--clr-neutral-100);
+    }
+
+    &:hover {
+      background-color: var(--clr-primary-400);
+    }
+
+    @include small {
+      display: none;
+    }
+  }
+
+  .splide__arrow--prev {
+    left: -6.3rem;
+  }
+
+  .splide__arrow:disabled {
+    opacity: 1;
+    background-color: var(--clr-primary-100);
+  }
+}
