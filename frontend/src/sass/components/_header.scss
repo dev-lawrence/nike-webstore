@@ -1,1 +1,98 @@
 @use '../abstracts' as *;
+
+#header-section {
+  position: fixed;
+  top: 0;
+  z-index: 500;
+  width: 100%;
+  transition: all 0.3s ease;
+  background-color: var(--clr-neutral-100);
+  box-shadow: 0 10px 20px 1px rgba(0, 0, 0, 0.3);
+
+  .content {
+    padding-block: 0.5rem;
+
+    @include large {
+      padding-block: 1rem;
+    }
+  }
+
+  .container {
+    height: 100%;
+  }
+
+  .d-flex {
+    @include flex(center, space-between);
+    position: relative;
+  }
+
+  .menu-buttons {
+    @include flex(center, space-between);
+
+    @include extra-small {
+      margin-left: 0.5rem;
+    }
+
+    .icon-btn {
+      margin: 0 0.7rem;
+      border: none;
+      background-color: transparent;
+      cursor: pointer;
+
+      &:last-child {
+        margin-right: 0;
+      }
+
+      @include extra-small {
+        margin-inline: 0.5rem;
+      }
+
+      @include large {
+        margin-right: 1rem;
+        margin-left: 0;
+      }
+
+      .icon {
+        font-size: $fs-600 + 0.2;
+
+        @include large {
+          font-size: $fs-600;
+        }
+      }
+
+      .icon-close,
+      .icon-bar {
+        font-size: $fs-700;
+      }
+    }
+
+    .toggle-menu,
+    .toggle-cart,
+    .toggle-search,
+    .toggle-account {
+      display: grid;
+    }
+
+    .toggle-cart {
+      position: relative;
+
+      span {
+        position: absolute;
+        left: 1.1rem;
+        background-color: var(--clr-primary-400);
+        border-radius: $radius-500;
+        width: 15px;
+        height: 15px;
+        color: var(--clr-neutral-100);
+        line-height: 15px;
+        font-size: $fs-100;
+      }
+    }
+
+    @include large {
+      .toggle-menu {
+        display: none;
+      }
+    }
+  }
+}

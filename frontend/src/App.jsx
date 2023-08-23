@@ -1,10 +1,28 @@
+import {
+  createBrowserRouter,
+  createRoutesFromElements,
+  Route,
+  RouterProvider,
+} from 'react-router-dom';
+
 // styles
 import './sass/main.scss';
+
+import RootLayout from './layouts/RootLayout';
+import Home from './pages/Home';
+
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path="/" element={<RootLayout />}>
+      <Route index element={<Home />} />
+    </Route>
+  )
+);
 
 const App = () => {
   return (
     <>
-      <h1>Hey there</h1>
+      <RouterProvider router={router} />
     </>
   );
 };
