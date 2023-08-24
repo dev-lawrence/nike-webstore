@@ -9,8 +9,8 @@ button {
 }
 
 .btn-filled {
-  background-color: var(--clr-primary-400);
-  color: var(--clr-neutral-100);
+  background-color: var(--primary);
+  color: var(--primary-foreground);
   padding: 0.6rem 1.8rem;
   font-size: $fs-300;
   border-radius: $radius-sm;
@@ -18,16 +18,16 @@ button {
 
 .btn-outline {
   background-color: transparent;
-  border: 1.5px solid var(--clr-neutral-900);
-  color: var(--clr-neutral-900);
+  border: 1.5px solid var(--border);
+  color: var(--foreground);
   padding: 0.6rem 1.8rem;
   font-size: $fs-300;
   border-radius: $radius-sm;
   transition: all 0.2s ease-in-out;
 
   &:hover {
-    background-color: var(--clr-primary-400);
+    background-color: var(--primary);
     border-color: transparent;
-    color: var(--clr-neutral-100);
+    color: var(--primary-foreground);
   }
 }

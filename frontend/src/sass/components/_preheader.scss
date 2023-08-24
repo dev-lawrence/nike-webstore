@@ -5,7 +5,7 @@
 
   @include large {
     display: block;
-    background-color: var(--clr-neutral-250);
+    background-color: var(--popover);
     padding-block: 0.5rem;
 
     .d-flex {
@@ -21,11 +21,11 @@
         a {
           text-transform: capitalize;
           font-size: $fs-200;
-          color: var(--clr-neutral-400);
+          color: var(--muted-foreground);
           transition: color 0.2s ease-in-out;
 
           &:hover {
-            color: var(--clr-neutral-380);
+            color: var(--popover-foreground);
           }
         }
       }
@@ -38,7 +38,7 @@
         content: '';
         height: 0.8rem;
         width: 1.5px;
-        background-color: var(--clr-neutral-400);
+        background-color: var(--border);
         position: absolute;
         top: 0.438rem;
         right: 0.438rem;

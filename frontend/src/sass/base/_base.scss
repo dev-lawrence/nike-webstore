@@ -1,8 +1,8 @@
 @use '../abstracts' as *;
 
 body {
-  background-color: var(--clr-neutral-100);
-  color: var(--clr-neutral-400);
+  background-color: var(--background);
+  color: var(--foreground);
   font-family: $primary-font;
   line-height: 1.6;
   font-size: 1rem;

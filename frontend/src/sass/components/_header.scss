@@ -1,20 +1,28 @@
 @use '../abstracts' as *;
 
 #header-section {
-  //   position: fixed;
-  position: sticky;
+  position: fixed;
   top: 0;
   z-index: 500;
   width: 100%;
   transition: all 0.3s ease;
-  background-color: var(--clr-neutral-100);
+  background-color: var(--background);
   box-shadow: 0 10px 20px 1px rgba(0, 0, 0, 0.3);
 
   .content {
     padding-block: 0.5rem;
 
     @include large {
-      padding-block: 1rem;
+      padding-block: 0.8rem;
+    }
+  }
+
+  // Logo
+  .logo {
+    display: inline-flex;
+
+    &-nike {
+      fill: var(--foreground);
     }
   }
 
@@ -71,7 +79,13 @@
     .toggle-cart,
     .toggle-search,
     .toggle-mode {
-      display: grid;
+      color: var(--foreground);
+      display: inline-flex;
+    }
+
+    .toggle-mode,
+    .toggle-search {
+      transform: translateY(0.1rem);
     }
 
     .toggle-cart {
@@ -80,11 +94,11 @@
       span {
         position: absolute;
         left: 1.1rem;
-        background-color: var(--clr-primary-400);
+        background-color: var(--primary);
         border-radius: $radius-400;
         width: 15px;
         height: 15px;
-        color: var(--clr-neutral-100);
+        color: var(--primary-foreground);
         line-height: 15px;
         font-size: $fs-100;
       }
