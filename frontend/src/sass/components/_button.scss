@@ -1,1 +1,33 @@
 @use '../abstracts' as *;
+
+button {
+  border: none;
+  font-family: inherit;
+  cursor: pointer;
+  background-color: transparent;
+  text-transform: capitalize;
+}
+
+.btn-filled {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  padding: 0.6rem 1.8rem;
+  font-size: $fs-300;
+  border-radius: $radius-sm;
+}
+
+.btn-outline {
+  background-color: transparent;
+  border: 1.5px solid var(--border);
+  color: var(--foreground);
+  padding: 0.6rem 1.8rem;
+  font-size: $fs-300;
+  border-radius: $radius-sm;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    background-color: var(--primary);
+    border-color: transparent;
+    color: var(--primary-foreground);
+  }
+}

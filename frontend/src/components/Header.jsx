@@ -1,26 +1,42 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import PreHeader from '../components/PreHeader';
 import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import ShoppingBagRoundedIcon from '@mui/icons-material/ShoppingBagRounded';
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import Logo from '../assets/logo.svg';
 import Navbar from './Navbar';
+import Logo from './Logo';
+import CartList from './CartList';
+import ToggleMode from './ToggleMode';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
+  const [navClick, setNavClick] = useState(false);
+  const [cartClick, setCartClick] = useState(false);
+
+  // Function to open the navbar
+  const handleNavClick = () => {
+    setNavClick(!navClick);
+  };
+
+  // Function to open the cart list
+  const handleCartClick = () => {
+    setCartClick(!cartClick);
+  };
+
   return (
     <>
-      <div id="header-section">
+      <header id="header-section">
+        <PreHeader />
         <div className="container">
           <div className="content d-flex">
             {/* Logo */}
-            <a href="#" className="logo">
-              <img src={Logo} alt="logo" />
-            </a>
+            <Link href="#" className="logo">
+              <Logo />
+            </Link>
 
             {/* NAV BAR */}
-            <Navbar />
+            <Navbar navClick={navClick} />
 
             {/* <!--NAV BUTTONS--> */}
             <div className="menu-buttons">
@@ -28,22 +44,38 @@ const Header = () => {
                 <SearchRoundedIcon className="icon" titleAccess="search" />
               </button>
 
-              <button className="toggle-account icon-btn">
-                <AccountCircleIcon className="icon" titleAccess="sign in" />
+              <button className="toggle-mode icon-btn">
+                <ToggleMode />
               </button>
 
-              <button className="toggle-cart icon-btn">
+              <button
+                onClick={handleCartClick}
+                className="toggle-cart icon-btn"
+              >
                 <ShoppingBagRoundedIcon className="icon" titleAccess="cart" />
                 <span>0</span>
               </button>
 
-              <button className="toggle-menu icon-btn">
-                <MenuRoundedIcon className="icon-bar" titleAccess="Menu" />
+              <button onClick={handleNavClick} className="toggle-menu icon-btn">
+                {navClick ? (
+                  <CloseRoundedIcon
+                    className="icon-bar"
+                    titleAccess="close menu"
+                  />
+                ) : (
+                  <MenuRoundedIcon
+                    className="icon-bar"
+                    titleAccess="open menu"
+                  />
+                )}
               </button>
             </div>
+
+            {/* Cart list */}
+            <CartList cartClick={cartClick} handleCartClick={handleCartClick} />
           </div>
         </div>
-      </div>
+      </header>
     </>
   );
 };

@@ -21,7 +21,7 @@
   overflow: auto;
   z-index: 100;
   transform: translateX(200.25rem);
-  transition: transform 0.5s ease-in-out;
+  transition: transform 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
 
   @include large {
     position: relative;
@@ -38,9 +38,10 @@
 }
 
 .menu {
-  background-color: var(--clr-neutral-100);
+  background-color: var(--background);
+  border-left: 1px solid var(--border);
   height: 100vh;
-  width: 60%;
+  width: 65%;
   padding: 4rem 2rem 1.625rem;
 
   @include large {
@@ -50,6 +51,7 @@
     padding-block: 0;
     padding-inline: 0;
     background-color: transparent;
+    border-color: transparent;
   }
 
   @include small {
@@ -67,8 +69,8 @@
   }
 
   a {
-    color: var(--clr-neutral-400);
-    font-size: $fs-400;
+    color: var(--foreground);
+    font-size: $fs-500;
     transition: color 0.2s ease-in-out;
     font-weight: 500;
     transform: color 0.3s ease-in-out;
@@ -78,11 +80,28 @@
     }
 
     &:hover {
-      color: var(--clr-primary-400);
+      color: var(--primary);
     }
   }
 
   .active {
-    color: var(--clr-primary-400);
+    color: var(--primary);
+  }
+
+  .mobile-sign-in {
+    p {
+      font-size: $fs-400;
+      max-width: 300px;
+    }
+
+    button {
+      margin-block-start: 1.5rem;
+      padding: 0.5rem 1.5rem;
+      border-radius: $radius-350;
+      margin-inline-end: 1rem;
+    }
+    @include large {
+      display: none;
+    }
   }
 }
