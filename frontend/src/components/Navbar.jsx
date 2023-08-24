@@ -1,9 +1,9 @@
 import { NavLink } from 'react-router-dom';
 
-const Navbar = () => {
+const Navbar = ({ navClick }) => {
   return (
     <>
-      <nav className="nav">
+      <nav className={`nav ${navClick ? 'showMenu' : ''}`}>
         <ul className="menu" role="list" aria-label="list">
           <li>
             <NavLink to="/">Men</NavLink>

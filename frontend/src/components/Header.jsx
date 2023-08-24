@@ -9,6 +9,13 @@ import Logo from '../assets/logo.svg';
 import Navbar from './Navbar';
 
 const Header = () => {
+  const [navClick, setNavClick] = useState(false);
+
+  // Function to open the navbar
+  const handleNavClick = () => {
+    setNavClick(!navClick);
+  };
+
   return (
     <>
       <section id="header-section">
@@ -20,7 +27,7 @@ const Header = () => {
             </a>
 
             {/* NAV BAR */}
-            <Navbar />
+            <Navbar navClick={navClick} />
 
             {/* <!--NAV BUTTONS--> */}
             <div className="menu-buttons">
@@ -28,7 +35,7 @@ const Header = () => {
                 <SearchRoundedIcon className="icon" titleAccess="search" />
               </button>
 
-              <button className="toggle-account icon-btn">
+              <button className="toggle-mode icon-btn">
                 <DarkModeRoundedIcon
                   className="icon"
                   titleAccess="toggle-mode"
@@ -40,8 +47,18 @@ const Header = () => {
                 <span>0</span>
               </button>
 
-              <button className="toggle-menu icon-btn">
-                <MenuRoundedIcon className="icon-bar" titleAccess="Menu" />
+              <button onClick={handleNavClick} className="toggle-menu icon-btn">
+                {navClick ? (
+                  <CloseRoundedIcon
+                    className="icon-bar"
+                    titleAccess="close menu"
+                  />
+                ) : (
+                  <MenuRoundedIcon
+                    className="icon-bar"
+                    titleAccess="open menu"
+                  />
+                )}
               </button>
             </div>
           </div>
