@@ -1,7 +1,8 @@
 @use '../abstracts' as *;
 
 #header-section {
-  position: fixed;
+  //   position: fixed;
+  position: sticky;
   top: 0;
   z-index: 500;
   width: 100%;
