@@ -5,7 +5,7 @@ const PreHeader = () => {
     <div className="pre-header">
       <div className="container">
         <div className="d-flex">
-          <ul className="pre-header-nav" role="menu">
+          <ul className="pre-header-nav" aria-label="list" role="list">
             <li>
               <Link to="/">guides</Link>
             </li>
@@ -19,7 +19,7 @@ const PreHeader = () => {
               <Link to="/">privacy and policy</Link>
             </li>
           </ul>
-          <ul className="pre-header-nav" role="menu">
+          <ul className="pre-header-nav" aria-label="list" role="list">
             <li className="login">
               <Link to="/">login</Link>
             </li>

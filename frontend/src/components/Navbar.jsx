@@ -4,7 +4,7 @@ const Navbar = () => {
   return (
     <>
       <nav className="nav">
-        <ul className="menu">
+        <ul className="menu" role="list" aria-label="list">
           <li>
             <NavLink to="/">Men</NavLink>
           </li>
@@ -24,6 +24,18 @@ const Navbar = () => {
           <li>
             <NavLink to="contact">Sales</NavLink>
           </li>
+
+          <div className="mobile-sign-in">
+            <p>
+              Become a Nike Member for the best products, inspiration and
+              stories in sport.
+            </p>
+
+            <div className="flex">
+              <button className="btn-filled">join us</button>
+              <button className="btn-outline">sign in</button>
+            </div>
+          </div>
         </ul>
       </nav>
     </>

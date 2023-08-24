@@ -40,7 +40,7 @@
 .menu {
   background-color: var(--clr-neutral-100);
   height: 100vh;
-  width: 60%;
+  width: 65%;
   padding: 4rem 2rem 1.625rem;
 
   @include large {
@@ -68,7 +68,7 @@
 
   a {
     color: var(--clr-neutral-400);
-    font-size: $fs-400;
+    font-size: $fs-500;
     transition: color 0.2s ease-in-out;
     font-weight: 500;
     transform: color 0.3s ease-in-out;
@@ -84,5 +84,22 @@
 
   .active {
     color: var(--clr-primary-400);
+  }
+
+  .mobile-sign-in {
+    p {
+      font-size: $fs-400;
+      max-width: 300px;
+    }
+
+    button {
+      margin-block-start: 1.5rem;
+      padding: 0.5rem 1.5rem;
+      border-radius: $radius-350;
+      margin-inline-end: 1rem;
+    }
+    @include large {
+      display: none;
+    }
   }
 }

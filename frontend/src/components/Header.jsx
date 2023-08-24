@@ -4,14 +4,14 @@ import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import ShoppingBagRoundedIcon from '@mui/icons-material/ShoppingBagRounded';
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import DarkModeRoundedIcon from '@mui/icons-material/DarkModeRounded';
 import Logo from '../assets/logo.svg';
 import Navbar from './Navbar';
 
 const Header = () => {
   return (
     <>
-      <div id="header-section">
+      <section id="header-section">
         <div className="container">
           <div className="content d-flex">
             {/* Logo */}
@@ -29,7 +29,10 @@ const Header = () => {
               </button>
 
               <button className="toggle-account icon-btn">
-                <AccountCircleIcon className="icon" titleAccess="sign in" />
+                <DarkModeRoundedIcon
+                  className="icon"
+                  titleAccess="toggle-mode"
+                />
               </button>
 
               <button className="toggle-cart icon-btn">
@@ -43,7 +46,7 @@ const Header = () => {
             </div>
           </div>
         </div>
-      </div>
+      </section>
     </>
   );
 };
