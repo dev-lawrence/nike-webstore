@@ -85,7 +85,7 @@ const ToggleMode = () => {
         ) : (
           <DarkModeRoundedIcon
             className="icon mode"
-            titleAccess="Turn of the light"
+            titleAccess="Turn off the light"
           />
         )}
       </div>
