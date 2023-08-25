@@ -1,0 +1,77 @@
+@use '../abstracts' as *;
+
+.search-menu {
+  @include flex(center, flex-end);
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: auto;
+  z-index: -1;
+  //   transform: translateX(200.25rem);
+  transition: transform 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+  @include large {
+    position: relative;
+    transform: translateX(0);
+    height: 100%;
+    justify-content: flex-start;
+    overflow: visible;
+    // display: none;
+  }
+
+  // Menu
+  .menu {
+    background-color: var(--background);
+    height: 100vh;
+    width: 100%;
+    padding: 4rem 2rem 1.625rem;
+
+    @include large {
+      height: unset;
+      position: absolute;
+      top: 3rem;
+      width: 100%;
+      padding: 0;
+      z-index: 3000;
+      display: block;
+      background-color: rebeccapurple;
+      display: none;
+    }
+
+    @include small {
+      width: 70%;
+    }
+
+    li {
+      text-transform: capitalize;
+      margin-bottom: 1rem;
+
+      @include large {
+        margin-bottom: 0;
+        padding-inline: 1.2rem;
+      }
+    }
+
+    a {
+      color: var(--foreground);
+      font-size: $fs-500;
+      transition: color 0.2s ease-in-out;
+      font-weight: 500;
+      transform: color 0.3s ease-in-out;
+
+      @include large {
+        font-size: $fs-300;
+      }
+
+      &:hover {
+        color: var(--primary);
+      }
+    }
+
+    .active {
+      color: var(--primary);
+    }
+  }
+}

@@ -1,18 +1,20 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import PreHeader from '../components/PreHeader';
 import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import ShoppingBagRoundedIcon from '@mui/icons-material/ShoppingBagRounded';
-import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 import Navbar from './Navbar';
 import Logo from './Logo';
 import CartList from './CartList';
 import ToggleMode from './ToggleMode';
 import { Link } from 'react-router-dom';
+import Search from './Search';
 
 const Header = () => {
   const [navClick, setNavClick] = useState(false);
   const [cartClick, setCartClick] = useState(false);
+  const [searchClick, setSearchClick] = useState(false);
+  const inputRef = useRef();
 
   // Function to open the navbar
   const handleNavClick = () => {
@@ -22,6 +24,12 @@ const Header = () => {
   // Function to open the cart list
   const handleCartClick = () => {
     setCartClick(!cartClick);
+  };
+
+  // Function to open the search menu
+  const handleSearchClick = () => {
+    setSearchClick(!searchClick);
+    inputRef.current.focus();
   };
 
   return (
@@ -40,9 +48,11 @@ const Header = () => {
 
             {/* <!--NAV BUTTONS--> */}
             <div className="menu-buttons">
-              <button className="toggle-search icon-btn">
-                <SearchRoundedIcon className="icon" titleAccess="search" />
-              </button>
+              <Search
+                searchClick={searchClick}
+                handleSearchClick={handleSearchClick}
+                inputRef={inputRef}
+              />
 
               <button className="toggle-mode icon-btn">
                 <ToggleMode />

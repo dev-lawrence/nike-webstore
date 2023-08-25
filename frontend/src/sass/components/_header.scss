@@ -77,15 +77,17 @@
 
     .toggle-menu,
     .toggle-cart,
-    .toggle-search,
     .toggle-mode {
       color: var(--foreground);
       display: inline-flex;
     }
 
-    .toggle-mode,
-    .toggle-search {
+    .toggle-mode {
       transform: translateY(0.1rem);
+
+      @include large {
+        margin-left: 0.4rem;
+      }
     }
 
     .toggle-cart {
