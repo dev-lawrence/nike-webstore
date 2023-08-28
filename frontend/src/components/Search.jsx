@@ -4,22 +4,33 @@ import SearchMenu from './SearchMenu';
 const Search = ({ searchClick, handleSearchClick, inputRef }) => {
   return (
     <div className="search-icon">
-      <form className={`search-icon-box ${searchClick ? 'openSearchBox' : ''}`}>
-        <input
-          className={`input ${searchClick ? 'showBg' : ''}`}
-          type="text"
-          ref={inputRef}
-          placeholder="Search"
-        />
-        <label
-          onClick={handleSearchClick}
-          htmlFor="check"
-          aria-label="search-icon"
-          className="search-icon-icon"
+      <div className="search-icon-container">
+        <form
+          className={`search-icon-box ${searchClick ? 'openSearchBox' : ''}`}
         >
-          <SearchRoundedIcon />
-        </label>
-      </form>
+          <input
+            className={`input ${searchClick ? 'showBg' : ''}`}
+            type="text"
+            ref={inputRef}
+            placeholder="Search"
+          />
+          <label
+            onClick={handleSearchClick}
+            htmlFor="check"
+            aria-label="search-icon"
+            className="search-icon-icon"
+          >
+            <SearchRoundedIcon />
+          </label>
+        </form>
+
+        <button
+          onClick={handleSearchClick}
+          className={`cancel ${searchClick ? 'show' : ''}`}
+        >
+          cancel
+        </button>
+      </div>
 
       {searchClick ? (
         <SearchMenu

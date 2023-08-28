@@ -25,6 +25,7 @@
 
   @include large {
     width: 40%;
+    z-index: 800;
   }
 
   @include huge {

@@ -1,1 +1,69 @@
 @use '../abstracts' as *;
+
+.hero {
+  text-align: center;
+  position: relative;
+
+  &-container {
+    position: relative;
+  }
+
+  .outline {
+    h1 {
+      font-size: 3.5rem;
+      background-color: var(--outline);
+      color: var(--background);
+      background-clip: text;
+      -webkit-text-stroke: 1.8px;
+      -webkit-text-stroke-color: transparent;
+      -webkit-background-clip: text;
+      letter-spacing: 0.3375rem;
+      line-height: 1;
+
+      @include large {
+        font-size: 8rem;
+      }
+    }
+  }
+
+  .main-text {
+    h1 {
+      background: linear-gradient(
+        105deg,
+        #4280cf 0%,
+        #3975c0 8.12%,
+        #0c315f 45.1%,
+        #0a2444 58.65%,
+        #03234b 81.56%,
+        #4280cf 100%
+      );
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-size: 4.9rem;
+      line-height: 1;
+      font-weight: 900;
+      transform: translate(-0.6rem, -2.5rem);
+      letter-spacing: -0.2rem;
+
+      @include large {
+        font-size: 10rem;
+        transform: translate(-0.6rem, -6rem);
+      }
+    }
+  }
+
+  // Hero image
+  .hero-img {
+    img {
+      position: absolute;
+      left: -0.5rem;
+      top: 0;
+
+      @include large {
+        left: -1rem;
+        top: 1rem;
+      }
+    }
+  }
+}

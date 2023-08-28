@@ -1,33 +1,24 @@
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-const SearchMenu = ({ handleSearchClick, searchClick }) => {
+const SearchMenu = () => {
   return (
     <div className="search-menu">
-      <button
-        onClick={handleSearchClick}
-        className={`cancel ${searchClick ? 'show' : ''}`}
-      >
-        cancel
-      </button>
       <ul className="menu" role="list" aria-label="list">
+        <h3>Popular Search Terms</h3>
         <li>
-          <NavLink to="/">Men</NavLink>
+          <Link to="/">Jordan</Link>
         </li>
 
         <li>
-          <NavLink to="shop">Women</NavLink>
+          <Link to="shop">Air Max</Link>
         </li>
 
         <li>
-          <NavLink to="about">Kids</NavLink>
+          <Link to="about">Blazer</Link>
         </li>
 
         <li>
-          <NavLink to="blog">Accessories</NavLink>
-        </li>
-
-        <li>
-          <NavLink to="contact">Sales</NavLink>
+          <Link to="blog">Nike Shoes</Link>
         </li>
       </ul>
     </div>

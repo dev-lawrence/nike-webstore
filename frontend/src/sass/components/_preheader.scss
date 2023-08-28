@@ -4,7 +4,7 @@
   display: none;
 
   @include large {
-    display: block;
+    // display: block;
     background-color: var(--popover);
     padding-block: 0.5rem;
 
