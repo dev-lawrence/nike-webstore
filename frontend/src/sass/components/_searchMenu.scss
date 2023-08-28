@@ -22,22 +22,35 @@
     background-color: var(--background);
     height: 100vh;
     width: 100%;
-    padding: 4rem 2rem 1.625rem;
+    padding: 6rem 2rem 1.625rem;
 
     @include large {
       height: unset;
       position: absolute;
-      top: 3rem;
+      top: 1rem;
+      left: -0.5rem;
       width: 100%;
-      padding: 0;
+      padding-block: 1rem;
+      padding-inline: 0;
       z-index: 3000;
+      border-radius: $radius-sm;
       display: block;
-      background-color: rebeccapurple;
-      display: none;
+      background-color: var(--background);
+      border: 1.5px solid var(--border);
     }
 
     @include small {
       width: 70%;
+    }
+
+    h3 {
+      font-weight: 400;
+      margin-bottom: 1rem;
+      color: var(--muted-foreground);
+
+      @include large {
+        padding-inline: 1.2rem;
+      }
     }
 
     li {
@@ -45,7 +58,7 @@
       margin-bottom: 1rem;
 
       @include large {
-        margin-bottom: 0;
+        margin-bottom: 0.5rem;
         padding-inline: 1.2rem;
       }
     }
@@ -60,14 +73,6 @@
       @include large {
         font-size: $fs-300;
       }
-
-      &:hover {
-        color: var(--primary);
-      }
-    }
-
-    .active {
-      color: var(--primary);
     }
   }
 }
