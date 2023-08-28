@@ -1,7 +1,7 @@
 @use '../abstracts' as *;
 
 .search-icon {
-  z-index: 2000;
+  z-index: 100;
 
   @include large {
     height: 40px;
