@@ -5,7 +5,8 @@ const Home = () => {
   return (
     <section className="home">
       <div className="hero">
-        <div className="container hero-container">
+        <div className="bg"></div>
+        <div className="hero-container">
           <div className="hero-text">
             <div className="outline">
               <h1>THE NEW 2023</h1>
@@ -20,9 +21,13 @@ const Home = () => {
             <img src={HeroImg} alt="" />
           </div>
         </div>
+
+        <p className="caption">Just do it</p>
       </div>
 
-      <Category />
+      <div className="container">
+        <Category />
+      </div>
     </section>
   );
 };
