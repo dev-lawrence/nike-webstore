@@ -1,5 +1,9 @@
 @use '../abstracts' as *;
 
 .home {
-  padding-top: 10rem;
+  padding-top: 8rem;
+
+  @include large {
+    padding-top: 5rem;
+  }
 }

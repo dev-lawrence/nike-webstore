@@ -1,1 +1,9 @@
 @use '../abstracts' as *;
+
+.category {
+  padding-top: 9rem;
+
+  @include large {
+    padding-top: 20rem;
+  }
+}
