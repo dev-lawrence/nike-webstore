@@ -9,12 +9,9 @@
   height: 100vh;
   overflow: auto;
   z-index: -1;
-  //   transform: translateX(200.25rem);
-  transition: transform 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
 
   @include large {
     position: relative;
-    transform: translateX(0);
     height: 100%;
     justify-content: flex-start;
     overflow: visible;

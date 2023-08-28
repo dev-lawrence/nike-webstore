@@ -1,12 +1,15 @@
 @use '../abstracts' as *;
 
 .toggle-menu {
-  z-index: 100;
   cursor: pointer;
   font-size: $fs-600;
 
   @include large {
     display: none;
+  }
+
+  .close-menu {
+    z-index: 300;
   }
 }
 
@@ -19,7 +22,7 @@
   width: 100%;
   height: 100vh;
   overflow: auto;
-  z-index: 100;
+  z-index: 200;
   transform: translateX(200.25rem);
   transition: transform 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
 

@@ -69,7 +69,7 @@ const Header = () => {
               <button onClick={handleNavClick} className="toggle-menu icon-btn">
                 {navClick ? (
                   <CloseRoundedIcon
-                    className="icon-bar"
+                    className="icon-bar close-menu"
                     titleAccess="close menu"
                   />
                 ) : (
