@@ -3,10 +3,14 @@
 .search-icon {
   z-index: 100;
 
+  &-container {
+    max-width: 900px;
+  }
+
   @include large {
     height: 40px;
     width: 100%;
-    z-index: 100;
+    z-index: 600;
   }
 
   &-box {
@@ -18,8 +22,16 @@
     width: 0;
     transition: width 0.5s ease-in-out;
 
+    @include large {
+      right: 2.5rem;
+    }
+
     &.openSearchBox {
       width: 370px;
+
+      @include medium {
+        width: 600px;
+      }
 
       @include large {
         width: 300px;

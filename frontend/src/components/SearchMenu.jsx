@@ -3,12 +3,12 @@ import { NavLink } from 'react-router-dom';
 const SearchMenu = ({ handleSearchClick, searchClick }) => {
   return (
     <div className="search-menu">
-      <button
+      {/* <button
         onClick={handleSearchClick}
         className={`cancel ${searchClick ? 'show' : ''}`}
       >
         cancel
-      </button>
+      </button> */}
       <ul className="menu" role="list" aria-label="list">
         <li>
           <NavLink to="/">Men</NavLink>
