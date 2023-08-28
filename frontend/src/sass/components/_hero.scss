@@ -1,16 +1,40 @@
 @use '../abstracts' as *;
 
 .hero {
+  // padding-top: 15rem;
   text-align: center;
   position: relative;
+  height: 100vh;
+  // background-color: peru;
+  @include flex(center, center);
+
+  @include large {
+    align-items: flex-start;
+  }
+
+  .caption {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: -0.14rem;
+
+    @include large {
+      font-size: 3rem;
+      bottom: 4.5rem;
+    }
+  }
 
   &-container {
     position: relative;
+    padding-left: 1rem;
   }
 
   .outline {
     h1 {
-      font-size: 3.5rem;
+      font-size: 2.5rem;
       background-color: var(--outline);
       color: var(--background);
       background-clip: text;
@@ -40,10 +64,10 @@
       background-clip: text;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      font-size: 4.9rem;
+      font-size: 3.8rem;
       line-height: 1;
       font-weight: 900;
-      transform: translate(-0.6rem, -2.5rem);
+      transform: translate(-0.6rem, -1.8rem);
       letter-spacing: -0.2rem;
 
       @include large {
@@ -57,7 +81,7 @@
   .hero-img {
     img {
       position: absolute;
-      left: -0.5rem;
+      left: 0;
       top: 0;
 
       @include large {
