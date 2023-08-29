@@ -22,6 +22,10 @@
     &:hover .overlay {
       opacity: 0.6;
     }
+
+    &:hover .description {
+      bottom: 1rem;
+    }
   }
 
   img {
@@ -30,7 +34,7 @@
 
   .description {
     position: absolute;
-    bottom: 1rem;
+    bottom: -3rem;
     left: 1rem;
     font-size: 1.1rem;
     color: var(--white);

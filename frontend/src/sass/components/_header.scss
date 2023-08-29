@@ -11,10 +11,6 @@
 
   .content {
     padding-block: 0.5rem;
-
-    @include large {
-      padding-block: 0.8rem;
-    }
   }
 
   // Logo

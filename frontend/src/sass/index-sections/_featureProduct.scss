@@ -1,1 +1,49 @@
 @use '../abstracts' as *;
+
+.feature {
+  .mb {
+    margin-bottom: 2rem;
+
+    @include medium {
+      margin-bottom: 0;
+    }
+  }
+
+  @include medium {
+    &-grid {
+      @include grid(repeat(2, 1fr), 1rem);
+    }
+  }
+
+  &-content {
+    position: relative;
+    overflow: hidden;
+  }
+
+  img {
+    border-radius: $radius-sm;
+  }
+
+  .description {
+    position: absolute;
+    bottom: 5rem;
+    left: 1.5rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--white);
+    z-index: 20;
+    text-transform: capitalize;
+
+    @include small {
+      font-size: 1rem;
+    }
+  }
+
+  button {
+    position: absolute;
+    bottom: 1.5rem;
+    left: 1.5rem;
+    font-weight: 500;
+    border-radius: $radius-350;
+  }
+}

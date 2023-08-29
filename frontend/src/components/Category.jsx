@@ -1,11 +1,16 @@
 import { Link } from 'react-router-dom';
-import MenImg from '../assets/men.jpg';
-import WomenImg from '../assets/women.jpg';
-import KidImg from '../assets/kids.jpg';
+import MenImg from '../assets/men.webp';
+import WomenImg from '../assets/women.webp';
+import KidImg from '../assets/kids.webp';
 
-const Category = () => {
+const Category = ({ title }) => {
   return (
     <section className="category pt-section">
+      <div className="d-flex">
+        <div className="title">
+          <h2>{title}</h2>
+        </div>
+      </div>
       <div className="category-grid">
         <div className="grid-one mb">
           <Link
