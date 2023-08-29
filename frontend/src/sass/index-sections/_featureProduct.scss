@@ -27,7 +27,7 @@
   .description {
     position: absolute;
     bottom: 5rem;
-    left: 1.5rem;
+    left: 2rem;
     font-size: 1.5rem;
     font-weight: 600;
     color: var(--white);
@@ -36,14 +36,22 @@
 
     @include small {
       font-size: 1rem;
+      left: 1rem;
+      bottom: 4rem;
     }
   }
 
   button {
     position: absolute;
     bottom: 1.5rem;
-    left: 1.5rem;
+    left: 2rem;
     font-weight: 500;
     border-radius: $radius-350;
+
+    @include small {
+      padding: 0.4rem 1.2rem;
+      font-size: $fs-300;
+      left: 1rem;
+    }
   }
 }
