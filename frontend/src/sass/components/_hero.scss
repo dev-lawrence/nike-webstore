@@ -90,3 +90,29 @@
     }
   }
 }
+
+// Figcaption
+.hero-content {
+  text-align: center;
+  max-width: 500px;
+  margin-inline: auto;
+
+  h1 {
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    font-weight: 800;
+    letter-spacing: -0.14rem;
+    line-height: 2.1rem;
+    margin-bottom: 1.5rem;
+
+    @include large {
+      font-size: 4rem;
+      line-height: 0.8;
+    }
+  }
+
+  .cta {
+    border-radius: $radius-350;
+    margin-top: 1.5rem;
+  }
+}
