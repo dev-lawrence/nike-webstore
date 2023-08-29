@@ -1,11 +1,10 @@
 @use '../abstracts' as *;
 
 .hero {
-  // padding-top: 15rem;
   text-align: center;
   position: relative;
   height: 100vh;
-  // background-color: peru;
+
   @include flex(center, center);
 
   @include large {
