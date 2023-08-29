@@ -1,1 +1,66 @@
 @use '../abstracts' as *;
+
+.category {
+  .mb {
+    margin-bottom: 2rem;
+
+    @include medium {
+      margin-bottom: 0;
+    }
+  }
+
+  @include medium {
+    &-grid {
+      @include grid(repeat(3, 1fr), 1rem);
+    }
+  }
+
+  &-content {
+    position: relative;
+    overflow: hidden;
+
+    &:hover .overlay {
+      opacity: 0.6;
+    }
+
+    &:hover .description {
+      bottom: 1rem;
+    }
+  }
+
+  img {
+    border-radius: $radius-sm;
+  }
+
+  .description {
+    position: absolute;
+    bottom: -3rem;
+    left: 1rem;
+    font-size: 1.1rem;
+    color: var(--white);
+    font-weight: 600;
+    z-index: 20;
+    text-transform: capitalize;
+    background-color: var(--primary);
+    padding: 0.3rem 1.2rem;
+    border-radius: $radius-350;
+    transition: background-color 0.4s ease-in-out, bottom 0.4s ease-in-out;
+
+    @include small {
+      font-size: 1rem;
+    }
+  }
+
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    background-color: #000;
+    border-radius: $radius-sm;
+    width: 100%;
+    height: 100%;
+    transition: opacity 0.5s ease-in-out;
+    z-index: 10;
+  }
+}

@@ -10,9 +10,10 @@ button {
 
 .btn-filled {
   background-color: var(--primary);
-  color: var(--primary-foreground);
+  color: var(--white);
   padding: 0.6rem 1.8rem;
   font-size: $fs-300;
+  font-weight: 600;
   border-radius: $radius-sm;
 }
 
@@ -28,6 +29,6 @@ button {
   &:hover {
     background-color: var(--primary);
     border-color: transparent;
-    color: var(--primary-foreground);
+    color: var(--foreground);
   }
 }

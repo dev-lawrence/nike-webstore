@@ -11,10 +11,6 @@
 
   .content {
     padding-block: 0.5rem;
-
-    @include large {
-      padding-block: 0.8rem;
-    }
   }
 
   // Logo
@@ -100,7 +96,7 @@
         border-radius: $radius-400;
         width: 15px;
         height: 15px;
-        color: #fff;
+        color: var(--white);
         line-height: 15px;
         font-size: $fs-100;
       }
