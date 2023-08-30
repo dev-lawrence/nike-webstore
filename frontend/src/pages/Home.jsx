@@ -2,6 +2,7 @@ import HeroImg from '../assets/hero-image.png';
 import Category from '../components/Category';
 import { Link } from 'react-router-dom';
 import Featured from '../components/Featured';
+import Banner from '../components/Banner';
 
 const Home = () => {
   return (
@@ -46,6 +47,11 @@ const Home = () => {
 
         {/* Feature section */}
         <Featured title="Featured" />
+
+        {/* Popular section */}
+
+        {/* Banner section */}
+        <Banner />
       </div>
     </section>
   );
