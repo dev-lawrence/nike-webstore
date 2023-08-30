@@ -9,11 +9,11 @@
   margin-bottom: 1rem;
 
   h2 {
-    font-size: 1.5rem;
+    font-size: $fs-600;
     font-weight: 700;
 
     @include medium {
-      font-size: 2rem;
+      font-size: $fs-700;
     }
 
     @include large {
