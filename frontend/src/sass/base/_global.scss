@@ -21,3 +21,67 @@
     }
   }
 }
+
+// Products
+.product {
+  position: relative;
+  transition: all 0.3s ease-in;
+
+  .status {
+    position: absolute;
+    left: 1rem;
+    top: 1rem;
+    background-color: var(--background);
+    color: var(--foreground);
+    border-radius: 0.5rem;
+    padding: 0.3rem 1rem;
+    font-size: $fs-200;
+    user-select: none;
+    z-index: 20;
+  }
+
+  img {
+    border-radius: $radius-sm;
+  }
+
+  &:not(:last-child) {
+    margin-bottom: 4rem;
+  }
+
+  @include medium {
+    &:not(:last-child) {
+      margin-bottom: 0;
+    }
+  }
+
+  .description {
+    @include flex(center, space-between);
+  }
+
+  .name {
+    padding-top: 0.438rem;
+    font-size: $fs-300;
+    font-weight: 500;
+  }
+
+  .sub-name {
+    font-size: $fs-300;
+    font-weight: 400;
+    color: var(--grey);
+  }
+
+  .price {
+    font-weight: 500;
+    font-size: $fs-300;
+  }
+
+  .cart {
+    @include flex(center, center);
+    background-color: var(--primary);
+    color: var(--white);
+    width: 40px;
+    height: 40px;
+    border-radius: $radius-400;
+    font-size: $fs-400;
+  }
+}

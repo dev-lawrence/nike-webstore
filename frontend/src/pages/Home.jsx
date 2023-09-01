@@ -3,6 +3,7 @@ import Category from '../components/Category';
 import { Link } from 'react-router-dom';
 import Featured from '../components/Featured';
 import Banner from '../components/Banner';
+import Popular from '../components/Popular';
 
 const Home = () => {
   return (
@@ -49,6 +50,7 @@ const Home = () => {
         <Featured title="Featured" />
 
         {/* Popular section */}
+        <Popular title="Popular Right Now" />
 
         {/* Banner section */}
         <Banner />
