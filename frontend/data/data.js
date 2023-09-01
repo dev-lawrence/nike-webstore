@@ -3,7 +3,7 @@ const products = [
   {
     name: 'AJKO 1 Low',
     subName: "Men's Shoes",
-    slug: 'ajko-1-low-mens-shoes-HNz9ps_abb1c5',
+    slug: 'ajko-1-low',
     subcategory: 'shoe',
     category: 'men',
     isHighlyRated: false,
@@ -18,7 +18,7 @@ const products = [
   {
     name: 'Air Jordan 5 Retro SE',
     subName: "Men's Shoes",
-    slug: 'air-jordan-5-retro-se-mens-shoes-07Xgmw19_es40lt',
+    slug: 'air-jordan-5-retro-se',
     category: 'men',
     subcategory: 'shoe',
     isHighlyRated: true,
@@ -33,7 +33,7 @@ const products = [
   {
     name: 'Air Jordan 12 Retro',
     subName: "Men's Shoes",
-    slug: 'air-jordan-12-retro-mens-shoes-9rPt0x_jfn2iy',
+    slug: 'air-jordan-12-retro',
     category: 'men',
     subcategory: 'shoe',
     isHighlyRated: true,
