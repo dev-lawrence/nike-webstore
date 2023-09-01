@@ -1,5 +1,4 @@
 import { useState, useRef } from 'react';
-import PreHeader from '../components/PreHeader';
 import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import ShoppingBagRoundedIcon from '@mui/icons-material/ShoppingBagRounded';
@@ -35,7 +34,6 @@ const Header = () => {
   return (
     <>
       <header id="header-section">
-        <PreHeader />
         <div className="container">
           <div className="content d-flex">
             {/* Logo */}
