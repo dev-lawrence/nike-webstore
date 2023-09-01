@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import Featured from '../components/Featured';
 import Banner from '../components/Banner';
 import Popular from '../components/Popular';
+import { Loading } from '../components/Loading';
 
 const Home = () => {
   return (
@@ -51,7 +52,6 @@ const Home = () => {
 
         {/* Popular section */}
         <Popular title="Popular Right Now" />
-
         {/* Banner section */}
         <Banner />
       </div>
