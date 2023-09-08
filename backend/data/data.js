@@ -92,6 +92,19 @@ const data = {
           img: 'https://res.cloudinary.com/dj9m3f8ux/image/upload/v1694182736/Nike%20webstore/Men/Shoes/ajiko/ajko-1-low-mens-shoes-HNz9ps2_jygm9z.png',
         },
       ],
+
+      benefits: [
+        {
+          id: '1',
+          value:
+            'Synthetic leather and textiles in the upper provides structure, comfort and durability.',
+        },
+
+        {
+          id: '2',
+          value: 'Rubber outsole gives you durable everyday traction.',
+        },
+      ],
     },
 
     {
