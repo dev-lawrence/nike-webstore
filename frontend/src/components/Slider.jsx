@@ -1,19 +1,15 @@
 import { useEffect, useRef, useState } from 'react';
 import { Splide, SplideSlide } from '@splidejs/react-splide';
-import MenImg from '../assets/men.webp';
-import WomenImg from '../assets/women.webp';
-import KidImg from '../assets/kids.webp';
+import StarRateRoundedIcon from '@mui/icons-material/StarRateRounded';
 
-const slides = [
-  { src: MenImg, alt: 'Men Shoes' },
-  { src: WomenImg, alt: 'Women Shoes' },
-  { src: KidImg, alt: 'Kids Shoes' },
-];
-
-const Slider = () => {
+const Slider = ({ product }) => {
   const mainRef = useRef(null);
   const thumbsRef = useRef(null);
   const [activeThumbnail, setActiveThumbnail] = useState(0);
+
+  if (!product || !product.sizes) {
+    return null;
+  }
 
   useEffect(() => {
     if (mainRef.current && thumbsRef.current) {
@@ -29,14 +25,14 @@ const Slider = () => {
   };
 
   const renderThumbnails = () => {
-    return slides.map((slide, index) => (
-      <SplideSlide key={slide.src}>
+    return product.thumbnailImgs.map((slide, index) => (
+      <SplideSlide className="thumbnail-imgs" key={slide.id}>
         <div
           className={`thumbnail ${activeThumbnail === index ? 'active' : ''}`}
           onClick={() => handleThumbnailClick(index)}
         >
           <div className={activeThumbnail === index ? 'active' : ''}></div>
-          <img src={slide.src} alt={slide.alt} />
+          <img src={slide.img} />
         </div>
       </SplideSlide>
     ));
@@ -46,27 +42,35 @@ const Slider = () => {
     type: 'slide',
     perPage: 1,
     perMove: 1,
-    gap: '1rem',
+    gap: '.5rem',
     pagination: false,
+    speed: 1000,
   };
 
   const thumbsOptions = {
     type: 'slide',
     rewind: true,
     drag: false,
-    perPage: 3,
-    gap: '0rem',
+    perPage: 5,
+    gap: '.5rem',
     pagination: false,
     isNavigation: true,
+    speed: 1000,
     arrows: false,
   };
 
   return (
     <div className="wrapper">
       <Splide options={mainOptions} ref={mainRef}>
-        {slides.map((slide) => (
-          <SplideSlide key={slide.src}>
-            <img src={slide.src} alt={slide.alt} />
+        {product.mainImgs.map((slide) => (
+          <SplideSlide className="main-img" key={slide.id}>
+            {product.isHighlyRated && (
+              <span className="status">
+                <StarRateRoundedIcon />
+                <p>Highly Rated</p>
+              </span>
+            )}
+            <img src={slide.img} />
           </SplideSlide>
         ))}
       </Splide>

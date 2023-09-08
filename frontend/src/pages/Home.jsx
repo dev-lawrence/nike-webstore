@@ -4,11 +4,14 @@ import { Link } from 'react-router-dom';
 import Featured from '../components/Featured';
 import Banner from '../components/Banner';
 import Popular from '../components/Popular';
-import { Loading } from '../components/Loading';
+import { Helmet } from 'react-helmet-async';
 
 const Home = () => {
   return (
     <section className="home">
+      <Helmet>
+        <title>Nike webstore</title>
+      </Helmet>
       <div className="hero">
         <div className="bg"></div>
         <div className="hero-container">
