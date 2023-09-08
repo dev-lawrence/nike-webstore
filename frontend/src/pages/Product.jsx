@@ -5,10 +5,12 @@ import useFetchData from '../hooks/useFetchData.jsx';
 import { Loading } from '../components/Loading';
 import SizeOptions from '../components/SizeOptions';
 import { Helmet } from 'react-helmet-async';
+import Modal from '../components/Modal';
+import { useState } from 'react';
 
 const Product = () => {
   const { slug } = useParams();
-
+  const [openModal, setOpenModal] = useState(false);
   const {
     data: product,
     loading,
@@ -50,16 +52,25 @@ const Product = () => {
                 </div>
 
                 <div className="description-highlight">
-                  <p>
-                    The Air Jordan 1 Low OG remakes the classic sneaker with new
-                    colors and textures. Premium materials and accents give
-                    fresh expression to an all-time favorite.
-                  </p>
+                  <p>{product.description}</p>
 
                   <div className="full-description">
-                    <button className="description-btn">
+                    <button
+                      onClick={() => {
+                        setOpenModal(true);
+                      }}
+                      className="description-btn"
+                    >
                       View Product Details
                     </button>
+
+                    {openModal && (
+                      <Modal
+                        openModal={openModal}
+                        closeModal={setOpenModal}
+                        product={product}
+                      />
+                    )}
                   </div>
                 </div>
               </div>
