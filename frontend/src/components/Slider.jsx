@@ -48,6 +48,7 @@ const Slider = () => {
     perMove: 1,
     gap: '1rem',
     pagination: false,
+    speed: 1000,
   };
 
   const thumbsOptions = {
@@ -58,6 +59,7 @@ const Slider = () => {
     gap: '0rem',
     pagination: false,
     isNavigation: true,
+    speed: 1000,
     arrows: false,
   };
 
