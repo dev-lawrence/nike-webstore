@@ -10,4 +10,3 @@ export default defineConfig({
     host: 'localhost',
   },
 });
-e;

@@ -2,6 +2,7 @@ import { Splide, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/splide/dist/css/splide.min.css';
 import Card from './Card.jsx';
 import { Loading } from './Loading.jsx';
+const { VITE_API_URL } = import.meta.env;
 import useFetchData from '../hooks/useFetchData.jsx';
 
 const Popular = ({ title }) => {
@@ -9,7 +10,7 @@ const Popular = ({ title }) => {
     data: products,
     loading,
     error,
-  } = useFetchData('http://localhost:5000/api/products');
+  } = useFetchData(`${VITE_API_URL}/products`);
 
   return (
     <section className="popular pt-section">
@@ -24,6 +25,8 @@ const Popular = ({ title }) => {
           <div>
             <Loading />
           </div>
+        ) : error ? (
+          <div>{error}</div>
         ) : (
           <Splide
             options={{

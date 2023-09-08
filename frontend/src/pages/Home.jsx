@@ -53,7 +53,7 @@ const Home = () => {
         {/* Popular section */}
         <Popular title="Popular Right Now" />
         {/* Banner section */}
-        <Banner />
+        <Banner title="Special Offer" />
       </div>
     </section>
   );

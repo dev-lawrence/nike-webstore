@@ -4,7 +4,6 @@ import axios from 'axios';
 const useFetchData = (apiUrl) => {
   const fetchData = async () => {
     try {
-      //   await new Promise((resolve) => setTimeout(resolve, 7000));
       const response = await axios.get(apiUrl);
       return response.data;
     } catch (error) {

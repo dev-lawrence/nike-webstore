@@ -1,1 +1,158 @@
 @use '../abstracts' as *;
+
+.product-page {
+  padding-top: 7rem;
+
+  .radio_input {
+    display: none;
+  }
+
+  .d-flex {
+    @include flex(stretch, flex-start);
+    flex-direction: column;
+  }
+
+  @include large {
+    .d-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 4rem;
+    }
+  }
+
+  //   Splide controls
+  .splide__slide {
+    img {
+      border-radius: $radius-sm;
+    }
+  }
+
+  .splide__track--nav > .splide__list > .splide__slide.is-active {
+    border: none;
+  }
+
+  .thumbnail {
+    margin-top: 1rem;
+    cursor: pointer;
+    position: relative;
+  }
+
+  .img {
+    margin-bottom: 4rem;
+  }
+
+  .content {
+    .title {
+      h2 {
+        font-size: $fs-650;
+        line-height: 1.3;
+      }
+
+      .sub-cat {
+        font-weight: 500;
+        text-transform: capitalize;
+        font-size: $fs-300;
+      }
+
+      .price {
+        font-weight: 500;
+        padding-top: 1rem;
+        font-size: $fs-400;
+      }
+
+      @include large {
+        margin-bottom: 3rem;
+      }
+    }
+
+    .details {
+      .shoe-sizes {
+        h4 {
+          font-weight: 500;
+          font-size: $fs-300 + 0.1rem;
+          margin-bottom: 0.5rem;
+        }
+
+        .shoe {
+          @include grid(repeat(2, 1fr), 0.5rem);
+        }
+
+        label {
+          border: 1.5px solid var(--border);
+          padding: 0.7rem 1.5rem;
+          border-radius: $radius-sm;
+          text-align: center;
+          cursor: pointer;
+          user-select: none;
+          width: 100%;
+
+          &:hover {
+            border-color: var(--foreground);
+          }
+        }
+
+        .line {
+          border-color: black;
+        }
+      }
+
+      .buttons {
+        text-align: center;
+        margin-top: 3rem;
+      }
+
+      .btn-filled,
+      .btn-outline {
+        padding-block: 0.9rem;
+        width: 100%;
+      }
+
+      .btn-filled {
+        margin-bottom: 1rem;
+      }
+
+      .btn-outline {
+        border-radius: $radius-350;
+
+        &:hover {
+          background-color: transparent;
+          border-color: var(--border);
+        }
+      }
+
+      .description-highlight {
+        padding-top: 2rem;
+      }
+
+      .full-description {
+        margin-top: 2rem;
+
+        .description-btn {
+          color: var(--foreground);
+          font-weight: 500;
+          font-size: $fs-300;
+          text-decoration: underline;
+          transition: color 0.2s ease-out;
+
+          &:hover {
+            color: var(--muted-foreground);
+          }
+        }
+      }
+    }
+  }
+
+  .desktop-title {
+    display: none;
+
+    @include large {
+      display: block;
+    }
+  }
+
+  @include large {
+    .mobile-title {
+      display: none;
+    }
+  }
+}
