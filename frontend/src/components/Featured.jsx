@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import Feature1Img from '../assets/feature1.webp';
 import Feature2Img from '../assets/feature2.webp';
+
 const Featured = ({ title }) => {
   return (
     <section className="feature pt-section">
