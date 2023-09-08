@@ -1,9 +1,12 @@
 import { Link } from 'react-router-dom';
 import BannerImg from '../assets/banner.webp';
 
-const Banner = () => {
+const Banner = ({ title }) => {
   return (
     <section className="banner pt-section">
+      <div className="title">
+        <h2>{title}</h2>
+      </div>
       <div className="banner-grid">
         <div className="content">
           <h2>Rewarding Days Ahead</h2>
