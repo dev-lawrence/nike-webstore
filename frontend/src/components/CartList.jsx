@@ -1,4 +1,23 @@
+import EmptyCart from './EmptyCart';
+import CartContext from '../CartContext';
+import { useContext } from 'react';
+import CartItem from './CartItem';
+import PayButton from './PayButton';
+
 const CartList = ({ cartClick, handleCartClick }) => {
+  const { products } = useContext(CartContext);
+  const cartNotEmpty = Array.isArray(products) && products.length !== 0;
+
+  const calculateSubTotal = () => {
+    let subtotal = 0;
+
+    products.forEach((product) => {
+      subtotal += product.quantity * product.price;
+    });
+
+    return subtotal.toFixed(2);
+  };
+
   return (
     <>
       <div className={`cart-container ${cartClick ? 'showCart' : ''}`}>
@@ -9,11 +28,25 @@ const CartList = ({ cartClick, handleCartClick }) => {
 
           <div className="content">
             <div className="cart-products">
-              <h1>hey</h1>
+              {cartNotEmpty ? (
+                products.map((product) => (
+                  <CartItem key={product.slug} product={product} />
+                ))
+              ) : (
+                <EmptyCart handleCartClose={handleCartClick} />
+              )}
             </div>
           </div>
 
-          {/* <PayButton/> */}
+          {cartNotEmpty && (
+            <div className="subtotal-container">
+              <div className="subtotal">
+                <span>Subtotal: ${calculateSubTotal()}</span>
+              </div>
+
+              <PayButton />
+            </div>
+          )}
         </div>
       </div>
     </>
