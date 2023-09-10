@@ -1,4 +1,3 @@
-import Feature1Img from '../assets/feature1.webp';
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 
 const Modal = ({ openModal, closeModal, product }) => {

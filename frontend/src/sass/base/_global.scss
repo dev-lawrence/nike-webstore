@@ -86,6 +86,11 @@
   }
 }
 
+.modal-open {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+}
 // Loading spinner
 .loading-container {
   display: flex;

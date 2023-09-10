@@ -11,6 +11,16 @@ import { useState } from 'react';
 const Product = () => {
   const { slug } = useParams();
   const [openModal, setOpenModal] = useState(false);
+
+  // Function to toggle the modal and body scroll
+  const toggleModal = () => {
+    setOpenModal(!openModal);
+    if (!openModal) {
+      document.body.classList.add('modal-open');
+    } else {
+      document.body.classList.remove('modal-open');
+    }
+  };
   const {
     data: product,
     loading,
@@ -55,19 +65,14 @@ const Product = () => {
                   <p>{product.description}</p>
 
                   <div className="full-description">
-                    <button
-                      onClick={() => {
-                        setOpenModal(true);
-                      }}
-                      className="description-btn"
-                    >
+                    <button onClick={toggleModal} className="description-btn">
                       View Product Details
                     </button>
 
                     {openModal && (
                       <Modal
                         openModal={openModal}
-                        closeModal={setOpenModal}
+                        closeModal={toggleModal}
                         product={product}
                       />
                     )}
