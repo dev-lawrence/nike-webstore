@@ -5,11 +5,14 @@ import ShoppingBagRoundedIcon from '@mui/icons-material/ShoppingBagRounded';
 import Navbar from './Navbar';
 import Logo from './Logo';
 import CartList from './CartList';
+import CartContext from '../CartContext';
 import ToggleMode from './ToggleMode';
 import { Link } from 'react-router-dom';
 import Search from './Search';
+import { useContext } from 'react';
 
 const Header = () => {
+  const { products } = useContext(CartContext);
   const [navClick, setNavClick] = useState(false);
   const [cartClick, setCartClick] = useState(false);
   const [searchClick, setSearchClick] = useState(false);
@@ -61,7 +64,7 @@ const Header = () => {
                 className="toggle-cart icon-btn"
               >
                 <ShoppingBagRoundedIcon className="icon" titleAccess="cart" />
-                <span>0</span>
+                <span>{products.length}</span>
               </button>
 
               <button onClick={handleNavClick} className="toggle-menu icon-btn">
