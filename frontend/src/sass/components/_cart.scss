@@ -65,9 +65,12 @@
           border-radius: $radius-sm;
           margin-bottom: 1.1rem;
           padding: 1rem;
-
           @include flex(center, flex-start);
-          gap: 3rem;
+          gap: 1.5rem;
+
+          .flex {
+            @include flex(center, space-between);
+          }
 
           @include small {
             padding-inline: 1rem;
@@ -88,7 +91,7 @@
 
           .price {
             font-weight: 700;
-            font-size: $fs-600;
+            font-size: $fs-400;
           }
 
           .buttons {
@@ -121,6 +124,12 @@
               color: rgb(247, 19, 19);
             }
           }
+        }
+
+        &-details {
+          display: flex;
+          flex-direction: column;
+          width: 100%;
         }
       }
 

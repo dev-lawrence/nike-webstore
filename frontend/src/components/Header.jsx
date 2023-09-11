@@ -69,7 +69,7 @@ const Header = () => {
                 className="toggle-cart icon-btn"
               >
                 <ShoppingBagRoundedIcon className="icon" titleAccess="cart" />
-                <span>{products.length}</span>
+                {products.length >= 1 && <span>{products.length}</span>}
               </button>
 
               <button onClick={handleNavClick} className="toggle-menu icon-btn">
