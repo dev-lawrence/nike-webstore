@@ -15,17 +15,20 @@ const Header = () => {
   const { products } = useContext(CartContext);
   const [navClick, setNavClick] = useState(false);
   const [cartClick, setCartClick] = useState(false);
+  const [overlay, setOverlay] = useState(false);
   const [searchClick, setSearchClick] = useState(false);
   const inputRef = useRef();
 
   // Function to open the navbar
   const handleNavClick = () => {
     setNavClick(!navClick);
+    setOverlay((prevOverlay) => !prevOverlay);
   };
 
   // Function to open the cart list
   const handleCartClick = () => {
     setCartClick(!cartClick);
+    setOverlay((prevOverlay) => !prevOverlay);
   };
 
   // Function to open the search menu
@@ -37,6 +40,8 @@ const Header = () => {
   return (
     <>
       <header id="header-section">
+        <div className={`overlay ${overlay ? 'show-overlay' : ''}`}></div>
+
         <div className="container">
           <div className="content d-flex">
             {/* Logo */}
