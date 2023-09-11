@@ -21,7 +21,7 @@ const CartItem = ({ product }) => {
   // Function to Increase Quantity
   const increaseQuantity = () => {
     setQuantity((prevQuantity) => prevQuantity + 1);
-    addToCart(slug, image, name, price);
+    addToCart(slug, image, name, price, selectedSize);
   };
 
   // Function to Reduce Quantity
