@@ -43,7 +43,7 @@
 
     .close {
       padding-top: 2rem;
-      color: var(--clr-neutral-900);
+      color: var(--foreground);
       font-weight: 500;
       font-size: $fs-300;
     }
@@ -102,8 +102,8 @@
               line-height: 20px;
               font-size: $fs-400;
               font-weight: 600;
-              background-color: var(--clr-neutral-400);
-              color: var(--clr-neutral-100);
+              background-color: var(--foreground);
+              color: var(--background);
               border-radius: $radius-400;
             }
           }

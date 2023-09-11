@@ -1,4 +1,4 @@
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import Slider from '../components/Slider';
 const { VITE_API_URL } = import.meta.env;
 import useFetchData from '../hooks/useFetchData.jsx';
@@ -18,6 +18,23 @@ const Product = () => {
   } = useFetchData(`${VITE_API_URL}/products/slug/${slug}`);
   const { products, addToCart } = useContext(CartContext);
   const [openModal, setOpenModal] = useState(false);
+  const [selectedSize, setSelectedSize] = useState(null);
+  const [addToCartError, setAddToCartError] = useState(null);
+
+  // Function to add all items to cart
+  const handleAddToCart = () => {
+    if (selectedSize) {
+      addToCart(
+        product.slug,
+        product.name,
+        product.price,
+        product.image,
+        selectedSize
+      );
+    } else {
+      setAddToCartError('Please select a size');
+    }
+  };
 
   // Function to toggle the modal and body scroll
   const toggleModal = () => {
@@ -56,23 +73,23 @@ const Product = () => {
                 <p className="price">${product.price}</p>
               </div>
               <div className="details">
-                <SizeOptions product={product} />
+                <SizeOptions
+                  product={product}
+                  selectedSize={selectedSize}
+                  setSelectedSize={setSelectedSize}
+                  addToCartError={addToCartError}
+                  setAddToCartError={setAddToCartError}
+                />
+
+                {addToCartError && (
+                  <div className="size-error">{addToCartError}</div>
+                )}
 
                 <div className="buttons">
-                  <Link
-                    className="btn-filled"
-                    onClick={() => {
-                      addToCart(
-                        product.slug,
-                        product.name,
-                        product.price,
-                        product.image
-                      );
-                    }}
-                  >
+                  <button className="btn-filled" onClick={handleAddToCart}>
                     Add to Bag
-                  </Link>
-                  <Link className="btn-outline">Favorite 💙</Link>
+                  </button>
+                  <button className="btn-outline">Favorite 💙</button>
                 </div>
 
                 <div className="description-highlight">

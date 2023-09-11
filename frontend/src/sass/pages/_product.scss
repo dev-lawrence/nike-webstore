@@ -149,6 +149,11 @@
 
         .shoe {
           @include grid(repeat(2, 1fr), 0.5rem);
+
+          &.error {
+            border: 1.5px solid red;
+            border-radius: $radius-sm;
+          }
         }
 
         label {
@@ -177,7 +182,7 @@
 
       .btn-filled,
       .btn-outline {
-        padding-block: 0.9rem;
+        padding-block: 1rem;
         width: 100%;
       }
 
@@ -228,5 +233,21 @@
     .mobile-title {
       display: none;
     }
+  }
+
+  // error
+  .size-error {
+    padding-top: 0.7rem;
+    font-weight: 600;
+    color: var(--destructive);
+  }
+
+  .showError {
+    color: var(--destructive);
+  }
+
+  .lineError {
+    border: 1.5px solid var(--destructive);
+    border-radius: $radius-sm;
   }
 }

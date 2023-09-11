@@ -26,8 +26,8 @@
     max-width: 900px;
     padding: 1.2rem;
     transform: translate(-50%, -50%);
-    background-color: var(--foreground);
-    color: var(--background);
+    background-color: var(--card);
+    color: var(--card-foreground);
     border-radius: $radius-sm;
     z-index: 900;
     opacity: 0;
@@ -50,7 +50,7 @@
     .close-icon {
       cursor: pointer;
       font-size: $fs-700;
-      color: var(--background);
+      color: var(--card-foreground);
       position: absolute;
       right: 1rem;
       top: 1rem;
