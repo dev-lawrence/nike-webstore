@@ -18,35 +18,29 @@ const data = {
       sizes: [
         {
           id: 'size_1',
-          value: '1',
-          label: 'M 3.5 / W 5',
+          value: 'M 3.5 / W 5',
         },
         {
           id: 'size_2',
-          value: '2',
-          label: 'M 4 / W 5.5',
+          value: 'M 4 / W 5.5',
         },
 
         {
           id: 'size_3',
-          value: '3',
-          label: 'M 4.5 / W 6',
+          value: 'M 4.5 / W 6',
         },
         {
           id: 'size_4',
-          value: '4',
-          label: 'M 5 / W 6.5',
+          value: 'M 5 / W 6.5',
         },
 
         {
           id: 'size_5',
-          value: '5',
-          label: 'M 5.5 / W 7',
+          value: 'M 5.5 / W 7',
         },
         {
           id: 'size_6',
-          value: '6',
-          label: 'M 6 / W 7.5',
+          value: 'M 6 / W 7.5',
         },
       ],
       mainImgs: [

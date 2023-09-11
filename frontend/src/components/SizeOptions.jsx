@@ -1,11 +1,14 @@
-import { useState } from 'react';
-
-const SizeOptions = ({ product }) => {
-  const [selectedSize, setSelectedSize] = useState(null);
-
+const SizeOptions = ({
+  product,
+  selectedSize,
+  setSelectedSize,
+  addToCartError,
+  setAddToCartError,
+}) => {
   // function to select size
   const handleSelectedSize = (event) => {
     setSelectedSize(event.target.value);
+    setAddToCartError(null);
   };
 
   if (!product || !product.sizes) {
@@ -14,8 +17,8 @@ const SizeOptions = ({ product }) => {
 
   return (
     <div className="shoe-sizes">
-      <h4>Select size</h4>
-      <div className="shoe">
+      <h4 className={addToCartError ? 'showError' : ''}>Select size</h4>
+      <div className={`shoe ${addToCartError ? 'lineError' : ''}`}>
         {product.sizes.map((size) => {
           return (
             <div className="size" key={size.id}>
@@ -26,12 +29,13 @@ const SizeOptions = ({ product }) => {
                 id={size.id}
                 value={size.value}
                 onChange={handleSelectedSize}
+                checked={selectedSize === size.value}
               />
               <label
                 htmlFor={size.id}
                 className={selectedSize === size.value ? 'line' : ''}
               >
-                {size.label}
+                {size.value}
               </label>
             </div>
           );

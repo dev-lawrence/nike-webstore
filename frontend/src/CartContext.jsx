@@ -1,4 +1,4 @@
-import { createContext, useState } from 'react';
+import { createContext } from 'react';
 import { useLocalStorage } from './hooks/useLocalStorage';
 const CartContext = createContext();
 
@@ -6,22 +6,22 @@ export function CartProvider({ children }) {
   const [products, setProducts] = useLocalStorage('nike-webstore', []);
 
   // add to products cart
-  const addToCart = (slug, name, price, image) => {
+  const addToCart = (slug, name, price, image, size) => {
     const existingProduct = products.find((product) => product.slug === slug);
     if (existingProduct) {
       const updatedProducts = products.map((product) => {
         if (product.slug === slug) {
-          return { ...product, quantity: product.quantity + 1 };
+          return { ...product, quantity: product.quantity + 1, size };
         }
 
-        return item;
+        return product;
       });
 
       setProducts(updatedProducts);
     } else {
       setProducts((prevProducts) => [
         ...prevProducts,
-        { slug, name, price, image, quantity: 1 },
+        { slug, name, price, image, size, quantity: 1 },
       ]);
     }
   };

@@ -3,23 +3,25 @@ import DeleteRoundedIcon from '@mui/icons-material/DeleteRounded';
 import CartContext from '../CartContext';
 
 const CartItem = ({ product }) => {
-  const { slug, name, price, image } = product;
+  const { slug, name, price, image, size } = product;
   const { products, addToCart, reduceCartQuantity, removeFromCart } =
     useContext(CartContext);
 
   const [quantity, setQuantity] = useState(1);
+  const [selectedSize, setSelectedSize] = useState(size);
 
   useEffect(() => {
     const cartProduct = products.find((product) => product.slug === slug);
     if (cartProduct) {
       setQuantity(cartProduct.quantity);
+      setSelectedSize(cartProduct.size);
     }
   }, [products, slug]);
 
   // Function to Increase Quantity
   const increaseQuantity = () => {
     setQuantity((prevQuantity) => prevQuantity + 1);
-    addToCart(slug, image, name, price);
+    addToCart(slug, image, name, price, selectedSize);
   };
 
   // Function to Reduce Quantity
@@ -44,6 +46,8 @@ const CartItem = ({ product }) => {
         <div className="cart-product-details">
           <h5 className="name">{name}</h5>
           <h4 className="price">${calculatePrice(quantity, price)}</h4>
+          <p>{selectedSize}</p>
+
           <div className="buttons">
             <button
               onClick={() => {
@@ -55,6 +59,7 @@ const CartItem = ({ product }) => {
             <span>{quantity}</span>
             <button onClick={increaseQuantity}>+</button>
           </div>
+
           <div onClick={() => removeFromCart(slug)}>
             <DeleteRoundedIcon className="delete" />
           </div>
