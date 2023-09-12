@@ -27,7 +27,7 @@ const Favorites = () => {
         <h2>Favorites</h2>
         <ul className="favorites-d-flex">
           {products.map((product) => (
-            <Card key={product._id} product={product} isFavorite={true} />
+            <Card key={product.slug} product={product} isFavorite={true} />
           ))}
         </ul>
       </div>

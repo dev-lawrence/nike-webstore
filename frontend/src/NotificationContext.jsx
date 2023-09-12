@@ -10,7 +10,7 @@ export function NotificationProvider({ children }) {
 
     setTimeout(() => {
       setNotify(false);
-    }, 3000);
+    }, 1000);
   };
 
   return (
