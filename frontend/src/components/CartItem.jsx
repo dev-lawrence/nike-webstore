@@ -43,10 +43,12 @@ const CartItem = ({ product }) => {
     <>
       <div className="cart-products-product">
         <img src={image} alt={name} />
-        <div className="cart-product-details">
-          <h5 className="name">{name}</h5>
-          <h4 className="price">${calculatePrice(quantity, price)}</h4>
-          <p>{selectedSize}</p>
+        <div className="cart-products-details">
+          <div className="flex">
+            <h5 className="name">{name}</h5>
+            <h4 className="price">${calculatePrice(quantity, price)}</h4>
+          </div>
+          <p>Size: {selectedSize}</p>
 
           <div className="buttons">
             <button

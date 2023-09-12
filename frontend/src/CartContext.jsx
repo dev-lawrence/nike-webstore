@@ -4,6 +4,7 @@ const CartContext = createContext();
 
 export function CartProvider({ children }) {
   const [products, setProducts] = useLocalStorage('nike-webstore', []);
+  const [favorites, setFavorites] = useLocalStorage('nike-favorites', []);
 
   // add to products cart
   const addToCart = (slug, name, price, image, size) => {
@@ -48,9 +49,44 @@ export function CartProvider({ children }) {
     );
   };
 
+  // Function to add a product to favorites
+  const addToFavorites = (slug, name, price, image) => {
+    const existingProduct = favorites.find((product) => product.slug === slug);
+    if (existingProduct) {
+      const updatedProducts = favorites.map((product) => {
+        if (product.slug === slug) {
+          return { ...product };
+        }
+
+        return product;
+      });
+
+      setFavorites(updatedProducts);
+    } else {
+      setFavorites((prevProducts) => [
+        ...prevProducts,
+        { slug, name, price, image },
+      ]);
+    }
+  };
+
+  const removeFromFavorites = (slug) => {
+    setFavorites((prevFavorites) =>
+      prevFavorites.filter((product) => product.slug !== slug)
+    );
+  };
+
   return (
     <CartContext.Provider
-      value={{ products, addToCart, reduceCartQuantity, removeFromCart }}
+      value={{
+        products,
+        addToCart,
+        reduceCartQuantity,
+        removeFromCart,
+        addToFavorites,
+        removeFromFavorites,
+        favorites,
+      }}
     >
       {children}
     </CartContext.Provider>

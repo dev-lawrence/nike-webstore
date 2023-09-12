@@ -1,10 +1,13 @@
 import { Link } from 'react-router-dom';
 import ShoppingCartRoundedIcon from '@mui/icons-material/ShoppingCartRounded';
-
-const Card = ({ product }) => {
+import DeleteRoundedIcon from '@mui/icons-material/DeleteRounded';
+import { useContext } from 'react';
+import CartContext from '../CartContext';
+const Card = ({ product, isFavorite }) => {
   const { name, justIn, slug, image, subName, price } = product;
+  const { removeFromFavorites } = useContext(CartContext);
   return (
-    <div className="product">
+    <div className={`product ${isFavorite ? 'favorite' : ''}`}>
       {justIn && <span className="status">Just In</span>}
 
       <Link
@@ -21,6 +24,12 @@ const Card = ({ product }) => {
           <p className="sub-name">{subName}</p>
           <h4 className="price">${price}</h4>
         </div>
+
+        {isFavorite && (
+          <button onClick={() => removeFromFavorites(slug)}>
+            <DeleteRoundedIcon className="delete" />
+          </button>
+        )}
 
         <button>
           <span className="cart">

@@ -9,6 +9,22 @@
   background-color: var(--background);
   box-shadow: 0 10px 20px 1px rgba(0, 0, 0, 0.3);
 
+  .overlay {
+    background-color: rgba(0, 0, 0, 0.3);
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    opacity: 0;
+    z-index: 100;
+    visibility: hidden;
+    transition: opacity 0.5s ease-in;
+  }
+
+  .show-overlay {
+    opacity: 1;
+    visibility: visible;
+  }
+
   .content {
     padding-block: 0.5rem;
   }
@@ -39,7 +55,7 @@
     }
 
     .icon-btn {
-      margin: 0 0.7rem;
+      margin: 0 0.6rem;
       border: none;
       background-color: transparent;
       cursor: pointer;
@@ -48,8 +64,8 @@
         margin-right: 0;
       }
 
-      @include extra-small {
-        margin-inline: 0.5rem;
+      @include small {
+        margin-inline: 0.4rem;
       }
 
       @include large {

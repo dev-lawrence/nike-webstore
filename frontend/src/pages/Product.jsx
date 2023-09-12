@@ -16,7 +16,7 @@ const Product = () => {
     loading,
     error,
   } = useFetchData(`${VITE_API_URL}/products/slug/${slug}`);
-  const { products, addToCart } = useContext(CartContext);
+  const { addToCart, addToFavorites } = useContext(CartContext);
   const [openModal, setOpenModal] = useState(false);
   const [selectedSize, setSelectedSize] = useState(null);
   const [addToCartError, setAddToCartError] = useState(null);
@@ -34,6 +34,11 @@ const Product = () => {
     } else {
       setAddToCartError('Please select a size');
     }
+  };
+
+  // Function to toggle a product as a favorite
+  const handleAddToFavorite = () => {
+    addToFavorites(product.slug, product.name, product.price, product.image);
   };
 
   // Function to toggle the modal and body scroll
@@ -89,7 +94,9 @@ const Product = () => {
                   <button className="btn-filled" onClick={handleAddToCart}>
                     Add to Bag
                   </button>
-                  <button className="btn-outline">Favorite 💙</button>
+                  <button className="btn-outline" onClick={handleAddToFavorite}>
+                    Favorite 💙
+                  </button>
                 </div>
 
                 <div className="description-highlight">
