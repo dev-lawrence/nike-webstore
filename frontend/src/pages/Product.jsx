@@ -38,7 +38,13 @@ const Product = () => {
 
   // Function to toggle a product as a favorite
   const handleAddToFavorite = () => {
-    addToFavorites(product.slug, product.name, product.price, product.image);
+    addToFavorites(
+      product.slug,
+      product.name,
+      product.subName,
+      product.price,
+      product.image
+    );
   };
 
   // Function to toggle the modal and body scroll

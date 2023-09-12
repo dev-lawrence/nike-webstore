@@ -50,7 +50,7 @@ export function CartProvider({ children }) {
   };
 
   // Function to add a product to favorites
-  const addToFavorites = (slug, name, price, image) => {
+  const addToFavorites = (slug, name, subName, price, image) => {
     const existingProduct = favorites.find((product) => product.slug === slug);
     if (existingProduct) {
       const updatedProducts = favorites.map((product) => {
@@ -65,7 +65,7 @@ export function CartProvider({ children }) {
     } else {
       setFavorites((prevProducts) => [
         ...prevProducts,
-        { slug, name, price, image },
+        { slug, name, subName, price, image },
       ]);
     }
   };
