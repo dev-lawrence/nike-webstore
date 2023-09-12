@@ -5,9 +5,17 @@ import Product from '../models/productModel.js';
 const seedRouter = express.Router();
 
 seedRouter.get('/', async (req, res) => {
-  await Product.find({});
-  const createdProducts = await Product.insertMany(data.products);
-  res.send({ createdProducts });
+  try {
+    // Delete all previous records in the Product model
+    await Product.deleteMany({});
+
+    // Insert new products
+    const createdProducts = await Product.insertMany(data.products);
+
+    res.send({ createdProducts });
+  } catch (error) {
+    res.status(500).send({ error: 'Internal server error' });
+  }
 });
 
 export default seedRouter;
