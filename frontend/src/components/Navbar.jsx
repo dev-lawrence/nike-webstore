@@ -1,6 +1,12 @@
 import { NavLink } from 'react-router-dom';
+import FavoriteRoundedIcon from '@mui/icons-material/FavoriteRounded';
 
-const Navbar = ({ navClick }) => {
+const Navbar = ({ navClick, handleNavClose }) => {
+  const handleNavLinkClick = () => {
+    handleNavClose();
+    window.scrollTo(0, 0);
+  };
+
   return (
     <>
       <nav className={`nav ${navClick ? 'showMenu' : ''}`}>
@@ -15,6 +21,12 @@ const Navbar = ({ navClick }) => {
 
           <li>
             <NavLink to="about">Kids</NavLink>
+          </li>
+
+          <li>
+            <NavLink to="favorite" onClick={handleNavLinkClick}>
+              <FavoriteRoundedIcon className="heart" /> Favorites
+            </NavLink>
           </li>
 
           <li>

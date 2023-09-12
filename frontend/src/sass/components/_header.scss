@@ -55,7 +55,7 @@
     }
 
     .icon-btn {
-      margin: 0 0.7rem;
+      margin: 0 0.6rem;
       border: none;
       background-color: transparent;
       cursor: pointer;
@@ -64,8 +64,8 @@
         margin-right: 0;
       }
 
-      @include extra-small {
-        margin-inline: 0.5rem;
+      @include small {
+        margin-inline: 0.4rem;
       }
 
       @include large {

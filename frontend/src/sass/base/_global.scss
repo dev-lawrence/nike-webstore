@@ -22,6 +22,43 @@
   }
 }
 
+.mb-1 {
+  margin-bottom: 1rem;
+}
+
+// cart-btn
+.cart-btn {
+  background-color: var(--foreground);
+  color: var(--background);
+  padding: 1rem 2rem;
+  border-radius: 0.4rem;
+  font-size: $fs-300;
+}
+
+// Favorites
+.favorites {
+  text-align: center;
+}
+
+// Favorite
+.favorite {
+  display: flex;
+  flex-direction: column;
+  width: 350px;
+  margin-top: 1rem;
+
+  .delete {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    font-size: $fs-600;
+
+    &:hover {
+      color: var(--primary);
+    }
+  }
+}
+
 // Products
 .product {
   position: relative;
@@ -42,6 +79,7 @@
 
   img {
     border-radius: $radius-sm;
+    width: 100%;
   }
 
   &:not(:last-child) {

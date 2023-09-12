@@ -2,6 +2,7 @@ import { useState, useRef } from 'react';
 import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import ShoppingBagRoundedIcon from '@mui/icons-material/ShoppingBagRounded';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import Navbar from './Navbar';
 import Logo from './Logo';
 import CartList from './CartList';
@@ -23,6 +24,11 @@ const Header = () => {
   const handleNavClick = () => {
     setNavClick(!navClick);
     setOverlay((prevOverlay) => !prevOverlay);
+  };
+
+  const handleNavClose = () => {
+    setNavClick(false);
+    setOverlay(false);
   };
 
   // Function to open the cart list
@@ -50,7 +56,7 @@ const Header = () => {
             </Link>
 
             {/* NAV BAR */}
-            <Navbar navClick={navClick} />
+            <Navbar navClick={navClick} handleNavClose={handleNavClose} />
 
             {/* <!--NAV BUTTONS--> */}
             <div className="menu-buttons">
@@ -71,6 +77,10 @@ const Header = () => {
                 <ShoppingBagRoundedIcon className="icon" titleAccess="cart" />
                 {products.length >= 1 && <span>{products.length}</span>}
               </button>
+
+              {/* <button className="toggle-mode icon-btn">
+                <AccountCircleIcon className="icon" />
+              </button> */}
 
               <button onClick={handleNavClick} className="toggle-menu icon-btn">
                 {navClick ? (
