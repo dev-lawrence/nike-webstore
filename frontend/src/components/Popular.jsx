@@ -53,7 +53,7 @@ const Popular = ({ title }) => {
           >
             {products.map((product) => {
               return (
-                <SplideSlide key={product.slug}>
+                <SplideSlide key={product._id}>
                   <Card product={product} />
                 </SplideSlide>
               );

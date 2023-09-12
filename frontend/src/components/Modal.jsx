@@ -26,7 +26,7 @@ const Modal = ({ openModal, closeModal, product }) => {
 
             <h3>Benefits</h3>
             {product.benefits.map((benefit) => {
-              return <li key={benefit.id}>{benefit.value}</li>;
+              return <li key={benefit._id}>{benefit.value}</li>;
             })}
           </div>
         </div>

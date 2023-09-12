@@ -21,18 +21,18 @@ const SizeOptions = ({
       <div className={`shoe ${addToCartError ? 'lineError' : ''}`}>
         {product.sizes.map((size) => {
           return (
-            <div className="size" key={size.id}>
+            <div className="size" key={size._id}>
               <input
                 type="radio"
                 className="radio_input"
                 name="shoe_size"
-                id={size.id}
+                id={size._id}
                 value={size.value}
                 onChange={handleSelectedSize}
                 checked={selectedSize === size.value}
               />
               <label
-                htmlFor={size.id}
+                htmlFor={size._id}
                 className={selectedSize === size.value ? 'line' : ''}
               >
                 {size.value}

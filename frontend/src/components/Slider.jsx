@@ -26,7 +26,7 @@ const Slider = ({ product }) => {
 
   const renderThumbnails = () => {
     return product.thumbnailImgs.map((slide, index) => (
-      <SplideSlide className="thumbnail-imgs" key={slide.id}>
+      <SplideSlide className="thumbnail-imgs" key={slide._id}>
         <div
           className={`thumbnail ${activeThumbnail === index ? 'active' : ''}`}
           onClick={() => handleThumbnailClick(index)}
@@ -63,7 +63,7 @@ const Slider = ({ product }) => {
     <div className="wrapper">
       <Splide options={mainOptions} ref={mainRef}>
         {product.mainImgs.map((slide) => (
-          <SplideSlide className="main-img" key={slide.id}>
+          <SplideSlide className="main-img" key={slide._id}>
             {product.isHighlyRated && (
               <span className="status">
                 <StarRateRoundedIcon />
