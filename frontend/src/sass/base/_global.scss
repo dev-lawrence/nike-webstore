@@ -35,30 +35,6 @@
   font-size: $fs-300;
 }
 
-// Favorites
-.favorites {
-  text-align: center;
-}
-
-// Favorite
-.favorite {
-  display: flex;
-  flex-direction: column;
-  width: 350px;
-  margin-top: 1rem;
-
-  .delete {
-    position: absolute;
-    right: 1rem;
-    top: 1rem;
-    font-size: $fs-600;
-
-    &:hover {
-      color: var(--primary);
-    }
-  }
-}
-
 // Products
 .product {
   position: relative;

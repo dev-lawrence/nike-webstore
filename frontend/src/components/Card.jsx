@@ -31,11 +31,13 @@ const Card = ({ product, isFavorite }) => {
           </button>
         )}
 
-        <button>
-          <span className="cart">
-            <ShoppingCartRoundedIcon />
-          </span>
-        </button>
+        {!isFavorite && (
+          <button>
+            <span className="cart">
+              <ShoppingCartRoundedIcon />
+            </span>
+          </button>
+        )}
       </div>
     </div>
   );

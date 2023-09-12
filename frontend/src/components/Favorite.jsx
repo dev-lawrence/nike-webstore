@@ -10,8 +10,7 @@ const Favorites = () => {
   if (!products || products.length === 0) {
     return (
       <div className="pt-section | favorites | container">
-        <h2>Favorites</h2>
-        <p className="mb-1">No favorites selected yet.</p>
+        <p className="mb-1">No items saved yet.</p>
         <Link className="cart-btn" to="/">
           Continue Shopping
         </Link>
@@ -26,7 +25,7 @@ const Favorites = () => {
       </Helmet>
       <div className="container">
         <h2>Favorites</h2>
-        <ul>
+        <ul className="favorites-d-flex">
           {products.map((product) => (
             <Card key={product.slug} product={product} isFavorite={true} />
           ))}
