@@ -1,10 +1,12 @@
-import { createContext } from 'react';
+import { useContext, createContext } from 'react';
 import { useLocalStorage } from './hooks/useLocalStorage';
 const CartContext = createContext();
+import NotificationContext from './NotificationContext';
 
 export function CartProvider({ children }) {
   const [products, setProducts] = useLocalStorage('nike-webstore', []);
   const [favorites, setFavorites] = useLocalStorage('nike-favorites', []);
+  const { showNotify } = useContext(NotificationContext);
 
   // add to products cart
   const addToCart = (slug, name, price, image, size) => {
@@ -12,6 +14,7 @@ export function CartProvider({ children }) {
     if (existingProduct) {
       const updatedProducts = products.map((product) => {
         if (product.slug === slug) {
+          showNotify(`Increased ${name} quantity`);
           return { ...product, quantity: product.quantity + 1, size };
         }
 
@@ -24,6 +27,8 @@ export function CartProvider({ children }) {
         ...prevProducts,
         { slug, name, price, image, size, quantity: 1 },
       ]);
+
+      showNotify(`${name} added to your cart`);
     }
   };
 
@@ -31,6 +36,7 @@ export function CartProvider({ children }) {
   const reduceCartQuantity = (slug) => {
     const updatedProducts = products.map((product) => {
       if (product.slug === slug) {
+        showNotify(`Reduced ${product.name} quantity`);
         const updatedQuantity = product.quantity - 1;
         if (updatedQuantity < 1) {
           removeFromCart(slug);
@@ -50,11 +56,12 @@ export function CartProvider({ children }) {
   };
 
   // Function to add a product to favorites
-  const addToFavorites = (slug, name, price, image) => {
+  const addToFavorites = (slug, name, subName, price, image) => {
     const existingProduct = favorites.find((product) => product.slug === slug);
     if (existingProduct) {
       const updatedProducts = favorites.map((product) => {
         if (product.slug === slug) {
+          showNotify('Already in Favorites');
           return { ...product };
         }
 
@@ -65,8 +72,10 @@ export function CartProvider({ children }) {
     } else {
       setFavorites((prevProducts) => [
         ...prevProducts,
-        { slug, name, price, image },
+        { slug, name, subName, price, image },
       ]);
+
+      showNotify('Added to Favorites');
     }
   };
 

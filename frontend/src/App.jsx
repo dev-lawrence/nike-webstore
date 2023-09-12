@@ -5,6 +5,7 @@ import {
   RouterProvider,
 } from 'react-router-dom';
 import { CartProvider } from './CartContext';
+import { NotificationProvider } from './NotificationContext';
 
 // styles
 import './sass/main.scss';
@@ -30,9 +31,11 @@ const router = createBrowserRouter(
 const App = () => {
   return (
     <>
-      <CartProvider>
-        <RouterProvider router={router} />
-      </CartProvider>
+      <NotificationProvider>
+        <CartProvider>
+          <RouterProvider router={router} />
+        </CartProvider>
+      </NotificationProvider>
     </>
   );
 };

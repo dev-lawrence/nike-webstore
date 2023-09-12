@@ -8,6 +8,7 @@ import { Helmet } from 'react-helmet-async';
 import Modal from '../components/Modal';
 import { useContext, useState } from 'react';
 import CartContext from '../CartContext';
+import NotificationContext from '../NotificationContext';
 
 const Product = () => {
   const { slug } = useParams();
@@ -17,6 +18,7 @@ const Product = () => {
     error,
   } = useFetchData(`${VITE_API_URL}/products/slug/${slug}`);
   const { addToCart, addToFavorites } = useContext(CartContext);
+  const { showNotify } = useContext(NotificationContext);
   const [openModal, setOpenModal] = useState(false);
   const [selectedSize, setSelectedSize] = useState(null);
   const [addToCartError, setAddToCartError] = useState(null);
@@ -31,6 +33,8 @@ const Product = () => {
         product.image,
         selectedSize
       );
+
+      showNotify;
     } else {
       setAddToCartError('Please select a size');
     }
@@ -38,7 +42,13 @@ const Product = () => {
 
   // Function to toggle a product as a favorite
   const handleAddToFavorite = () => {
-    addToFavorites(product.slug, product.name, product.price, product.image);
+    addToFavorites(
+      product.slug,
+      product.name,
+      product.subName,
+      product.price,
+      product.image
+    );
   };
 
   // Function to toggle the modal and body scroll

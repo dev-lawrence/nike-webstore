@@ -35,30 +35,6 @@
   font-size: $fs-300;
 }
 
-// Favorites
-.favorites {
-  text-align: center;
-}
-
-// Favorite
-.favorite {
-  display: flex;
-  flex-direction: column;
-  width: 350px;
-  margin-top: 1rem;
-
-  .delete {
-    position: absolute;
-    right: 1rem;
-    top: 1rem;
-    font-size: $fs-600;
-
-    &:hover {
-      color: var(--primary);
-    }
-  }
-}
-
 // Products
 .product {
   position: relative;
@@ -123,12 +99,33 @@
     font-size: $fs-400;
   }
 }
-
+// modal
 .modal-open {
   overflow: hidden;
   position: fixed;
   width: 100%;
 }
+
+// notify
+.notify {
+  position: fixed;
+  top: 2rem;
+  width: 70%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  z-index: 700;
+  background-color: var(--foreground);
+  color: var(--background);
+  padding: 0.5rem 1.2rem;
+  border-radius: 0.4rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+
+  @include medium {
+    max-width: 30%;
+  }
+}
+
 // Loading spinner
 .loading-container {
   display: flex;
