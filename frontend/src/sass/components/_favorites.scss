@@ -1,0 +1,35 @@
+@use '../abstracts' as *;
+
+.favorites {
+  text-align: center;
+
+  &-d-flex {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+}
+
+.favorite {
+  width: 100%;
+  margin-top: 1rem;
+
+  @include medium {
+    width: 300px;
+  }
+
+  @include large {
+    width: 330px;
+  }
+
+  .delete {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    font-size: $fs-600;
+
+    &:hover {
+      color: var(--primary);
+    }
+  }
+}

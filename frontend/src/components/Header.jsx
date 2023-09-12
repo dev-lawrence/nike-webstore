@@ -11,6 +11,7 @@ import ToggleMode from './ToggleMode';
 import { Link } from 'react-router-dom';
 import Search from './Search';
 import { useContext } from 'react';
+import Notification from './Notification';
 
 const Header = () => {
   const { products } = useContext(CartContext);
@@ -45,6 +46,7 @@ const Header = () => {
 
   return (
     <>
+      <Notification />
       <header id="header-section">
         <div className={`overlay ${overlay ? 'show-overlay' : ''}`}></div>
 

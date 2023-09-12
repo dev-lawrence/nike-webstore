@@ -1,11 +1,13 @@
 import { useState, useContext, useEffect } from 'react';
 import DeleteRoundedIcon from '@mui/icons-material/DeleteRounded';
 import CartContext from '../CartContext';
+import NotificationContext from '../NotificationContext';
 
 const CartItem = ({ product }) => {
   const { slug, name, price, image, size } = product;
   const { products, addToCart, reduceCartQuantity, removeFromCart } =
     useContext(CartContext);
+  const { showNotify } = useContext(NotificationContext);
 
   const [quantity, setQuantity] = useState(1);
   const [selectedSize, setSelectedSize] = useState(size);
@@ -22,6 +24,7 @@ const CartItem = ({ product }) => {
   const increaseQuantity = () => {
     setQuantity((prevQuantity) => prevQuantity + 1);
     addToCart(slug, image, name, price, selectedSize);
+    showNotify(`Increased ${name} quantity`);
   };
 
   // Function to Reduce Quantity
@@ -54,11 +57,13 @@ const CartItem = ({ product }) => {
             <button
               onClick={() => {
                 reduceQuantity();
+                showNotify;
               }}
             >
               -
             </button>
             <span>{quantity}</span>
+
             <button onClick={increaseQuantity}>+</button>
           </div>
 
