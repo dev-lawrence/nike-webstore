@@ -12,7 +12,7 @@ const Navbar = ({ navClick, handleNavClose }) => {
       <nav className={`nav ${navClick ? 'showMenu' : ''}`}>
         <ul className="menu" role="list" aria-label="list">
           <li>
-            <NavLink to="/">Men</NavLink>
+            <NavLink to="men">Men</NavLink>
           </li>
 
           <li>
@@ -24,13 +24,13 @@ const Navbar = ({ navClick, handleNavClose }) => {
           </li>
 
           <li>
-            <NavLink to="favorite" onClick={handleNavLinkClick}>
-              <FavoriteRoundedIcon className="heart" /> Favorites
-            </NavLink>
+            <NavLink to="blog">Accessories</NavLink>
           </li>
 
           <li>
-            <NavLink to="blog">Accessories</NavLink>
+            <NavLink to="favorite" onClick={handleNavLinkClick}>
+              <FavoriteRoundedIcon className="heart" /> Favorites
+            </NavLink>
           </li>
 
           <li>

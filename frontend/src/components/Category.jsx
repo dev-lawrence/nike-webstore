@@ -1,7 +1,7 @@
-import { Link } from 'react-router-dom';
 import MenImg from '../assets/men.webp';
 import WomenImg from '../assets/women.webp';
 import KidImg from '../assets/kids.webp';
+import CardCategory from './CardCategory';
 
 const Category = ({ title }) => {
   return (
@@ -12,41 +12,29 @@ const Category = ({ title }) => {
         </div>
       </div>
       <div className="category-grid">
-        <div className="grid-one mb">
-          <Link
-            to="/category/men"
-            className="category-content"
-            onClick={() => window.scrollTo(0, 0)}
-          >
-            <div className="overlay"></div>
-            <img loading="lazy" src={MenImg} alt="man" />
-            <p className="description">Men</p>
-          </Link>
-        </div>
+        <CardCategory
+          className="grid-one mb"
+          path="men"
+          cardImg={MenImg}
+          alt="man"
+          text="Men"
+        />
 
-        <div className="grid-two mb">
-          <Link
-            to="/category/women"
-            className="category-content"
-            onClick={() => window.scrollTo(0, 0)}
-          >
-            <div className="overlay"></div>
-            <img loading="lazy" src={WomenImg} alt="woman" />
-            <p className="description">Women</p>
-          </Link>
-        </div>
+        <CardCategory
+          className="grid-two mb"
+          path="/category/women"
+          cardImg={WomenImg}
+          alt="woman"
+          text="Women"
+        />
 
-        <div className="grid-three">
-          <Link
-            to="/category/kids"
-            className="category-content"
-            onClick={() => window.scrollTo(0, 0)}
-          >
-            <div className="overlay"></div>
-            <img loading="lazy" src={KidImg} alt="kid" />
-            <p className="description">Kids</p>
-          </Link>
-        </div>
+        <CardCategory
+          className="grid-three mb"
+          path="/category/kids"
+          cardImg={KidImg}
+          alt="kid"
+          text="Kids"
+        />
       </div>
     </section>
   );
