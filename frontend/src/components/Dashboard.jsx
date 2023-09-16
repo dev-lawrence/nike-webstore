@@ -20,6 +20,9 @@ const Dashboard = () => {
               <Link to="/dashboard" className="dropdown-item">
                 Orders
               </Link>
+              <Link to="/favorite" className="dropdown-item">
+                Favorites
+              </Link>
               <button
                 className="dropdown-item-button"
                 onClick={() => {

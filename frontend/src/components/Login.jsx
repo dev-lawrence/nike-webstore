@@ -3,7 +3,6 @@ import { useAuth0 } from '@auth0/auth0-react';
 
 const Login = () => {
   const { loginWithPopup, isAuthenticated } = useAuth0();
-  //   if (isLoading) return <h1>Loading...</h1>;
   return (
     <div className="user-info">
       {!isAuthenticated && (
