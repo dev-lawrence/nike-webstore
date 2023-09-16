@@ -7,7 +7,7 @@ const Login = () => {
     <div className="user-info">
       {!isAuthenticated && (
         <button className="user icon-btn" onClick={() => loginWithPopup()}>
-          <AccountCircleIcon className="icon" />
+          <AccountCircleIcon className="user-icon" />
         </button>
       )}
     </div>
