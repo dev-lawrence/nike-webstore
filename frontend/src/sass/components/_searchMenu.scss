@@ -10,13 +10,6 @@
   overflow: auto;
   z-index: -1;
 
-  @include large {
-    position: relative;
-    height: 100%;
-    justify-content: flex-start;
-    overflow: visible;
-  }
-
   // Menu
   .menu {
     background-color: var(--background);
@@ -27,30 +20,19 @@
     @include large {
       height: unset;
       position: absolute;
-      top: 1rem;
-      left: -0.5rem;
+      top: 0;
       width: 100%;
-      padding-block: 1rem;
-      padding-inline: 0;
+      padding-top: 5rem;
+      padding-left: 30%;
       z-index: 3000;
-      border-radius: $radius-sm;
       display: block;
       background-color: var(--background);
-      border: 1.5px solid var(--border);
-    }
-
-    @include small {
-      width: 70%;
     }
 
     h3 {
       font-weight: 400;
       margin-bottom: 1rem;
       color: var(--muted-foreground);
-
-      @include large {
-        padding-inline: 1.2rem;
-      }
     }
 
     li {
@@ -58,8 +40,7 @@
       margin-bottom: 1rem;
 
       @include large {
-        margin-bottom: 0.5rem;
-        padding-inline: 1.2rem;
+        padding-inline: 0;
       }
     }
 
@@ -69,10 +50,6 @@
       transition: color 0.2s ease-in-out;
       font-weight: 500;
       transform: color 0.3s ease-in-out;
-
-      @include large {
-        font-size: $fs-300;
-      }
     }
   }
 }

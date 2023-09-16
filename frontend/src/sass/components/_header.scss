@@ -10,7 +10,7 @@
   box-shadow: 0 10px 20px 1px rgba(0, 0, 0, 0.3);
 
   .overlay {
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: rgba(0, 0, 0, 0.8);
     width: 100%;
     height: 100vh;
     position: fixed;
@@ -36,6 +36,10 @@
     &-nike {
       fill: var(--foreground);
     }
+
+    @include large {
+      z-index: 1000;
+    }
   }
 
   .container {
@@ -49,6 +53,7 @@
 
   .menu-buttons {
     @include flex(center, space-between);
+    position: relative;
 
     @include extra-small {
       margin-left: 0.5rem;
@@ -95,10 +100,19 @@
     }
 
     .toggle-mode {
-      transform: translateY(0.1rem);
+      transform: translateY(0.2rem);
 
       @include large {
         margin-left: 0.4rem;
+      }
+    }
+
+    .user-info {
+      display: none;
+
+      @include large {
+        display: block;
+        transform: translateY(0.2rem);
       }
     }
 

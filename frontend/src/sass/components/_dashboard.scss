@@ -1,0 +1,49 @@
+@use '../abstracts' as *;
+
+.dashboard {
+  display: none;
+
+  @include large {
+    display: block;
+  }
+
+  .avatar {
+    cursor: pointer;
+    width: 50px;
+    border-radius: $radius-400;
+  }
+
+  .dropdown {
+    position: relative;
+    cursor: pointer;
+
+    &-menu {
+      position: absolute;
+      @include flex(flex-start, flex-start);
+      flex-direction: column;
+      border-radius: $radius-sm;
+      top: 2rem;
+      right: 0;
+      background-color: var(--background);
+      width: 180px;
+    }
+
+    &-item,
+    &-item-button {
+      background: none;
+      color: var(--card-foreground);
+      font-size: 1rem;
+      width: 100%;
+      padding: 0.5rem 0.8rem;
+    }
+
+    &-item-button {
+      text-align: left;
+    }
+  }
+
+  .dropdown-item:hover,
+  .dropdown-item-button:hover {
+    background-color: var(--card);
+  }
+}

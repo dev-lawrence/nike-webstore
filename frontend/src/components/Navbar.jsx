@@ -12,7 +12,9 @@ const Navbar = ({ navClick, handleNavClose }) => {
       <nav className={`nav ${navClick ? 'showMenu' : ''}`}>
         <ul className="menu" role="list" aria-label="list">
           <li>
-            <NavLink to="men">Men</NavLink>
+            <NavLink to="men" onClick={handleNavLinkClick}>
+              Men
+            </NavLink>
           </li>
 
           <li>
