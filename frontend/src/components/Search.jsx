@@ -32,13 +32,11 @@ const Search = ({ searchClick, handleSearchClick, inputRef }) => {
         </button>
       </div>
 
-      {searchClick ? (
+      {searchClick && (
         <SearchMenu
           handleSearchClick={handleSearchClick}
           searchClick={searchClick}
         />
-      ) : (
-        ''
       )}
     </div>
   );

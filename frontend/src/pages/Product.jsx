@@ -9,8 +9,10 @@ import Modal from '../components/Modal';
 import { useContext, useState } from 'react';
 import CartContext from '../CartContext';
 import NotificationContext from '../NotificationContext';
+import { useAuth0 } from '@auth0/auth0-react';
 
 const Product = () => {
+  const { isAuthenticated, loginWithPopup } = useAuth0();
   const { slug } = useParams();
   const {
     data: product,
@@ -42,13 +44,17 @@ const Product = () => {
 
   // Function to toggle a product as a favorite
   const handleAddToFavorite = () => {
-    addToFavorites(
-      product.slug,
-      product.name,
-      product.subName,
-      product.price,
-      product.image
-    );
+    if (isAuthenticated) {
+      addToFavorites(
+        product.slug,
+        product.name,
+        product.subName,
+        product.price,
+        product.image
+      );
+    } else {
+      loginWithPopup();
+    }
   };
 
   // Function to toggle the modal and body scroll

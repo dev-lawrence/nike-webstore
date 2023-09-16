@@ -2,7 +2,6 @@ import { useState, useRef } from 'react';
 import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import ShoppingBagRoundedIcon from '@mui/icons-material/ShoppingBagRounded';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import Navbar from './Navbar';
 import Logo from './Logo';
 import CartList from './CartList';
@@ -12,8 +11,12 @@ import { Link } from 'react-router-dom';
 import Search from './Search';
 import { useContext } from 'react';
 import Notification from './Notification';
+import Login from './Login';
+import { useAuth0 } from '@auth0/auth0-react';
+import Dashboard from './Dashboard';
 
 const Header = () => {
+  const { user } = useAuth0();
   const { products } = useContext(CartContext);
   const [navClick, setNavClick] = useState(false);
   const [cartClick, setCartClick] = useState(false);
@@ -42,6 +45,7 @@ const Header = () => {
   const handleSearchClick = () => {
     setSearchClick(!searchClick);
     inputRef.current.focus();
+    setOverlay((prevOverlay) => !prevOverlay);
   };
 
   return (
@@ -80,9 +84,7 @@ const Header = () => {
                 {products.length >= 1 && <span>{products.length}</span>}
               </button>
 
-              {/* <button className="toggle-mode icon-btn">
-                <AccountCircleIcon className="icon" />
-              </button> */}
+              {!user ? <Login /> : <Dashboard />}
 
               <button onClick={handleNavClick} className="toggle-menu icon-btn">
                 {navClick ? (
@@ -98,10 +100,9 @@ const Header = () => {
                 )}
               </button>
             </div>
-
-            {/* Cart list */}
-            <CartList cartClick={cartClick} handleCartClick={handleCartClick} />
           </div>
+          {/* Cart list */}
+          <CartList cartClick={cartClick} handleCartClick={handleCartClick} />
         </div>
       </header>
     </>
