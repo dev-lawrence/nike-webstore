@@ -12,17 +12,19 @@ import Search from './Search';
 import { useContext } from 'react';
 import Notification from './Notification';
 import Login from './Login';
-import { useAuth0 } from '@auth0/auth0-react';
 import Dashboard from './Dashboard';
+import { SignedIn, useClerk } from '@clerk/clerk-react';
 
 const Header = () => {
-  const { user } = useAuth0();
+  const { user } = useClerk();
   const { products } = useContext(CartContext);
   const [navClick, setNavClick] = useState(false);
   const [cartClick, setCartClick] = useState(false);
   const [overlay, setOverlay] = useState(false);
   const [searchClick, setSearchClick] = useState(false);
   const inputRef = useRef();
+
+  console.log(user);
 
   // Function to open the navbar
   const handleNavClick = () => {
@@ -84,7 +86,11 @@ const Header = () => {
                 {products.length >= 1 && <span>{products.length}</span>}
               </button>
 
-              {!user ? <Login /> : <Dashboard />}
+              <Login />
+
+              <SignedIn>
+                <Dashboard />
+              </SignedIn>
 
               <button onClick={handleNavClick} className="toggle-menu icon-btn">
                 {navClick ? (

@@ -1,16 +1,16 @@
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import { useAuth0 } from '@auth0/auth0-react';
-
+import { SignedOut, SignInButton } from '@clerk/clerk-react';
 const Login = () => {
-  const { loginWithPopup, isAuthenticated } = useAuth0();
   return (
-    <div className="user-info">
-      {!isAuthenticated && (
-        <button className="user icon-btn" onClick={() => loginWithPopup()}>
-          <AccountCircleIcon className="user-icon" />
-        </button>
-      )}
-    </div>
+    <SignedOut>
+      <SignInButton mode="modal">
+        <div className="user-info">
+          <button className="user icon-btn">
+            <AccountCircleIcon className="user-icon" />
+          </button>
+        </div>
+      </SignInButton>
+    </SignedOut>
   );
 };
 

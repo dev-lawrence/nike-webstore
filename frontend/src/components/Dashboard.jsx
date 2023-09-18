@@ -1,10 +1,9 @@
-import { useAuth0 } from '@auth0/auth0-react';
+import { useClerk } from '@clerk/clerk-react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const Dashboard = () => {
-  const { user, logout } = useAuth0();
-
+  const { user, signOut } = useClerk();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const toggleDropdown = () => {
@@ -14,7 +13,7 @@ const Dashboard = () => {
     <div className="dashboard">
       {user && (
         <div className="dropdown" onClick={toggleDropdown}>
-          <img src={user.picture} alt="avatar" className="avatar" />
+          <img src={user.imageUrl} alt="avatar" className="avatar" />
           {isDropdownOpen && (
             <div className="dropdown-menu">
               <Link to="/dashboard" className="dropdown-item">
@@ -27,7 +26,7 @@ const Dashboard = () => {
                 className="dropdown-item-button"
                 onClick={() => {
                   toggleDropdown();
-                  logout();
+                  signOut();
                 }}
               >
                 Sign out
