@@ -31,7 +31,7 @@
         width: 200px;
       }
       @include large {
-        right: 60%;
+        right: 50%;
       }
 
       @include medium {
@@ -85,7 +85,7 @@
     }
 
     @include large {
-      right: 16rem;
+      right: 12rem;
     }
 
     @include huge {

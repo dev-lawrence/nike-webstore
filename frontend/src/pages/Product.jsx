@@ -9,10 +9,11 @@ import Modal from '../components/Modal';
 import { useContext, useState } from 'react';
 import CartContext from '../CartContext';
 import NotificationContext from '../NotificationContext';
-import { useAuth0 } from '@auth0/auth0-react';
+import { useClerk } from '@clerk/clerk-react';
 
 const Product = () => {
-  const { isAuthenticated, loginWithPopup } = useAuth0();
+  const { user, openSignIn } = useClerk();
+
   const { slug } = useParams();
   const {
     data: product,
@@ -44,7 +45,7 @@ const Product = () => {
 
   // Function to toggle a product as a favorite
   const handleAddToFavorite = () => {
-    if (isAuthenticated) {
+    if (user) {
       addToFavorites(
         product.slug,
         product.name,
@@ -53,7 +54,7 @@ const Product = () => {
         product.image
       );
     } else {
-      loginWithPopup();
+      openSignIn();
     }
   };
 

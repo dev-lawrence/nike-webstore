@@ -1,5 +1,4 @@
 import express from 'express';
-import data from './data/data.js';
 import cors from 'cors';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
