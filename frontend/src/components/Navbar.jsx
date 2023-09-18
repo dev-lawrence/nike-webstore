@@ -11,6 +11,12 @@ import {
 const Navbar = ({ navClick, handleNavClose }) => {
   const { user, signOut } = useClerk();
 
+  if (user) {
+    console.log('signed in');
+  } else {
+    console.log('signed out');
+  }
+
   const handleNavLinkClick = () => {
     handleNavClose();
     window.scrollTo(0, 0);

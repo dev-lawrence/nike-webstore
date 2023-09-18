@@ -13,18 +13,15 @@ import { useContext } from 'react';
 import Notification from './Notification';
 import Login from './Login';
 import Dashboard from './Dashboard';
-import { SignedIn, useClerk } from '@clerk/clerk-react';
+import { SignedIn } from '@clerk/clerk-react';
 
 const Header = () => {
-  const { user } = useClerk();
   const { products } = useContext(CartContext);
   const [navClick, setNavClick] = useState(false);
   const [cartClick, setCartClick] = useState(false);
   const [overlay, setOverlay] = useState(false);
   const [searchClick, setSearchClick] = useState(false);
   const inputRef = useRef();
-
-  console.log(user);
 
   // Function to open the navbar
   const handleNavClick = () => {
