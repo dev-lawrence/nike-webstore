@@ -5,7 +5,6 @@ import dotenv from 'dotenv';
 import seedRouter from './routes/seedRoutes.js';
 import productRouter from './routes/productRoutes.js';
 import userRouter from './routes/userRoutes.js';
-import favoriteRouter from './routes/FavoriteRoutes.js';
 
 dotenv.config();
 
@@ -27,12 +26,9 @@ app.use('/api/seed', seedRouter);
 
 // get all products
 app.use('/api/products', productRouter);
-app.use(express.json());
+
 // save user to database
 app.use('/api/user', userRouter);
-
-// get user favorites
-// app.use('/api/favorites', favoriteRouter);
 
 const port = process.env.PORT || 5000;
 
