@@ -59,17 +59,21 @@ const Product = () => {
       axios
         .post(`${VITE_API_URL}/user/${user.id}/favorites`, favoriteProduct)
         .then((response) => {
-          // Handle success
-          addToFavorites(
-            product.slug,
-            product.name,
-            product.subName,
-            product.price,
-            product.image
-          );
+          if (response.status === 200) {
+            showNotify('Added to Favorites');
+
+            addToFavorites(
+              product.slug,
+              product.name,
+              product.subName,
+              product.price,
+              product.image
+            );
+          } else {
+            showNotify('Already in Favorites');
+          }
         })
         .catch((error) => {
-          // Handle error
           console.error('Error adding product to favorites:', error);
         });
     } else {
