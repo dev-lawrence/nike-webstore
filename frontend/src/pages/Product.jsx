@@ -10,6 +10,7 @@ import { useContext, useState } from 'react';
 import CartContext from '../CartContext';
 import NotificationContext from '../NotificationContext';
 import { useClerk } from '@clerk/clerk-react';
+import axios from 'axios';
 
 const Product = () => {
   const { user, openSignIn } = useClerk();
@@ -46,13 +47,31 @@ const Product = () => {
   // Function to toggle a product as a favorite
   const handleAddToFavorite = () => {
     if (user) {
-      addToFavorites(
-        product.slug,
-        product.name,
-        product.subName,
-        product.price,
-        product.image
-      );
+      const favoriteProduct = {
+        productId: product._id,
+        slug: product.slug,
+        name: product.name,
+        subName: product.subName,
+        price: product.price,
+        image: product.image,
+      };
+
+      axios
+        .post(`${VITE_API_URL}/user/${user.id}/favorites`, favoriteProduct)
+        .then((response) => {
+          // Handle success
+          addToFavorites(
+            product.slug,
+            product.name,
+            product.subName,
+            product.price,
+            product.image
+          );
+        })
+        .catch((error) => {
+          // Handle error
+          console.error('Error adding product to favorites:', error);
+        });
     } else {
       openSignIn();
     }
