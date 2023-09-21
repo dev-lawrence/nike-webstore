@@ -17,7 +17,7 @@ const Card = ({ product, isFavorite }) => {
   const handleRemoveFromFavorites = () => {
     if (user) {
       axios
-        .delete(`${VITE_API_URL}/user/${user.id}/favorites/${product._id}`)
+        .delete(`${VITE_API_URL}/users/${user.id}/favorites/${product._id}`)
         .then((response) => {
           if (response.status === 200) {
             showNotify(`Removed "${product.name}" from favorites.`);

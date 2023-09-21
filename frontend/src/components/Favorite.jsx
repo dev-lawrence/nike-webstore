@@ -13,7 +13,7 @@ const Favorites = () => {
     data: favoriteProducts,
     loading,
     error,
-  } = useFetchData(`${VITE_API_URL}/user/${user?.id}/favorites`);
+  } = useFetchData(`${VITE_API_URL}/users/${user?.id}/favorites`);
 
   if (!favoriteProducts || favoriteProducts.length === 0) {
     return (

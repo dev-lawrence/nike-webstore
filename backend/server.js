@@ -1,21 +1,15 @@
 import express from 'express';
 import cors from 'cors';
-import mongoose from 'mongoose';
+import colors from 'colors';
 import dotenv from 'dotenv';
+import connectDB from './config/db.js';
 import seedRouter from './routes/seedRoutes.js';
 import productRouter from './routes/productRoutes.js';
 import userRouter from './routes/userRoutes.js';
 
 dotenv.config();
 
-mongoose
-  .connect(process.env.MONGODB_URI)
-  .then(() => {
-    console.log('Connected to DB');
-  })
-  .catch((err) => {
-    console.log(err.message);
-  });
+connectDB();
 
 const app = express();
 
@@ -28,9 +22,9 @@ app.use('/api/seed', seedRouter);
 app.use('/api/products', productRouter);
 
 // save user to database
-app.use('/api/user', userRouter);
+app.use('/api/users', userRouter);
 
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 7000;
 
 app.listen(port, () => {
   console.log(`Listening on port http://localhost:${port}`);
