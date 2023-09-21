@@ -1,12 +1,17 @@
 import mongoose from 'mongoose';
 
-const userSchema = new mongoose.Schema({
-  clerkUserId: { type: String, unique: true, required: true },
-  name: String,
-  lastName: String,
-  email: String,
-  favoriteProducts: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Product' }],
-});
+const userSchema = new mongoose.Schema(
+  {
+    clerkUserId: { type: String, unique: true, required: true },
+    name: String,
+    lastName: String,
+    email: String,
+    favoriteProducts: [
+      { type: mongoose.Schema.Types.ObjectId, ref: 'Product' },
+    ],
+  },
+  { timestamps: true }
+);
 
 const User = mongoose.model('User', userSchema);
 
