@@ -1,11 +1,11 @@
-import { useContext, createContext } from 'react';
+import { useContext, createContext, useState } from 'react';
 import { useLocalStorage } from './hooks/useLocalStorage';
 const CartContext = createContext();
 import NotificationContext from './NotificationContext';
 
 export function CartProvider({ children }) {
   const [products, setProducts] = useLocalStorage('nike-webstore', []);
-  const [favorites, setFavorites] = useLocalStorage('nike-favorites', []);
+  const [favorites, setFavorites] = useState([]);
   const { showNotify } = useContext(NotificationContext);
 
   // add to products cart

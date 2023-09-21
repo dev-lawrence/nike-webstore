@@ -57,7 +57,7 @@ const Product = () => {
       };
 
       axios
-        .post(`${VITE_API_URL}/user/${user.id}/favorites`, favoriteProduct)
+        .post(`${VITE_API_URL}/users/${user.id}/favorites`, favoriteProduct)
         .then((response) => {
           if (response.status === 200) {
             showNotify('Added to Favorites');

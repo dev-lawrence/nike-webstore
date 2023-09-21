@@ -19,7 +19,12 @@ const Dashboard = () => {
               <Link to="/dashboard" className="dropdown-item">
                 Orders
               </Link>
-              <Link to="/favorite" className="dropdown-item">
+
+              <Link
+                onClick={() => window.scrollTo(0, 0)}
+                to="/favorite"
+                className="dropdown-item"
+              >
                 Favorites
               </Link>
               <button
