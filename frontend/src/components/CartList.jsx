@@ -44,7 +44,7 @@ const CartList = ({ cartClick, handleCartClick }) => {
                 <span>Subtotal: ${calculateSubTotal()}</span>
               </div>
 
-              <PayButton />
+              <PayButton products={products} />
             </div>
           )}
         </div>

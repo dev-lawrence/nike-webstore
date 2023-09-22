@@ -5,7 +5,7 @@ import NotificationContext from './NotificationContext';
 
 export function CartProvider({ children }) {
   const [products, setProducts] = useLocalStorage('nike-webstore', []);
-  const [favorites, setFavorites] = useState([]);
+  // const [favorites, setFavorites] = useState([]);
   const { showNotify } = useContext(NotificationContext);
 
   // add to products cart
@@ -56,33 +56,38 @@ export function CartProvider({ children }) {
   };
 
   // Function to add a product to favorites
-  const addToFavorites = (slug, name, subName, price, image) => {
-    const existingProduct = favorites.find((product) => product.slug === slug);
-    if (existingProduct) {
-      const updatedProducts = favorites.map((product) => {
-        if (product.slug === slug) {
-          showNotify('Already in Favorites');
-          return { ...product };
-        }
+  // const addToFavorites = (slug, name, subName, price, image) => {
+  //   const existingProduct = favorites.find((product) => product.slug === slug);
+  //   if (existingProduct) {
+  //     const updatedProducts = favorites.map((product) => {
+  //       if (product.slug === slug) {
+  //         showNotify('Already in Favorites');
+  //         return { ...product };
+  //       }
 
-        return product;
-      });
+  //       return product;
+  //     });
 
-      setFavorites(updatedProducts);
-    } else {
-      setFavorites((prevProducts) => [
-        ...prevProducts,
-        { slug, name, subName, price, image },
-      ]);
+  //     setFavorites(updatedProducts);
+  //   } else {
+  //     setFavorites((prevProducts) => [
+  //       ...prevProducts,
+  //       { slug, name, subName, price, image },
+  //     ]);
 
-      showNotify('Added to Favorites');
-    }
-  };
+  //     showNotify('Added to Favorites');
+  //   }
+  // };
 
-  const removeFromFavorites = (slug) => {
-    setFavorites((prevFavorites) =>
-      prevFavorites.filter((product) => product.slug !== slug)
-    );
+  // const removeFromFavorites = (slug) => {
+  //   setFavorites((prevFavorites) =>
+  //     prevFavorites.filter((product) => product.slug !== slug)
+  //   );
+  // };
+
+  // reset cart to zero on success page
+  const resetCart = () => {
+    setProducts([]);
   };
 
   return (
@@ -92,9 +97,10 @@ export function CartProvider({ children }) {
         addToCart,
         reduceCartQuantity,
         removeFromCart,
-        addToFavorites,
-        removeFromFavorites,
-        favorites,
+        // addToFavorites,
+        // removeFromFavorites,
+        // favorites,
+        resetCart,
       }}
     >
       {children}

@@ -62,13 +62,13 @@ const Product = () => {
           if (response.status === 200) {
             showNotify('Added to Favorites');
 
-            addToFavorites(
-              product.slug,
+            // addToFavorites(
+            product.slug,
               product.name,
               product.subName,
               product.price,
-              product.image
-            );
+              product.image;
+            // );
           } else {
             showNotify('Already in Favorites');
           }
