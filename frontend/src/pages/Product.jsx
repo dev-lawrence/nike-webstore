@@ -21,7 +21,7 @@ const Product = () => {
     loading,
     error,
   } = useFetchData(`${VITE_API_URL}/products/slug/${slug}`);
-  const { addToCart, addToFavorites } = useContext(CartContext);
+  const { addToCart } = useContext(CartContext);
   const { showNotify } = useContext(NotificationContext);
   const [openModal, setOpenModal] = useState(false);
   const [selectedSize, setSelectedSize] = useState(null);
@@ -62,13 +62,11 @@ const Product = () => {
           if (response.status === 200) {
             showNotify('Added to Favorites');
 
-            // addToFavorites(
             product.slug,
               product.name,
               product.subName,
               product.price,
               product.image;
-            // );
           } else {
             showNotify('Already in Favorites');
           }
