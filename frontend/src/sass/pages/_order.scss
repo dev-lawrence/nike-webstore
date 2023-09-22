@@ -1,1 +1,88 @@
 @use '../abstracts' as *;
+
+.orders {
+  h2 {
+    margin-bottom: 1rem;
+  }
+
+  .order {
+    background-color: var(--card);
+    color: var(--card-foreground);
+    padding: 1.5rem;
+    border-radius: $radius-sm;
+    margin-bottom: 1rem;
+  }
+
+  .id {
+    margin-bottom: 0.5rem;
+  }
+
+  .payment-status,
+  .delivery-status {
+    margin-bottom: 0.5rem;
+  }
+
+  .status {
+    padding: 0.1rem 0.4rem;
+    border-radius: $radius-sm;
+    margin-left: 0.3rem;
+  }
+
+  .payment-status {
+    .status {
+      background-color: #00ff00;
+      color: var(--black);
+    }
+  }
+
+  .delivery-status {
+    .status {
+      background-color: var(--primary);
+      color: var(--white);
+    }
+  }
+
+  .createdAt {
+    font-size: 14px;
+  }
+
+  .order-flex {
+    @include flex(center, flex-start);
+    column-gap: 3rem;
+    row-gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .item {
+    @include flex(center, flex-start);
+    margin-top: 1rem;
+
+    img {
+      max-width: 80px;
+      max-height: 80px;
+      margin-right: 1rem;
+      border-radius: $radius-sm;
+    }
+  }
+
+  .name,
+  .price,
+  .quantity,
+  .size {
+    font-size: $fs-200;
+
+    @include medium {
+      font-size: $fs-300;
+    }
+  }
+
+  .size {
+    margin-left: 1rem;
+  }
+
+  .total {
+    margin-top: 1rem;
+    font-weight: 700;
+    font-size: $fs-300;
+  }
+}

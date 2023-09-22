@@ -10,7 +10,7 @@ import axios from 'axios';
 
 const Card = ({ product, isFavorite }) => {
   const { name, justIn, slug, image, subName, price } = product;
-  const { removeFromFavorites } = useContext(CartContext);
+  // const { removeFromFavorites } = useContext(CartContext);
   const { showNotify } = useContext(NotificationContext);
   const { user } = useClerk();
 
@@ -21,7 +21,7 @@ const Card = ({ product, isFavorite }) => {
         .then((response) => {
           if (response.status === 200) {
             showNotify(`Removed "${product.name}" from favorites.`);
-            removeFromFavorites(product.slug);
+            // removeFromFavorites(product.slug);
           } else {
             showNotify(`Product "${product.name}" not found in favorites.`);
           }

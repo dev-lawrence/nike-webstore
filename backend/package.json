@@ -11,6 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "axios": "^1.5.0",
     "colors": "^1.4.0",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
@@ -18,6 +19,7 @@
     "express-jwt": "^8.4.1",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^7.5.1",
+    "stripe": "^13.6.0",
     "svix": "^1.12.0"
   },
   "devDependencies": {

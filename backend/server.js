@@ -6,6 +6,7 @@ import connectDB from './config/db.js';
 import seedRouter from './routes/seedRoutes.js';
 import productRouter from './routes/productRoutes.js';
 import userRouter from './routes/userRoutes.js';
+import stripeRouter from './routes/stripeRoutes.js';
 
 dotenv.config();
 
@@ -23,6 +24,9 @@ app.use('/api/products', productRouter);
 
 // save user to database
 app.use('/api/users', userRouter);
+
+// make payments
+app.use('/api/stripe/', stripeRouter);
 
 const port = process.env.PORT || 7000;
 

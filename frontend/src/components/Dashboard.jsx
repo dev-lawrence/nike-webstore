@@ -1,5 +1,5 @@
 import { useClerk } from '@clerk/clerk-react';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const Dashboard = () => {
@@ -16,7 +16,11 @@ const Dashboard = () => {
           <img src={user.imageUrl} alt="avatar" className="avatar" />
           {isDropdownOpen && (
             <div className="dropdown-menu">
-              <Link to="/dashboard" className="dropdown-item">
+              <Link
+                to="/order"
+                className="dropdown-item"
+                onClick={() => window.scrollTo(0, 0)}
+              >
                 Orders
               </Link>
 

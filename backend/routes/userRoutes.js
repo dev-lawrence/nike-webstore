@@ -1,6 +1,5 @@
 import express from 'express';
 import bodyParser from 'body-parser';
-import User from '../models/userModel.js';
 import {
   saveUser,
   saveProduct,
