@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom';
 import ShoppingCartRoundedIcon from '@mui/icons-material/ShoppingCartRounded';
 import DeleteRoundedIcon from '@mui/icons-material/DeleteRounded';
 import { useContext } from 'react';
-import CartContext from '../CartContext';
 import NotificationContext from '../NotificationContext';
 import { useClerk } from '@clerk/clerk-react';
 const { VITE_API_URL } = import.meta.env;
@@ -10,7 +9,6 @@ import axios from 'axios';
 
 const Card = ({ product, isFavorite }) => {
   const { name, justIn, slug, image, subName, price } = product;
-  // const { removeFromFavorites } = useContext(CartContext);
   const { showNotify } = useContext(NotificationContext);
   const { user } = useClerk();
 
@@ -21,7 +19,6 @@ const Card = ({ product, isFavorite }) => {
         .then((response) => {
           if (response.status === 200) {
             showNotify(`Removed "${product.name}" from favorites.`);
-            // removeFromFavorites(product.slug);
           } else {
             showNotify(`Product "${product.name}" not found in favorites.`);
           }
