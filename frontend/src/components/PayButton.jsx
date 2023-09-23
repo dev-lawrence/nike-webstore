@@ -10,10 +10,15 @@ const stripePromise = loadStripe(
 );
 
 const PayButton = ({ products }) => {
-  const { user } = useClerk();
+  const { user, openSignIn } = useClerk();
   const [isProcessing, setIsProcessing] = useState(false);
 
   const handleCheckout = async () => {
+    if (!user) {
+      openSignIn();
+      return;
+    }
+
     try {
       setIsProcessing(true);
       const stripe = await stripePromise;
@@ -43,46 +48,10 @@ const PayButton = ({ products }) => {
         onClick={() => handleCheckout()}
         disabled={isProcessing}
       >
-        {isProcessing ? <Spinner /> : 'Checkout'}
+        {isProcessing ? <Spinner /> : user ? 'Checkout' : 'Sign In to pay'}
       </button>
     </>
   );
 };
 
 export default PayButton;
-
-// REAL CODE
-// import React from 'react';
-// import axios from 'axios';
-// const { VITE_API_URL } = import.meta.env;
-// import { useClerk } from '@clerk/clerk-react';
-
-// const PayButton = ({ products }) => {
-//   const { user } = useClerk();
-
-//   const handleCheckout = async () => {
-//     axios
-//       .post(`${VITE_API_URL}/stripe/create-checkout-session`, {
-//         products,
-//         userId: user.id,
-//       })
-//       .then((res) => {
-//         if (res.data.url) {
-//           window.location.href = res.data.url;
-//         }
-//       })
-//       .catch((err) => {
-//         console.error(err.message);
-//       });
-//   };
-
-//   return (
-//     <>
-//       <button className="cta" onClick={() => handleCheckout()}>
-//         Checkout
-//       </button>
-//     </>
-//   );
-// };
-
-// export default PayButton;

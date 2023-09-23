@@ -3,9 +3,11 @@ import CartContext from '../CartContext';
 import { useContext } from 'react';
 import CartItem from './CartItem';
 import PayButton from './PayButton';
+import { SignedIn, useClerk } from '@clerk/clerk-react';
 
 const CartList = ({ cartClick, handleCartClick }) => {
   const { products } = useContext(CartContext);
+  const { user } = useClerk();
   const cartNotEmpty = Array.isArray(products) && products.length !== 0;
 
   const calculateSubTotal = () => {
