@@ -7,7 +7,7 @@ import { useClerk } from '@clerk/clerk-react';
 const { VITE_API_URL } = import.meta.env;
 import axios from 'axios';
 
-const Card = ({ product, isFavorite }) => {
+const Card = ({ product, isFavorite, isSearchedItems }) => {
   const { name, justIn, slug, image, subName, price } = product;
   const { showNotify } = useContext(NotificationContext);
   const { user } = useClerk();
@@ -30,7 +30,11 @@ const Card = ({ product, isFavorite }) => {
   };
 
   return (
-    <div className={`product ${isFavorite ? 'favorite' : ''}`}>
+    <div
+      className={`product ${
+        isFavorite ? 'favorite' : isSearchedItems ? 'search-item' : ''
+      }`}
+    >
       {justIn && <span className="status">Just In</span>}
 
       <Link
@@ -54,7 +58,7 @@ const Card = ({ product, isFavorite }) => {
           </button>
         )}
 
-        {!isFavorite && (
+        {!isFavorite && !isSearchedItems && (
           <button>
             <span className="cart">
               <ShoppingCartRoundedIcon />

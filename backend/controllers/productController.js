@@ -18,3 +18,32 @@ export const getProduct = async (req, res) => {
     res.status(404).send({ message: 'Product not found' });
   }
 };
+
+// @desc Search Product
+// @route GET /api/products/search/:query
+export const searchProduct = async (req, res) => {
+  try {
+    const { query } = req.params;
+
+    const searchWords = query.split(' ');
+
+    const searchResults = await Product.find({
+      $or: searchWords.map((word) => ({
+        $or: [
+          { name: { $regex: new RegExp(word, 'i') } },
+          { category: { $regex: new RegExp(word, 'i') } },
+          { subcategory: { $regex: new RegExp(word, 'i') } },
+          // { description: { $regex: new RegExp(word, 'i') } },
+        ],
+      })),
+    });
+
+    if (searchResults.length === 0) {
+      return res.status(404).json({ message: 'No products found.' });
+    }
+    res.status(200).json(searchResults);
+  } catch (error) {
+    console.error('Error searching for products:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+};
