@@ -5,15 +5,32 @@ import useFetchData from '../hooks/useFetchData';
 import Card from './Card';
 import { Loading } from './Loading';
 const { VITE_API_URL } = import.meta.env;
+import { useState, useEffect } from 'react';
 
 const Favorites = () => {
   const { user } = useClerk();
+  const [favoriteProducts, setFavoriteProducts] = useState([]);
 
   const {
-    data: favoriteProducts,
+    data: fetchedFavoriteProducts,
     loading,
     error,
   } = useFetchData(`${VITE_API_URL}/users/${user?.id}/favorites`);
+
+  // Update the local state when fetched data changes
+  useEffect(() => {
+    if (fetchedFavoriteProducts) {
+      setFavoriteProducts(fetchedFavoriteProducts);
+    }
+  }, [fetchedFavoriteProducts]);
+
+  const removeFromFavorites = (productIdToRemove) => {
+    // Remove the product from the local state
+    const updatedFavorites = favoriteProducts.filter(
+      (favProduct) => favProduct._id !== productIdToRemove
+    );
+    setFavoriteProducts(updatedFavorites);
+  };
 
   if (!favoriteProducts || favoriteProducts.length === 0) {
     return (
@@ -40,7 +57,12 @@ const Favorites = () => {
         ) : (
           <ul className="favorites-d-flex">
             {favoriteProducts.map((product) => (
-              <Card key={product.slug} product={product} isFavorite={true} />
+              <Card
+                key={product.slug}
+                product={product}
+                isFavorite={true}
+                removeFromFavorites={removeFromFavorites}
+              />
             ))}
           </ul>
         )}
