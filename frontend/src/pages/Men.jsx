@@ -1,7 +1,7 @@
 import Hero from '../components/Hero';
-import MenShoes from '../assets/men-shoe.png';
-import MenClothing from '../assets/men-clothing.png';
-import MenAccessories from '../assets/men-accessories.png';
+import MenShoes from '../assets/men-shoe.webp';
+import MenClothing from '../assets/men-clothing.webp';
+import MenAccessories from '../assets/men-accessories.webp';
 import CardCategory from '../components/CardCategory';
 import { Helmet } from 'react-helmet-async';
 

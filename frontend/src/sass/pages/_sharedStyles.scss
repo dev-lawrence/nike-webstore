@@ -1,0 +1,28 @@
+@use '../abstracts/' as *;
+
+.bg-img {
+  position: relative;
+  min-height: 60vh;
+  width: 100%;
+}
+
+.men {
+  .bg-img {
+    background: var(--background) url(../assets/men-bg.webp);
+    @include image-property(initial);
+  }
+}
+
+.kids {
+  .bg-img {
+    background: var(--background) url(../assets/kids-bg.webp);
+    @include image-property(initial);
+  }
+}
+
+.women {
+  .bg-img {
+    background: var(--background) url(../assets/women-bg.webp);
+    @include image-property(initial);
+  }
+}
