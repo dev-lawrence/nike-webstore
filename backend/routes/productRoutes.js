@@ -1,5 +1,9 @@
 import express from 'express';
-import { getProducts, getProduct } from '../controllers/productController.js';
+import {
+  getProducts,
+  getProduct,
+  searchProduct,
+} from '../controllers/productController.js';
 
 const productRouter = express.Router();
 
@@ -8,5 +12,8 @@ productRouter.get('/', getProducts);
 
 // get single product
 productRouter.get('/slug/:slug', getProduct);
+
+// search for product
+productRouter.get('/search/:query', searchProduct);
 
 export default productRouter;

@@ -20,6 +20,14 @@
     width: 0;
     transition: width 0.3s ease-in-out;
 
+    .close-menu {
+      position: absolute;
+      top: 0.5rem;
+      right: 0.4rem;
+      display: none;
+      cursor: pointer;
+    }
+
     @include small {
       right: 3rem;
     }
@@ -27,15 +35,20 @@
     &.openSearchBox {
       width: 250px;
 
+      .close-menu {
+        display: block;
+      }
+
       @include small {
         width: 200px;
-      }
-      @include large {
-        right: 50%;
       }
 
       @include medium {
         width: 600px;
+      }
+
+      @include large {
+        right: 50%;
       }
     }
 
