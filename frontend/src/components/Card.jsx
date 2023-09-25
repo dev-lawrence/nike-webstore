@@ -7,7 +7,12 @@ import { useClerk } from '@clerk/clerk-react';
 const { VITE_API_URL } = import.meta.env;
 import axios from 'axios';
 
-const Card = ({ product, isFavorite, isSearchedItems }) => {
+const Card = ({
+  product,
+  isFavorite,
+  isSearchedItems,
+  removeFromFavorites,
+}) => {
   const { name, justIn, slug, image, subName, price } = product;
   const { showNotify } = useContext(NotificationContext);
   const { user } = useClerk();
@@ -19,6 +24,7 @@ const Card = ({ product, isFavorite, isSearchedItems }) => {
         .then((response) => {
           if (response.status === 200) {
             showNotify(`Removed "${product.name}" from favorites.`);
+            removeFromFavorites(product._id);
           } else {
             showNotify(`Product "${product.name}" not found in favorites.`);
           }
