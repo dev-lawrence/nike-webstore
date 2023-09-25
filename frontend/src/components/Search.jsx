@@ -1,7 +1,7 @@
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 import SearchMenu from './SearchMenu';
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 const { VITE_API_URL } = import.meta.env;
 import axios from 'axios';
 
@@ -9,46 +9,44 @@ const Search = ({ searchClick, handleSearchClick, inputRef }) => {
   const [searchResults, setSearchResults] = useState([]);
   const [errorMessage, setErrorMessage] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
 
-  const handleSearchQueryChange = async () => {
-    const newSearchQuery = inputRef.current.value;
+  useEffect(() => {
+    const fetchSearchResults = async () => {
+      if (searchQuery) {
+        try {
+          setLoading(true);
+          const response = await axios.get(
+            `${VITE_API_URL}/products/search/${encodeURIComponent(searchQuery)}`
+          );
 
-    if (newSearchQuery) {
-      try {
-        setLoading(true);
-        const response = await axios.get(
-          `${VITE_API_URL}/products/search/${newSearchQuery}`
-        );
-
-        setSearchResults(response.data);
-      } catch (error) {
-        if (error.response.status === 404) {
-          setErrorMessage('Product not found.');
-          console.error('Product not found.');
-        } else {
+          if (response.data.length === 0) {
+            setSearchResults([]);
+            setErrorMessage('Product not found.');
+          } else {
+            setErrorMessage(null);
+            setSearchResults(response.data);
+          }
+        } catch (error) {
           console.error('Error searching for products:', error);
-          setErrorMessage('An error occurred while searching for products.');
+        } finally {
+          setLoading(false);
         }
-      } finally {
-        setLoading(false);
+      } else {
+        setSearchResults([]);
+        setErrorMessage(null);
       }
-    } else {
-      // Clear search results when search query is empty
-      setSearchResults([]);
-      setErrorMessage(null);
-    }
-  };
+    };
+
+    fetchSearchResults();
+  }, [searchQuery]);
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
   };
 
   const handleClearInput = () => {
-    if (inputRef.current) {
-      inputRef.current.value = '';
-    }
-
-    // Clear search results and error message
+    setSearchQuery('');
     setSearchResults([]);
     setErrorMessage(null);
   };
@@ -67,8 +65,9 @@ const Search = ({ searchClick, handleSearchClick, inputRef }) => {
             className={`input ${searchClick ? 'showBg' : ''}`}
             type="text"
             ref={inputRef}
+            value={searchQuery}
             placeholder="Search"
-            onChange={handleSearchQueryChange}
+            onChange={(e) => setSearchQuery(e.target.value)}
           />
 
           {isInputEmpty ? null : (
