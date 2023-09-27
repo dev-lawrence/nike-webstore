@@ -22,7 +22,7 @@ const Category = ({ title }) => {
 
         <CardCategory
           className="grid-two mb"
-          path="/category/women"
+          path="women"
           cardImg={WomenImg}
           alt="woman"
           text="Women"
@@ -30,7 +30,7 @@ const Category = ({ title }) => {
 
         <CardCategory
           className="grid-three mb"
-          path="/category/kids"
+          path="kids"
           cardImg={KidImg}
           alt="kid"
           text="Kids"

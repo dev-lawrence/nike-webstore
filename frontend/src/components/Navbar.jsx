@@ -44,10 +44,14 @@ const Navbar = ({ navClick, handleNavClose }) => {
             </NavLink>
           </li>
           <li>
-            <NavLink to="shop">Women</NavLink>
+            <NavLink to="women" onClick={handleNavLinkClick}>
+              Women
+            </NavLink>
           </li>
           <li>
-            <NavLink to="about">Kids</NavLink>
+            <NavLink to="kids" onClick={handleNavLinkClick}>
+              Kids
+            </NavLink>
           </li>
           <li>
             <NavLink to="blog">Accessories</NavLink>
