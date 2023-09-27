@@ -6,11 +6,13 @@ const ProductSchema = new mongoose.Schema(
     subName: { type: String },
     slug: { type: String, unique: true },
     category: { type: String },
+    gender: { type: String },
     subcategory: { type: String },
     isHighlyRated: { type: Boolean },
     justIn: { type: Boolean },
     price: { type: Number },
     description: { type: String },
+    color: { type: String },
     image: { type: String },
     sizes: [
       {

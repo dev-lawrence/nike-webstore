@@ -26,3 +26,10 @@
     @include image-property(initial);
   }
 }
+
+.shoe {
+  .bg-img {
+    background: var(--background) url(../assets/shop.webp);
+    @include image-property(initial);
+  }
+}

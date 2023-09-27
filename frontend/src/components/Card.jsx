@@ -11,6 +11,7 @@ const Card = ({
   product,
   isFavorite,
   isSearchedItems,
+  isShop,
   removeFromFavorites,
 }) => {
   const { name, justIn, slug, image, subName, price } = product;
@@ -35,12 +36,18 @@ const Card = ({
     }
   };
 
+  const productStyle = `product ${
+    isFavorite
+      ? 'favorite'
+      : isSearchedItems
+      ? 'search-item'
+      : isShop
+      ? 'shop-item'
+      : ''
+  }`;
+
   return (
-    <div
-      className={`product ${
-        isFavorite ? 'favorite' : isSearchedItems ? 'search-item' : ''
-      }`}
-    >
+    <div className={productStyle}>
       {justIn && <span className="status">Just In</span>}
 
       <Link
@@ -64,13 +71,13 @@ const Card = ({
           </button>
         )}
 
-        {!isFavorite && !isSearchedItems && (
+        {/* {!isFavorite && !isSearchedItems && (
           <button>
             <span className="cart">
               <ShoppingCartRoundedIcon />
             </span>
           </button>
-        )}
+        )} */}
       </div>
     </div>
   );

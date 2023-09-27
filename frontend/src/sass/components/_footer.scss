@@ -5,7 +5,6 @@
   color: var(--white);
   padding: 5rem 0 2rem;
   position: relative;
-  margin-top: 6rem;
 
   a,
   p {
@@ -84,4 +83,13 @@
       justify-self: flex-end;
     }
   }
+}
+
+.mt {
+  margin-top: 6rem;
+}
+
+// Remove margin when in shop page
+.mt-0 {
+  margin-top: 0;
 }

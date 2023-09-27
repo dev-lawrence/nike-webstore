@@ -3,9 +3,9 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import EmailRoundedIcon from '@mui/icons-material/EmailRounded';
 
-const Footer = () => {
+const Footer = ({ isShopPage }) => {
   return (
-    <section id="footer-section">
+    <section id="footer-section" className={`mt ${isShopPage ? 'mt-0' : ''}`}>
       <div className="container">
         <div className="grid">
           <div className="row-1">
