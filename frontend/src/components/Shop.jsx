@@ -1,38 +1,29 @@
-import { useState, useRef } from 'react';
-import Hero from '../../components/Hero';
-import FilterIcon from '../../components/FilterIcon';
-import FilterModal from '../../components/FilterModal';
-const { VITE_API_URL } = import.meta.env;
-import useFetchData from '../../hooks/useFetchData';
-import Card from '../../components/Card';
+import { useState } from 'react';
+import Hero from './Hero';
+import FilterIcon from '../components/FilterIcon';
+import FilterModal from './FilterModal';
+import Card from './Card';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import Gender from '../../components/Gender';
-import ByPrice from '../../components/ByPrice';
-import Color from '../../components/Color';
-import { Loading } from '../../components/Loading';
-// import { Loading } from '../components/Loading';
+import Gender from './Gender';
+import ByPrice from './ByPrice';
+import Color from './Color';
 
-// const priceRanges = [
-//   { label: '$25-$50', minPrice: 25, maxPrice: 50 },
-//   { label: '$50-$100', minPrice: 50, maxPrice: 100 },
-//   { label: '$100-$150', minPrice: 100, maxPrice: 150 },
-//   { label: 'Over $150', minPrice: 150, maxPrice: 1000 },
-// ];
-
-const Shoes = () => {
-  const {
-    data: products,
-    loading,
-    error,
-  } = useFetchData(`${VITE_API_URL}/products`);
-
+const Shop = ({
+  categoryTitle,
+  filterData,
+  genderFilter,
+  priceFilter,
+  colorFilter,
+  selectedGenders,
+  setSelectedGenders,
+  filterProductsByGender,
+}) => {
   const [openModal, setOpenModal] = useState(false);
   const [openSideBar, setOpenSideBar] = useState(false);
   const [sortOption, setSortOption] = useState('Sort by latest');
-  const [selectedGenders, setSelectedGenders] = useState([]);
+  //   const [selectedGenders, setSelectedGenders] = useState(['men']);
   const [selectedPrices, setSelectedPrices] = useState([]);
   const [selectedColors, setSelectedColors] = useState([]);
-  const sidebarRef = useRef(null);
 
   const popUpToggleModal = () => {
     setOpenModal(!openModal);
@@ -48,16 +39,52 @@ const Shoes = () => {
     setOpenSideBar(!openSideBar);
   };
 
-  if (!Array.isArray(products)) {
-    return (
-      <>
-        <Loading />
-      </>
-    );
-  }
+  //   const filterProductsByGender = (product) => {
+  //     if (selectedGenders.length === 0) {
+  //       return true;
+  //     } else {
+  //       return (
+  //         selectedGenders.includes(product.gender) &&
+  //         product.subcategory === 'shoes'
+  //       );
+  //     }
+  //   };
 
-  // Filter by Sorting products
-  let sortedData = [...products];
+  const priceRanges = [
+    { label: '$25-$50', minPrice: 25, maxPrice: 50 },
+    { label: '$50-$100', minPrice: 50, maxPrice: 100 },
+    { label: '$100-$150', minPrice: 100, maxPrice: 150 },
+    { label: 'Over $150', minPrice: 150, maxPrice: 1000 },
+  ];
+
+  const filterProductsByPrice = (product) => {
+    if (selectedPrices.length === 0) {
+      return true;
+    } else {
+      return selectedPrices.some((priceRange) => {
+        const selectedRange = priceRanges.find(
+          (range) => range.label === priceRange
+        );
+        if (selectedRange) {
+          return (
+            product.price >= selectedRange.minPrice &&
+            product.price <= selectedRange.maxPrice
+          );
+        }
+        return false;
+      });
+    }
+  };
+
+  const filterProductsByColor = (product) => {
+    if (selectedColors.length === 0) {
+      return true;
+    } else {
+      return selectedColors.includes(product.color);
+    }
+  };
+
+  let sortedData = [...filterData];
 
   const handleSortChange = (event) => {
     setSortOption(event.target.value);
@@ -75,76 +102,23 @@ const Shoes = () => {
     sortedData = sortedData.filter((product) => product.justIn === true);
   }
 
-  // Filter by gender
-  const filterProductsByGender = (product) => {
-    if (selectedGenders.length === 0) {
-      return true;
-    } else {
-      return selectedGenders.includes(product.gender);
-    }
-  };
-
-  // Filter by price
-  const priceRanges = [
-    { label: '$25-$50', minPrice: 25, maxPrice: 50 },
-    { label: '$50-$100', minPrice: 50, maxPrice: 100 },
-    { label: '$100-$150', minPrice: 100, maxPrice: 150 },
-    { label: 'Over $150', minPrice: 150, maxPrice: 1000 },
-  ];
-
-  const filterProductsByPrice = (product) => {
-    if (selectedPrices.length === 0) {
-      // If no price range is selected, include all products
-      return true;
-    } else {
-      // Check if the product's price falls within any of the selected price ranges
-      return selectedPrices.some((priceRange) => {
-        const selectedRange = priceRanges.find(
-          (range) => range.label === priceRange
-        );
-        if (selectedRange) {
-          return (
-            product.price >= selectedRange.minPrice &&
-            product.price <= selectedRange.maxPrice
-          );
-        }
-        return false;
-      });
-    }
-  };
-
-  // Filter by color
-  const filterProductsByColor = (product) => {
-    if (selectedColors.length === 0) {
-      return true;
-    } else {
-      return selectedColors.includes(product.color);
-    }
-  };
-
-  // Apply the gender filter to your product data
-  const filteredData = sortedData
+  const newFilteredData = sortedData
     .filter(filterProductsByGender)
     .filter(filterProductsByPrice)
     .filter(filterProductsByColor);
 
   return (
     <>
-      <section className="shop | shoe">
+      <section className={`shop | shoe`}>
         <Hero text="Shop" />
         <div className="container shop-section">
           <div className="title">
-            <h2>Men's Shoes & Sneakers</h2>
+            <h2>{categoryTitle}</h2>
           </div>
-          {/* <PageBreadCrumbs />
-          {searchQuery && (
-            <p className="searched-item">
-              {totalLength} search results for <strong>"{searchQuery}"</strong>
-            </p>
-          )} */}
+
           <div className="heading-flex">
             <div className="result">
-              <span>977 Results</span>
+              <span>{newFilteredData.length} Results</span>
             </div>
 
             <div className="filter-sort">
@@ -198,31 +172,34 @@ const Shoes = () => {
           </div>
 
           <div className={`flex ${openSideBar ? 'hide-gap' : ''}`}>
-            <aside
-              ref={sidebarRef}
-              className={`sidebar ${openSideBar ? 'hide' : ''}`}
-            >
-              <Gender
-                selectedGenders={selectedGenders}
-                setSelectedGenders={setSelectedGenders}
-              />
+            <aside className={`sidebar ${openSideBar ? 'hide' : ''}`}>
+              {genderFilter && (
+                <Gender
+                  selectedGenders={selectedGenders}
+                  setSelectedGenders={setSelectedGenders}
+                />
+              )}
 
-              <ByPrice
-                selectedPrices={selectedPrices}
-                setSelectedPrices={setSelectedPrices}
-                priceRanges={priceRanges}
-              />
+              {priceFilter && (
+                <ByPrice
+                  selectedPrices={selectedPrices}
+                  setSelectedPrices={setSelectedPrices}
+                  priceRanges={priceRanges}
+                />
+              )}
 
-              <Color
-                selectedColors={selectedColors}
-                setSelectedColors={setSelectedColors}
-                isSidebar={true}
-              />
+              {colorFilter && (
+                <Color
+                  selectedColors={selectedColors}
+                  setSelectedColors={setSelectedColors}
+                  isSidebar={true}
+                />
+              )}
             </aside>
 
             <div className="shop-products">
-              {filteredData &&
-                filteredData.map((product) => {
+              {newFilteredData &&
+                newFilteredData.map((product) => {
                   return (
                     <Card key={product._id} product={product} isShop={true} />
                   );
@@ -235,4 +212,4 @@ const Shoes = () => {
   );
 };
 
-export default Shoes;
+export default Shop;

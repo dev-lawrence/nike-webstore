@@ -1,9 +1,11 @@
+import { useState, useEffect } from 'react';
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/splide/dist/css/splide.min.css';
 import Card from './Card.jsx';
 import { Loading } from './Loading.jsx';
 const { VITE_API_URL } = import.meta.env;
 import useFetchData from '../hooks/useFetchData.jsx';
+import { shuffleArray } from '../utils/ShuffleArray.js';
 
 const Popular = ({ title }) => {
   const {
@@ -11,6 +13,16 @@ const Popular = ({ title }) => {
     loading,
     error,
   } = useFetchData(`${VITE_API_URL}/products`);
+
+  const [shuffledProducts, setShuffledProducts] = useState([]);
+
+  useEffect(() => {
+    if (products && products.length > 0) {
+      const shuffled = [...products];
+      shuffleArray(shuffled);
+      setShuffledProducts(shuffled);
+    }
+  }, [products]);
 
   return (
     <section className="popular pt-section">
@@ -51,7 +63,7 @@ const Popular = ({ title }) => {
               },
             }}
           >
-            {products.map((product) => {
+            {shuffledProducts.map((product) => {
               return (
                 <SplideSlide key={product._id}>
                   <Card product={product} />

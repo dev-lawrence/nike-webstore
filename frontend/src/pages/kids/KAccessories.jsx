@@ -1,5 +1,5 @@
-const Accessories = () => {
+const KAccessories = () => {
   return <div className="pt-section container">Accessories</div>;
 };
 
-export default Accessories;
+export default KAccessories;
