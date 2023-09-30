@@ -6,6 +6,7 @@ import NotificationContext from '../NotificationContext';
 import { useClerk } from '@clerk/clerk-react';
 const { VITE_API_URL } = import.meta.env;
 import axios from 'axios';
+import SkeletonPopular from './Skeleton/SkeletonPopular.jsx';
 
 const Card = ({
   product,

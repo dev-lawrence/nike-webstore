@@ -21,7 +21,6 @@ const Shop = ({
   const [openModal, setOpenModal] = useState(false);
   const [openSideBar, setOpenSideBar] = useState(false);
   const [sortOption, setSortOption] = useState('Sort by latest');
-  //   const [selectedGenders, setSelectedGenders] = useState(['men']);
   const [selectedPrices, setSelectedPrices] = useState([]);
   const [selectedColors, setSelectedColors] = useState([]);
 
@@ -38,17 +37,6 @@ const Shop = ({
   const hideToggleModal = () => {
     setOpenSideBar(!openSideBar);
   };
-
-  //   const filterProductsByGender = (product) => {
-  //     if (selectedGenders.length === 0) {
-  //       return true;
-  //     } else {
-  //       return (
-  //         selectedGenders.includes(product.gender) &&
-  //         product.subcategory === 'shoes'
-  //       );
-  //     }
-  //   };
 
   const priceRanges = [
     { label: '$25-$50', minPrice: 25, maxPrice: 50 },

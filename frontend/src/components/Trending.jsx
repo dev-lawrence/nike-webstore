@@ -5,43 +5,39 @@ import Card from './Card.jsx';
 const { VITE_API_URL } = import.meta.env;
 import useFetchData from '../hooks/useFetchData.jsx';
 import { shuffleArray } from '../utils/ShuffleArray.js';
-import SkeletonPopular from './Skeleton/SkeletonPopular.jsx';
+import SkeletonTrending from './Skeleton/SkeletonTrending.jsx';
 
-const Popular = ({ title }) => {
+const Trending = ({ title, isProduct }) => {
   const {
     data: products,
     loading,
     error,
   } = useFetchData(`${VITE_API_URL}/products`);
 
-  // const [shuffledProducts, setShuffledProducts] = useState([]);
+  const [shuffledProducts, setShuffledProducts] = useState([]);
 
-  const filterProducts = products?.filter(
-    (product) => product.subcategory === 'shoes'
-  );
+  useEffect(() => {
+    if (products && products.length > 0) {
+      const shuffled = [...products];
+      shuffleArray(shuffled);
+      setShuffledProducts(shuffled);
+    }
+  }, [products]);
 
-  // To be uncommented when more products are added
-  // useEffect(() => {
-  //   if (filterProducts && filterProducts.length > 0) {
-  //     const shuffled = [...filterProducts];
-  //     shuffleArray(shuffled);
-  //     setShuffledProducts(shuffled);
-  //   }
-  // }, [filterProducts]);
-
-  // const slicedProducts = shuffledProducts.slice(1, 10);
+  const slicedProducts = shuffledProducts.slice(9, 18);
 
   return (
-    <section className="popular pt-section">
+    <section className={`popular pt-section ${isProduct ? 'trending' : ''}`}>
       <div className="d-flex">
         <div className="title">
           <h2>{title}</h2>
         </div>
       </div>
+
       <div className="products">
         {loading ? (
           <div>
-            <SkeletonPopular />
+            <SkeletonTrending />
           </div>
         ) : error ? (
           <div>{error}</div>
@@ -64,12 +60,12 @@ const Popular = ({ title }) => {
                 },
 
                 1200: {
-                  perPage: 3,
+                  perPage: 4,
                 },
               },
             }}
           >
-            {filterProducts.map((product) => {
+            {slicedProducts.map((product) => {
               return (
                 <SplideSlide key={product._id}>
                   <Card product={product} />
@@ -83,4 +79,4 @@ const Popular = ({ title }) => {
   );
 };
 
-export default Popular;
+export default Trending;

@@ -17,6 +17,7 @@
   --card-foreground: hsl(0, 0%, 3.9%);
   --destructive: hsl(0, 84.2%, 60.2%);
   --checkbox: #ccc;
+  --skeleton: rgba(255, 255, 255, 0.2);
   // --secondary: hsl(0, 0%, 96.1%);
   // --secondary-foreground: hsl(0, 0%, 9%);
   // --muted: hsl(0, 0%, 96.1%);
@@ -41,6 +42,7 @@
   --card-foreground: hsl(0, 0%, 3.9%);
   --destructive: hsl(0, 84.2%, 60.2%);
   --checkbox: #ccc;
+  --skeleton: rgba(255, 255, 255, 0.2);
 }
 
 .dark {
@@ -58,6 +60,7 @@
   --card-foreground: hsl(0, 0%, 98%);
   --destructive: hsl(0, 62.8%, 30.6%);
   --checkbox: #555;
+  --skeleton: rgba(249, 249, 249, 0.05);
 
   // --accent-foreground: hsl(0, 0%, 98%);
   // --popover: hsl(0, 0%, 3.9%);
@@ -88,6 +91,7 @@
     --card-foreground: hsl(0, 0%, 98%);
     --destructive: hsl(0, 62.8%, 30.6%);
     --checkbox: #555;
+    --skeleton: rgba(255, 255, 255, 0.05);
 
     // --muted: hsl(0, 0%, 14.9%);
     // --accent-foreground: hsl(0, 0%, 98%);

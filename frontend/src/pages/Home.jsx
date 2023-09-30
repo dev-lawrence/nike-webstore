@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import Featured from '../components/Featured';
 import Banner from '../components/Banner';
 import Popular from '../components/Popular';
+import Trending from '../components/Trending';
 import { Helmet } from 'react-helmet-async';
 
 const Home = () => {
@@ -55,8 +56,12 @@ const Home = () => {
 
         {/* Popular section */}
         <Popular title="Popular Right Now" />
+
         {/* Banner section */}
         <Banner title="Special Offer" />
+
+        {/* Trending section */}
+        <Trending title="Trending" />
       </div>
     </section>
   );

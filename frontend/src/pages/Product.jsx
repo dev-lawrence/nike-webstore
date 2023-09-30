@@ -11,6 +11,9 @@ import CartContext from '../CartContext';
 import NotificationContext from '../NotificationContext';
 import { useClerk } from '@clerk/clerk-react';
 import axios from 'axios';
+import Trending from '../components/Trending';
+import SkeletonProduct from '../components/Skeleton/SkeletonProduct';
+import SkeletonElement from '../components/Skeleton/SkeletonElement';
 
 const Product = () => {
   const { user, openSignIn } = useClerk();
@@ -92,7 +95,11 @@ const Product = () => {
   return (
     <section className="product-page pt-section">
       {loading ? (
-        <Loading />
+        <>
+          <div className="container">
+            <SkeletonProduct />
+          </div>
+        </>
       ) : error ? (
         <div>{error}</div>
       ) : (
@@ -102,10 +109,12 @@ const Product = () => {
               <Helmet>
                 <title>{product.name}</title>
               </Helmet>
+
               <h2>{product.name}</h2>
               <p className="sub-name">{product.subName}</p>
               <p className="price">${product.price}</p>
             </div>
+
             <div className="img">
               <Slider product={product} />
             </div>
@@ -157,6 +166,8 @@ const Product = () => {
               </div>
             </div>
           </div>
+          {/* Trending product */}
+          <Trending title="You Might Also Like" isProduct={true} />
         </div>
       )}
     </section>
