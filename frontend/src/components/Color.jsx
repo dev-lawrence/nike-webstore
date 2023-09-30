@@ -54,12 +54,12 @@ const Color = ({ isSidebar, selectedColors, setSelectedColors }) => {
           <input
             type="checkbox"
             name="color"
-            value="green"
-            checked={selectedColors.includes('green')}
+            value="brown"
+            checked={selectedColors.includes('brown')}
             onChange={handleColorChange}
           />
-          <div className="checkbox | green"></div>
-          <p>Green</p>
+          <div className="checkbox | brown"></div>
+          <p>Brown</p>
         </label>
 
         <label className="color-option">

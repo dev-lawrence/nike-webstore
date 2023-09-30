@@ -1,7 +1,9 @@
-import { Link } from 'react-router-dom';
 import BannerImg from '../assets/banner.webp';
+import { useClerk } from '@clerk/clerk-react';
 
 const Banner = ({ title }) => {
+  const { openSignUp } = useClerk();
+
   return (
     <section className="banner pt-section">
       <div className="title">
@@ -19,9 +21,9 @@ const Banner = ({ title }) => {
           </p>
           <p>Not a Nike Member?</p>
 
-          <Link to="/" className="btn-filled cta">
+          <button className="btn-filled cta" onClick={() => openSignUp()}>
             Join now
-          </Link>
+          </button>
         </div>
 
         <div className="img">

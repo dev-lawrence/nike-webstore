@@ -93,7 +93,7 @@ const data = {
       subName: "Men's Shoes",
       slug: 'air-jordan-5-retro-se',
       category: 'men',
-      gender: 'women',
+      gender: 'men',
       subcategory: 'shoes',
       isHighlyRated: true,
       justIn: true,
