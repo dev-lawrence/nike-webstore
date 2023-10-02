@@ -7,6 +7,7 @@ const CardCategory = ({
   alt,
   text,
   isMenWomenOrKidCategory,
+  subText,
 }) => {
   return (
     <div className={className}>
@@ -21,6 +22,7 @@ const CardCategory = ({
         <p className={!isMenWomenOrKidCategory ? 'description' : 'text'}>
           {text}
         </p>
+        {isMenWomenOrKidCategory && <span className="subText">{subText}</span>}
       </Link>
     </div>
   );

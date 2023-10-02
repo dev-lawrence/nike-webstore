@@ -43,9 +43,13 @@
       top: 0;
       width: 100%;
       padding-top: 5rem;
-      padding-left: 20rem;
+      padding-left: 16rem;
       z-index: 3000;
       display: block;
+    }
+
+    @include extra-large {
+      padding-left: 20rem;
     }
 
     @include huge {
@@ -54,6 +58,7 @@
       width: 1440px;
       margin: 0 auto;
       padding-left: 24rem;
+      padding-top: 13rem;
     }
 
     h3 {

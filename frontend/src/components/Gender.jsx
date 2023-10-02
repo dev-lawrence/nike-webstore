@@ -12,7 +12,9 @@ const Gender = ({ selectedGenders, setSelectedGenders }) => {
 
   return (
     <div className="gender-price-container">
-      <label className="gender-price-label">Gender</label>
+      <label className="gender-price-label">
+        Gender({selectedGenders.length})
+      </label>
       <div className="gender-price-options">
         <label className="gender-price-option">
           <input

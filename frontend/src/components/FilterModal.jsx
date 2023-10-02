@@ -3,6 +3,7 @@ import SortBy from './SortBy';
 import Gender from './Gender';
 import ByPrice from './ByPrice';
 import Color from './Color';
+import KidsAge from './KidsAge';
 
 const FilterModal = ({
   closeModal,
@@ -15,6 +16,10 @@ const FilterModal = ({
   priceRanges,
   selectedColors,
   setSelectedColors,
+  genderFilter,
+  kidsFilter,
+  selectedKidsAge,
+  setSelectedKidsAge,
 }) => {
   return (
     <div className={`filter-modal `}>
@@ -40,11 +45,20 @@ const FilterModal = ({
 
           {/* Gender */}
           <div className="gender">
-            <Gender
-              selectedGenders={selectedGenders}
-              setSelectedGenders={setSelectedGenders}
-            />
+            {genderFilter && (
+              <Gender
+                selectedGenders={selectedGenders}
+                setSelectedGenders={setSelectedGenders}
+              />
+            )}
           </div>
+
+          {kidsFilter && (
+            <KidsAge
+              selectedKidsAge={selectedKidsAge}
+              setSelectedKidsAge={setSelectedKidsAge}
+            />
+          )}
 
           <hr />
 

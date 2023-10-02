@@ -3,11 +3,17 @@
 .banner {
   @include medium {
     &-grid {
-      @include grid(repeat(2, 1fr), 1rem);
+      @include grid(repeat(2, 1fr), 2rem);
     }
 
     .title {
       display: none;
+    }
+  }
+
+  @include large {
+    &-grid {
+      gap: 0;
     }
   }
 
@@ -30,6 +36,11 @@
       grid-column: 2/3;
     }
 
+    @include huge {
+      justify-self: flex-start;
+      margin-left: 3rem;
+    }
+
     h2 {
       font-size: $fs-600;
       font-weight: 700;
@@ -42,6 +53,10 @@
 
       @include large {
         font-size: $fs-650;
+      }
+
+      @include huge {
+        font-size: $fs-700;
       }
     }
 

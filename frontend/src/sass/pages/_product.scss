@@ -62,16 +62,20 @@
 
   .main-img {
     img {
-      width: 500px;
       object-fit: cover;
 
       @include landscape {
         width: 100%;
       }
+
+      @include huge {
+        aspect-ratio: 1/1;
+      }
     }
   }
 
   // buttons
+
   @include large {
     .splide__arrows {
       position: absolute;

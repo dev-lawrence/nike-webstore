@@ -40,6 +40,13 @@
     @include large {
       z-index: 1000;
     }
+
+    @include huge {
+      .logo-size {
+        width: 50px;
+        height: 50px;
+      }
+    }
   }
 
   .container {
@@ -84,6 +91,10 @@
         @include large {
           font-size: $fs-600;
         }
+
+        @include huge {
+          font-size: $fs-650 + 0.3;
+        }
       }
 
       .icon-close,
@@ -114,6 +125,12 @@
       @include large {
         display: block;
         transform: translateY(0.3rem);
+      }
+    }
+
+    @include huge {
+      .user-icon {
+        font-size: $fs-650 + 0.3;
       }
     }
 

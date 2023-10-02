@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import Hero from './Hero';
 import FilterIcon from '../components/FilterIcon';
 import FilterModal from './FilterModal';
@@ -7,6 +7,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Gender from './Gender';
 import ByPrice from './ByPrice';
 import Color from './Color';
+import KidsAge from './KidsAge';
 
 const Shop = ({
   categoryTitle,
@@ -14,15 +15,40 @@ const Shop = ({
   genderFilter,
   priceFilter,
   colorFilter,
+  kidsFilter,
   selectedGenders,
   setSelectedGenders,
   filterProductsByGender,
+  filterProductsByKidsAge,
+  selectedKidsAge,
+  setSelectedKidsAge,
 }) => {
   const [openModal, setOpenModal] = useState(false);
   const [openSideBar, setOpenSideBar] = useState(false);
   const [sortOption, setSortOption] = useState('Sort by latest');
   const [selectedPrices, setSelectedPrices] = useState([]);
   const [selectedColors, setSelectedColors] = useState([]);
+
+  const [sidebarTop, setSidebarTop] = useState(30);
+  const shopProductsRef = useRef(null);
+
+  const handleScroll = () => {
+    if (shopProductsRef.current) {
+      setSidebarTop(shopProductsRef.current.scrollTop);
+    }
+  };
+
+  useEffect(() => {
+    if (shopProductsRef.current) {
+      shopProductsRef.current.addEventListener('scroll', handleScroll);
+    }
+
+    return () => {
+      if (shopProductsRef.current) {
+        shopProductsRef.current.removeEventListener('scroll', handleScroll);
+      }
+    };
+  }, []);
 
   const popUpToggleModal = () => {
     setOpenModal(!openModal);
@@ -38,6 +64,7 @@ const Shop = ({
     setOpenSideBar(!openSideBar);
   };
 
+  // Filter products by price range
   const priceRanges = [
     { label: '$25-$50', minPrice: 25, maxPrice: 50 },
     { label: '$50-$100', minPrice: 50, maxPrice: 100 },
@@ -64,6 +91,7 @@ const Shop = ({
     }
   };
 
+  // Filter products by color
   const filterProductsByColor = (product) => {
     if (selectedColors.length === 0) {
       return true;
@@ -72,6 +100,7 @@ const Shop = ({
     }
   };
 
+  //   Sort Data
   let sortedData = [...filterData];
 
   const handleSortChange = (event) => {
@@ -93,7 +122,8 @@ const Shop = ({
   const newFilteredData = sortedData
     .filter(filterProductsByGender)
     .filter(filterProductsByPrice)
-    .filter(filterProductsByColor);
+    .filter(filterProductsByColor)
+    .filter(filterProductsByKidsAge);
 
   return (
     <>
@@ -129,6 +159,10 @@ const Shop = ({
                   priceRanges={priceRanges}
                   selectedColors={selectedColors}
                   setSelectedColors={setSelectedColors}
+                  genderFilter={genderFilter}
+                  selectedKidsAge={selectedKidsAge}
+                  setSelectedKidsAge={setSelectedKidsAge}
+                  kidsFilter={kidsFilter}
                 />
               )}
 
@@ -160,11 +194,21 @@ const Shop = ({
           </div>
 
           <div className={`flex ${openSideBar ? 'hide-gap' : ''}`}>
-            <aside className={`sidebar ${openSideBar ? 'hide' : ''}`}>
+            <aside
+              className={`sidebar ${openSideBar ? 'hide' : ''}`}
+              style={{ top: sidebarTop }}
+            >
               {genderFilter && (
                 <Gender
                   selectedGenders={selectedGenders}
                   setSelectedGenders={setSelectedGenders}
+                />
+              )}
+
+              {kidsFilter && (
+                <KidsAge
+                  selectedKidsAge={selectedKidsAge}
+                  setSelectedKidsAge={setSelectedKidsAge}
                 />
               )}
 
@@ -185,7 +229,7 @@ const Shop = ({
               )}
             </aside>
 
-            <div className="shop-products">
+            <div className="shop-products" ref={shopProductsRef}>
               {newFilteredData &&
                 newFilteredData.map((product) => {
                   return (

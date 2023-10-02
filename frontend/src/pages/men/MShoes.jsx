@@ -6,6 +6,8 @@ import { Loading } from '../../components/Loading';
 
 const MShoes = () => {
   const [selectedGenders, setSelectedGenders] = useState(['men']);
+  const [selectedKidsAge, setSelectedKidsAge] = useState([]);
+
   const {
     data: products,
     loading,
@@ -31,16 +33,26 @@ const MShoes = () => {
     }
   };
 
+  const filterProductsByKidsAge = (product) => {
+    if (selectedKidsAge.length === 0) {
+      return true;
+    } else {
+      return selectedKidsAge.includes(product.gender);
+    }
+  };
+
   return (
     <Shop
       categoryTitle="Men's Shoes & Sneakers"
       filterData={products}
       genderFilter={true}
+      kidsFilter={false}
       priceFilter={true}
       colorFilter={true}
       selectedGenders={selectedGenders}
       setSelectedGenders={setSelectedGenders}
       filterProductsByGender={filterProductsByGender}
+      filterProductsByKidsAge={filterProductsByKidsAge}
     />
   );
 };

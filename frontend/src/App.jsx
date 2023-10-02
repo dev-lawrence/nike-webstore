@@ -31,17 +31,19 @@ import NotFound from './components/NotFound';
 // Shoes Category
 import MShoes from './pages/men/MShoes';
 import WShoes from './pages/women/WShoes';
-import KShoes from './pages/kids/KShoes';
 
 // Clothing Category
 import MClothing from './pages/men/MClothing';
 import WClothing from './pages/women/WClothing';
-import KClothing from './pages/kids/KClothing';
 
 // Accessories Category
 import MAccessories from './pages/men/MAccessories';
 import WAccessories from './pages/women/WAccessories';
-import KAccessories from './pages/kids/KAccessories';
+
+// Kids Category
+import BigKids from './pages/kids/BigKids';
+import LittleKids from './pages/kids/LittleKids';
+import BabiesToddlers from './pages/kids/BabiesToddlers';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -100,9 +102,9 @@ const router = createBrowserRouter(
 
       {/* Kid's layout */}
       <Route path="k" element={<KidsLayout />}>
-        <Route path="shoes" element={<KShoes />} />
-        <Route path="clothing" element={<KClothing />} />
-        <Route path="accessories" element={<KAccessories />} />
+        <Route path="big-kids" element={<BigKids />} />
+        <Route path="little-kids" element={<LittleKids />} />
+        <Route path="babies-toddlers" element={<BabiesToddlers />} />
       </Route>
 
       {/* Women layout */}

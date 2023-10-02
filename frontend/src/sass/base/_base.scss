@@ -7,6 +7,10 @@ body {
   line-height: 1.6;
   font-size: 1rem;
   text-size-adjust: 100%;
+
+  @include huge {
+    font-size: 1.1rem;
+  }
 }
 
 .hide-scroll {
