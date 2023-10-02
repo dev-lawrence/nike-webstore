@@ -63,15 +63,13 @@ const Product = () => {
         .post(`${VITE_API_URL}/users/${user.id}/favorites`, favoriteProduct)
         .then((response) => {
           if (response.status === 200) {
-            showNotify('Added to Favorites');
-
-            product.slug,
-              product.name,
-              product.subName,
-              product.price,
-              product.image;
-          } else {
-            showNotify('Already in Favorites');
+            if (response.data.message === 'Product added to favorites') {
+              showNotify('Added to Favorites');
+            } else if (
+              response.data.message === 'Product already in favorites'
+            ) {
+              showNotify('Already in Favorites');
+            }
           }
         })
         .catch((error) => {

@@ -2,6 +2,7 @@ import { useClerk } from '@clerk/clerk-react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import useFetchData from '../hooks/useFetchData';
+import EmptyItem from '../assets/Empty-amico.png';
 import Card from './Card';
 import { Loading } from './Loading';
 const { VITE_API_URL } = import.meta.env;
@@ -35,7 +36,7 @@ const Favorites = () => {
   if (!favoriteProducts || favoriteProducts.length === 0) {
     return (
       <div className="pt-section | favorites | container">
-        <p className="mb-1">No items saved yet.</p>
+        <img className="empty-img" src={EmptyItem} alt="" />
         <Link className="cart-btn" to="/">
           Continue Shopping
         </Link>
@@ -48,7 +49,7 @@ const Favorites = () => {
       <Helmet>
         <title>Favorites</title>
       </Helmet>
-      <div className="container">
+      <div className="container mt-3">
         <h2>Favorites</h2>
         {user && loading ? (
           <Loading />

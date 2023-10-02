@@ -64,15 +64,23 @@ const Navbar = ({ navClick, handleNavClose }) => {
             </li>
           )}
 
+          {user && (
+            <li>
+              <NavLink to="order" onClick={handleNavLinkClick}>
+                Orders
+              </NavLink>
+            </li>
+          )}
+
           <li>
             <NavLink to="contact">Sales</NavLink>
           </li>
           <div className="mobile-sign-in">
-            <p>
-              Become a Nike Member for the best products, inspiration and
-              stories in sport.
-            </p>
             <SignedOut>
+              <p>
+                Become a Nike Member for the best products, inspiration and
+                stories in sport.
+              </p>
               <div className="flex">
                 <SignUpButton mode="modal">
                   <button className="btn-filled">join us</button>

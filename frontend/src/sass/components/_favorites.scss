@@ -2,11 +2,17 @@
 
 .favorites {
   text-align: center;
+  padding-top: 7rem;
 
   &-d-flex {
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
+  }
+
+  .empty-img {
+    width: 300px;
+    margin-inline: auto;
   }
 }
 
