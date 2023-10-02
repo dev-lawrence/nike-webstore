@@ -17,6 +17,12 @@ const Navbar = ({ navClick, handleNavClose }) => {
     console.log('signed out');
   }
 
+  const handleSignOut = () => {
+    signOut().then(() => {
+      window.location.reload();
+    });
+  };
+
   const handleNavLinkClick = () => {
     handleNavClose();
     window.scrollTo(0, 0);
@@ -65,7 +71,7 @@ const Navbar = ({ navClick, handleNavClose }) => {
           )}
 
           {user && (
-            <li>
+            <li className={`favorite ${user ? 'show' : ''}`}>
               <NavLink to="order" onClick={handleNavLinkClick}>
                 Orders
               </NavLink>
@@ -73,7 +79,7 @@ const Navbar = ({ navClick, handleNavClose }) => {
           )}
 
           <li>
-            <NavLink to="contact">Sales</NavLink>
+            <NavLink to="contact">Contact</NavLink>
           </li>
           <div className="mobile-sign-in">
             <SignedOut>
@@ -94,10 +100,7 @@ const Navbar = ({ navClick, handleNavClose }) => {
 
             {user && (
               <SignedIn>
-                <button
-                  className="btn-filled sign-out"
-                  onClick={() => signOut()}
-                >
+                <button className="btn-filled sign-out" onClick={handleSignOut}>
                   sign out
                 </button>
               </SignedIn>
