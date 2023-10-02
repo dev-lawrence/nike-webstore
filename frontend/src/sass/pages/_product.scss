@@ -67,6 +67,10 @@
       @include landscape {
         width: 100%;
       }
+
+      @include huge {
+        aspect-ratio: 1/1;
+      }
     }
   }
 

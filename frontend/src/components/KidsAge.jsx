@@ -12,7 +12,9 @@ const KidsAge = ({ selectedKidsAge, setSelectedKidsAge }) => {
 
   return (
     <div className="gender-price-container">
-      <label className="gender-price-label">Kids Age</label>
+      <label className="gender-price-label">
+        Kids Age({selectedKidsAge.length})
+      </label>
       <div className="gender-price-options">
         <label className="gender-price-option">
           <input

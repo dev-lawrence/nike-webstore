@@ -32,6 +32,15 @@ const LittleKids = () => {
     }
   };
 
+  // Filter products by kids age
+  const filterProductsByKidsAge = (product) => {
+    if (selectedKidsAge.length === 0) {
+      return true;
+    } else {
+      return selectedKidsAge.includes(product.gender);
+    }
+  };
+
   return (
     <Shop
       categoryTitle="Little Kids' Products"
@@ -46,6 +55,7 @@ const LittleKids = () => {
       selectedKidsAge={selectedKidsAge}
       setSelectedKidsAge={setSelectedKidsAge}
       filterProductsByGender={filterProductsByGender}
+      filterProductsByKidsAge={filterProductsByKidsAge}
     />
   );
 };

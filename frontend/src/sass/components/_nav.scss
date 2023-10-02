@@ -110,6 +110,10 @@
       font-size: $fs-300;
     }
 
+    @include huge {
+      font-size: $fs-450;
+    }
+
     &:hover {
       color: var(--primary);
     }

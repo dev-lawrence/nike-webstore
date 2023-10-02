@@ -12,7 +12,7 @@ const Color = ({ isSidebar, selectedColors, setSelectedColors }) => {
 
   return (
     <div className="color-container">
-      <label className="color-label">Color</label>
+      <label className="color-label">Color({selectedColors.length})</label>
       <div className={`color-options ${isSidebar ? 'sidebar-options' : ''}`}>
         <label className="color-option">
           <input

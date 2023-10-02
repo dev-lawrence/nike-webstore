@@ -32,6 +32,15 @@ const BabiesToddlers = () => {
     }
   };
 
+  // Filter products by kids age
+  const filterProductsByKidsAge = (product) => {
+    if (selectedKidsAge.length === 0) {
+      return true;
+    } else {
+      return selectedKidsAge.includes(product.gender);
+    }
+  };
+
   return (
     <Shop
       categoryTitle="Babies & Toddlers (0-3 yrs)"
@@ -46,6 +55,7 @@ const BabiesToddlers = () => {
       selectedKidsAge={selectedKidsAge}
       setSelectedKidsAge={setSelectedKidsAge}
       filterProductsByGender={filterProductsByGender}
+      filterProductsByKidsAge={filterProductsByKidsAge}
     />
   );
 };

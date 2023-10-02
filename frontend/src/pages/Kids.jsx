@@ -5,6 +5,7 @@ import BabiesToddlers from '../assets/babies-toddlers.webp';
 import KidsBg from '../assets/kids-bg-sec.jpg';
 import CardCategory from '../components/CardCategory';
 import { Helmet } from 'react-helmet-async';
+import Trending from '../components/Trending';
 
 const Kids = () => {
   return (
@@ -52,14 +53,9 @@ const Kids = () => {
               isMenWomenOrKidCategory={true}
             />
           </div>
-
-          <div className="bg">
-            <div className="title">
-              <h2>Kids</h2>
-            </div>
-            <img src={KidsBg} alt="" />
-          </div>
         </section>
+
+        <Trending title="Popular items" />
       </div>
     </section>
   );

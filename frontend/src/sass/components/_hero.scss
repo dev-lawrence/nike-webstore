@@ -69,6 +69,10 @@
       @include large {
         font-size: 8rem;
       }
+
+      @include huge {
+        font-size: 10rem;
+      }
     }
   }
 
@@ -95,6 +99,10 @@
       @include large {
         font-size: 10rem;
         transform: translate(-0.6rem, -6rem);
+      }
+
+      @include huge {
+        font-size: 13rem;
       }
     }
   }

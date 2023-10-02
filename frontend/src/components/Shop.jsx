@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import Hero from './Hero';
 import FilterIcon from '../components/FilterIcon';
 import FilterModal from './FilterModal';
@@ -28,6 +28,27 @@ const Shop = ({
   const [sortOption, setSortOption] = useState('Sort by latest');
   const [selectedPrices, setSelectedPrices] = useState([]);
   const [selectedColors, setSelectedColors] = useState([]);
+
+  const [sidebarTop, setSidebarTop] = useState(30);
+  const shopProductsRef = useRef(null);
+
+  const handleScroll = () => {
+    if (shopProductsRef.current) {
+      setSidebarTop(shopProductsRef.current.scrollTop);
+    }
+  };
+
+  useEffect(() => {
+    if (shopProductsRef.current) {
+      shopProductsRef.current.addEventListener('scroll', handleScroll);
+    }
+
+    return () => {
+      if (shopProductsRef.current) {
+        shopProductsRef.current.removeEventListener('scroll', handleScroll);
+      }
+    };
+  }, []);
 
   const popUpToggleModal = () => {
     setOpenModal(!openModal);
@@ -173,7 +194,10 @@ const Shop = ({
           </div>
 
           <div className={`flex ${openSideBar ? 'hide-gap' : ''}`}>
-            <aside className={`sidebar ${openSideBar ? 'hide' : ''}`}>
+            <aside
+              className={`sidebar ${openSideBar ? 'hide' : ''}`}
+              style={{ top: sidebarTop }}
+            >
               {genderFilter && (
                 <Gender
                   selectedGenders={selectedGenders}
@@ -205,7 +229,7 @@ const Shop = ({
               )}
             </aside>
 
-            <div className="shop-products">
+            <div className="shop-products" ref={shopProductsRef}>
               {newFilteredData &&
                 newFilteredData.map((product) => {
                   return (

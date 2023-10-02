@@ -80,6 +80,11 @@
     left: 0.5rem;
     top: 0.12rem;
     font-size: $fs-600 + 0.2;
+
+    @include huge {
+      top: 0.4rem;
+      left: 0.4rem;
+    }
   }
 
   .cancel {
@@ -108,6 +113,12 @@
 
     @include huge {
       right: 0;
+    }
+  }
+
+  @include huge {
+    .icon-search {
+      font-size: $fs-650 + 0.3rem;
     }
   }
 }

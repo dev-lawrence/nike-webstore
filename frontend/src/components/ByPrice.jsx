@@ -12,7 +12,9 @@ const ByPrice = ({ selectedPrices, setSelectedPrices, priceRanges }) => {
 
   return (
     <div className="gender-price-container">
-      <label className="gender-price-label">Shop by Price</label>
+      <label className="gender-price-label">
+        Shop by Price({selectedPrices.length})
+      </label>
       <div className="gender-price-options">
         {priceRanges &&
           priceRanges.map((range) => (

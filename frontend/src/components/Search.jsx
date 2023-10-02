@@ -82,7 +82,7 @@ const Search = ({ searchClick, handleSearchClick, inputRef }) => {
             aria-label="search-icon"
             className="search-icon-icon"
           >
-            <SearchRoundedIcon />
+            <SearchRoundedIcon className="icon-search" />
           </label>
         </form>
 
