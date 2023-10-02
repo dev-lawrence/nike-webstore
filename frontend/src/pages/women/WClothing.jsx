@@ -6,6 +6,7 @@ import { Loading } from '../../components/Loading';
 
 const WClothing = () => {
   const [selectedGenders, setSelectedGenders] = useState(['women']);
+  const [selectedKidsAge, setSelectedKidsAge] = useState([]);
 
   const {
     data: products,
@@ -32,17 +33,27 @@ const WClothing = () => {
     }
   };
 
+  const filterProductsByKidsAge = (product) => {
+    if (selectedKidsAge.length === 0) {
+      return true;
+    } else {
+      return selectedKidsAge.includes(product.gender);
+    }
+  };
+
   return (
     <Shop
       categoryTitle="Women's Clothing"
       filterData={products}
       genderFilter={true}
+      kidsFilter={false}
       priceFilter={true}
       colorFilter={true}
       categoryFilter={true}
       selectedGenders={selectedGenders}
       setSelectedGenders={setSelectedGenders}
       filterProductsByGender={filterProductsByGender}
+      filterProductsByKidsAge={filterProductsByKidsAge}
     />
   );
 };

@@ -7,6 +7,7 @@ import { Loading } from '../../components/Loading';
 
 const WAccessories = () => {
   const [selectedGenders, setSelectedGenders] = useState(['women']);
+  const [selectedKidsAge, setSelectedKidsAge] = useState([]);
 
   const {
     data: products,
@@ -34,17 +35,27 @@ const WAccessories = () => {
     }
   };
 
+  const filterProductsByKidsAge = (product) => {
+    if (selectedKidsAge.length === 0) {
+      return true;
+    } else {
+      return selectedKidsAge.includes(product.gender);
+    }
+  };
+
   return (
     <Shop
       categoryTitle="Women's Accessories & Equipment"
       filterData={products}
       genderFilter={true}
+      kidsFilter={false}
       priceFilter={true}
       colorFilter={true}
       categoryFilter={true}
       selectedGenders={selectedGenders}
       setSelectedGenders={setSelectedGenders}
       filterProductsByGender={filterProductsByGender}
+      filterProductsByKidsAge={filterProductsByKidsAge}
     />
   );
 };

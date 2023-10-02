@@ -58,6 +58,21 @@
     color: var(--foreground);
   }
 
+  .subText {
+    font-size: $fs-300;
+    margin-top: 0.5rem;
+    font-weight: 500;
+    color: var(--foreground);
+
+    @include large {
+      max-width: 300px;
+    }
+  }
+
+  .bg {
+    margin-top: 5rem;
+  }
+
   .overlay {
     position: absolute;
     top: 0;

@@ -1,12 +1,13 @@
 import useFetchData from '../../hooks/useFetchData';
 import { useState } from 'react';
 import Shop from '../../components/Shop';
+import Hero from '../../components/Hero';
 const { VITE_API_URL } = import.meta.env;
 import { Loading } from '../../components/Loading';
 
-const WShoes = () => {
-  const [selectedGenders, setSelectedGenders] = useState(['women']);
-  const [selectedKidsAge, setSelectedKidsAge] = useState([]);
+const LittleKids = () => {
+  const [selectedGenders, setSelectedGenders] = useState([]);
+  const [selectedKidsAge, setSelectedKidsAge] = useState(['little-kids']);
 
   const {
     data: products,
@@ -16,9 +17,10 @@ const WShoes = () => {
 
   if (!Array.isArray(products)) {
     return (
-      <>
+      <section className="shop">
+        <Hero text="Shop" />
         <Loading />
-      </>
+      </section>
     );
   }
 
@@ -26,36 +28,26 @@ const WShoes = () => {
     if (selectedGenders.length === 0) {
       return true;
     } else {
-      return (
-        selectedGenders.includes(product.gender) &&
-        product.subcategory === 'shoes'
-      );
-    }
-  };
-
-  const filterProductsByKidsAge = (product) => {
-    if (selectedKidsAge.length === 0) {
-      return true;
-    } else {
-      return selectedKidsAge.includes(product.gender);
+      return selectedGenders.includes(product.gender);
     }
   };
 
   return (
     <Shop
-      categoryTitle="Women's Shoes & Sneakers"
+      categoryTitle="Little Kids' Products"
       filterData={products}
-      genderFilter={true}
-      kidsFilter={false}
+      genderFilter={false}
       priceFilter={true}
       colorFilter={true}
       categoryFilter={true}
+      kidsFilter={true}
       selectedGenders={selectedGenders}
       setSelectedGenders={setSelectedGenders}
+      selectedKidsAge={selectedKidsAge}
+      setSelectedKidsAge={setSelectedKidsAge}
       filterProductsByGender={filterProductsByGender}
-      filterProductsByKidsAge={filterProductsByKidsAge}
     />
   );
 };
 
-export default WShoes;
+export default LittleKids;

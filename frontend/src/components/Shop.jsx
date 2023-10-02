@@ -7,6 +7,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Gender from './Gender';
 import ByPrice from './ByPrice';
 import Color from './Color';
+import KidsAge from './KidsAge';
 
 const Shop = ({
   categoryTitle,
@@ -14,9 +15,13 @@ const Shop = ({
   genderFilter,
   priceFilter,
   colorFilter,
+  kidsFilter,
   selectedGenders,
   setSelectedGenders,
   filterProductsByGender,
+  filterProductsByKidsAge,
+  selectedKidsAge,
+  setSelectedKidsAge,
 }) => {
   const [openModal, setOpenModal] = useState(false);
   const [openSideBar, setOpenSideBar] = useState(false);
@@ -38,6 +43,7 @@ const Shop = ({
     setOpenSideBar(!openSideBar);
   };
 
+  // Filter products by price range
   const priceRanges = [
     { label: '$25-$50', minPrice: 25, maxPrice: 50 },
     { label: '$50-$100', minPrice: 50, maxPrice: 100 },
@@ -64,6 +70,7 @@ const Shop = ({
     }
   };
 
+  // Filter products by color
   const filterProductsByColor = (product) => {
     if (selectedColors.length === 0) {
       return true;
@@ -72,6 +79,7 @@ const Shop = ({
     }
   };
 
+  //   Sort Data
   let sortedData = [...filterData];
 
   const handleSortChange = (event) => {
@@ -93,7 +101,8 @@ const Shop = ({
   const newFilteredData = sortedData
     .filter(filterProductsByGender)
     .filter(filterProductsByPrice)
-    .filter(filterProductsByColor);
+    .filter(filterProductsByColor)
+    .filter(filterProductsByKidsAge);
 
   return (
     <>
@@ -129,6 +138,10 @@ const Shop = ({
                   priceRanges={priceRanges}
                   selectedColors={selectedColors}
                   setSelectedColors={setSelectedColors}
+                  genderFilter={genderFilter}
+                  selectedKidsAge={selectedKidsAge}
+                  setSelectedKidsAge={setSelectedKidsAge}
+                  kidsFilter={kidsFilter}
                 />
               )}
 
@@ -165,6 +178,13 @@ const Shop = ({
                 <Gender
                   selectedGenders={selectedGenders}
                   setSelectedGenders={setSelectedGenders}
+                />
+              )}
+
+              {kidsFilter && (
+                <KidsAge
+                  selectedKidsAge={selectedKidsAge}
+                  setSelectedKidsAge={setSelectedKidsAge}
                 />
               )}
 
