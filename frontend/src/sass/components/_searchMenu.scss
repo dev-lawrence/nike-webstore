@@ -43,9 +43,13 @@
       top: 0;
       width: 100%;
       padding-top: 5rem;
-      padding-left: 20rem;
+      padding-left: 16rem;
       z-index: 3000;
       display: block;
+    }
+
+    @include extra-large {
+      padding-left: 23rem;
     }
 
     @include huge {

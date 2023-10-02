@@ -3,17 +3,45 @@
 .hero {
   text-align: center;
   position: relative;
+  margin-top: 6rem;
   height: 100vh;
 
-  @include flex(center, center);
-
   @include large {
+    margin-top: 0;
+    height: 100vh;
+    @include flex(center, center);
     align-items: flex-start;
+  }
+
+  &-container {
+    display: none;
+
+    @include large {
+      display: block;
+      position: relative;
+      padding-left: 1rem;
+    }
+  }
+
+  &-img-mobile {
+    height: 100%;
+    width: 100%;
+
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      border-radius: $radius-sm;
+    }
+
+    @include large {
+      display: none;
+    }
   }
 
   .caption {
     position: absolute;
-    bottom: 2rem;
+    bottom: -4rem;
     left: 50%;
     transform: translateX(-50%);
     font-size: 2rem;
@@ -24,11 +52,6 @@
       font-size: 3rem;
       bottom: 4.5rem;
     }
-  }
-
-  &-container {
-    position: relative;
-    padding-left: 1rem;
   }
 
   .outline {
@@ -96,6 +119,11 @@
   text-align: center;
   max-width: 500px;
   margin-inline: auto;
+  margin-top: 5rem;
+
+  @include large {
+    margin-top: 0;
+  }
 
   h1 {
     font-size: 2.5rem;

@@ -97,8 +97,13 @@
       visibility: visible;
     }
 
+    @include extra-small {
+      top: 3.5rem;
+      right: 19rem;
+    }
+
     @include large {
-      right: 12rem;
+      right: 18rem;
     }
 
     @include huge {

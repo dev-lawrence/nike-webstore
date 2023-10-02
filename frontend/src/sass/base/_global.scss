@@ -2,7 +2,11 @@
 
 // Utility classes
 .pt-section {
-  padding-top: 6rem;
+  padding-top: 5rem;
+
+  @include small {
+    padding-top: 3rem;
+  }
 }
 
 .title {
@@ -75,6 +79,17 @@ hr {
 }
 
 // Products
+.products {
+  .splide__arrows {
+    position: relative;
+    top: 12rem;
+
+    @include small {
+      top: 9rem;
+    }
+  }
+}
+
 .product {
   position: relative;
   transition: all 0.3s ease-in;

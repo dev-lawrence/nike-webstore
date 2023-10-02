@@ -1,4 +1,5 @@
 import HeroImg from '../assets/hero-image.png';
+import HeroImgMobile from '../assets/hero-bg.webp';
 import Category from '../components/Category';
 import { Link } from 'react-router-dom';
 import Featured from '../components/Featured';
@@ -29,6 +30,10 @@ const Home = () => {
           <div className="hero-img">
             <img src={HeroImg} alt="" />
           </div>
+        </div>
+
+        <div className="container hero-img-mobile">
+          <img src={HeroImgMobile} alt="" />
         </div>
 
         <p className="caption">Just do it</p>
