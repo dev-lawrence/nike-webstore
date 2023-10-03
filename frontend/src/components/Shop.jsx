@@ -185,10 +185,10 @@ const Shop = ({
                   priceRanges={priceRanges}
                   selectedColors={selectedColors}
                   setSelectedColors={setSelectedColors}
-                  genderFilter={genderFilter}
+                  genderFilter={!isGenderFilterVisible && genderFilter}
                   selectedKidsAge={selectedKidsAge}
                   handleKidsAgeChange={handleKidsAgeChange}
-                  kidsFilter={kidsFilter}
+                  kidsFilter={!isKidsFilterVisible && kidsFilter}
                 />
               )}
 
