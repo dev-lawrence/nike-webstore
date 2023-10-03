@@ -1,0 +1,36 @@
+.breadcrumbs {
+  display: inline-block;
+  margin-bottom: 1rem;
+
+  .home {
+    padding-top: 0;
+  }
+
+  .home-icon {
+    margin-right: 0.3rem;
+    color: var(--foreground);
+  }
+
+  &-line {
+    margin-top: 0;
+    margin-bottom: 3rem;
+  }
+
+  .home,
+  .category {
+    color: var(--foreground);
+  }
+
+  .category,
+  .crumb {
+    text-transform: capitalize;
+  }
+
+  .crumb {
+    color: #51545f;
+  }
+}
+
+.separator {
+  margin: 0 0.5rem;
+}

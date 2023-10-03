@@ -48,7 +48,7 @@ const Shopping = () => {
       <Shop
         categoryTitle="Shop products"
         text="Shop"
-        isAccessories={true}
+        isAccessories={false}
         filterData={products}
         genderFilter={true}
         priceFilter={true}

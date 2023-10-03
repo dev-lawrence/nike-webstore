@@ -8,6 +8,7 @@ import Gender from './Gender';
 import ByPrice from './ByPrice';
 import Color from './Color';
 import KidsAge from './KidsAge';
+import PageBreadCrumbs from './PageBreadCrumbs';
 
 const Shop = ({
   categoryTitle,
@@ -42,9 +43,9 @@ const Shop = ({
 
   // Determine if the kids filter should be visible based on selected genders
   const isGenderFilterVisible =
-    selectedKidsAge.includes('big-kids') ||
-    selectedKidsAge.includes('little-kids') ||
-    selectedKidsAge.includes('babies');
+    selectedKidsAge?.includes('big-kids') ||
+    selectedKidsAge?.includes('little-kids') ||
+    selectedKidsAge?.includes('babies');
 
   // Function to handle scroll events
   const handleScroll = () => {
@@ -157,13 +158,13 @@ const Shop = ({
         <Hero text={text} />
         <div className="container shop-section">
           <div className="title">
-            <h2>{categoryTitle}</h2>
+            <h2>
+              {categoryTitle}({newFilteredData.length})
+            </h2>
           </div>
 
           <div className="heading-flex">
-            <div className="result">
-              <span>{newFilteredData.length} Results</span>
-            </div>
+            <PageBreadCrumbs />
 
             <div className="filter-sort">
               <div className="filters | filter-mobile">
