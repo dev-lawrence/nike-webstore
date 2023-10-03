@@ -81,10 +81,13 @@ export const saveProduct = async (req, res) => {
     }
 
     // Check if the product ID is already in the favorites
-    if (!user.favoriteProducts.includes(productId)) {
-      user.favoriteProducts.push(productId);
-      await user.save();
+    if (user.favoriteProducts.includes(productId)) {
+      return res.status(200).json({ message: 'Product already in favorites' });
     }
+
+    // Add the product ID to the user's favoriteProducts
+    user.favoriteProducts.push(productId);
+    await user.save();
 
     res.status(200).json({
       success: true,

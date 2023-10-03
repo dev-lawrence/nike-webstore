@@ -9,6 +9,14 @@ const Dashboard = () => {
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
+
+  const handleSignOut = () => {
+    toggleDropdown();
+    signOut().then(() => {
+      window.location.reload();
+    });
+  };
+
   return (
     <div className="dashboard">
       {user && (
@@ -31,13 +39,7 @@ const Dashboard = () => {
               >
                 Favorites
               </Link>
-              <button
-                className="dropdown-item-button"
-                onClick={() => {
-                  toggleDropdown();
-                  signOut();
-                }}
-              >
+              <button className="dropdown-item-button" onClick={handleSignOut}>
                 Sign out
               </button>
             </div>

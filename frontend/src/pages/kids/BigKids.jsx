@@ -4,10 +4,14 @@ import Shop from '../../components/Shop';
 import Hero from '../../components/Hero';
 const { VITE_API_URL } = import.meta.env;
 import { Loading } from '../../components/Loading';
+import useSelectedGenders from '../../hooks/useSelectedGenders';
+import useSelectedKidsAge from '../../hooks/useSelectedKidsAge';
 
 const BigKids = () => {
-  const [selectedGenders, setSelectedGenders] = useState([]);
-  const [selectedKidsAge, setSelectedKidsAge] = useState(['big-kids']);
+  const { selectedGenders, handleGenderChange } = useSelectedGenders([]);
+  const { selectedKidsAge, handleKidsAgeChange } = useSelectedKidsAge([
+    'big-kids',
+  ]);
 
   const {
     data: products,
@@ -44,6 +48,7 @@ const BigKids = () => {
   return (
     <Shop
       categoryTitle="Big Kids' Products"
+      text="Shop"
       filterData={products}
       genderFilter={false}
       priceFilter={true}
@@ -51,9 +56,9 @@ const BigKids = () => {
       categoryFilter={true}
       kidsFilter={true}
       selectedGenders={selectedGenders}
-      setSelectedGenders={setSelectedGenders}
+      handleGenderChange={handleGenderChange}
       selectedKidsAge={selectedKidsAge}
-      setSelectedKidsAge={setSelectedKidsAge}
+      handleKidsAgeChange={handleKidsAgeChange}
       filterProductsByGender={filterProductsByGender}
       filterProductsByKidsAge={filterProductsByKidsAge}
     />

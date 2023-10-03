@@ -1,14 +1,16 @@
 import useFetchData from '../../hooks/useFetchData';
-import { useState } from 'react';
 import Shop from '../../components/Shop';
 import Hero from '../../components/Hero';
 const { VITE_API_URL } = import.meta.env;
 import { Loading } from '../../components/Loading';
+import useSelectedGenders from '../../hooks/useSelectedGenders';
+import useSelectedKidsAge from '../../hooks/useSelectedKidsAge';
 
 const BabiesToddlers = () => {
-  const [selectedGenders, setSelectedGenders] = useState([]);
-  const [selectedKidsAge, setSelectedKidsAge] = useState(['babies']);
-
+  const { selectedGenders, handleGenderChange } = useSelectedGenders([]);
+  const { selectedKidsAge, handleKidsAgeChange } = useSelectedKidsAge([
+    'babies',
+  ]);
   const {
     data: products,
     loading,
@@ -44,6 +46,7 @@ const BabiesToddlers = () => {
   return (
     <Shop
       categoryTitle="Babies & Toddlers (0-3 yrs)"
+      text="Shop"
       filterData={products}
       genderFilter={false}
       priceFilter={true}
@@ -51,9 +54,9 @@ const BabiesToddlers = () => {
       categoryFilter={true}
       kidsFilter={true}
       selectedGenders={selectedGenders}
-      setSelectedGenders={setSelectedGenders}
+      handleGenderChange={handleGenderChange}
       selectedKidsAge={selectedKidsAge}
-      setSelectedKidsAge={setSelectedKidsAge}
+      handleKidsAgeChange={handleKidsAgeChange}
       filterProductsByGender={filterProductsByGender}
       filterProductsByKidsAge={filterProductsByKidsAge}
     />

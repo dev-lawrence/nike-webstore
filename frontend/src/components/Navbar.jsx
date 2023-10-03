@@ -17,6 +17,12 @@ const Navbar = ({ navClick, handleNavClose }) => {
     console.log('signed out');
   }
 
+  const handleSignOut = () => {
+    signOut().then(() => {
+      window.location.reload();
+    });
+  };
+
   const handleNavLinkClick = () => {
     handleNavClose();
     window.scrollTo(0, 0);
@@ -54,7 +60,7 @@ const Navbar = ({ navClick, handleNavClose }) => {
             </NavLink>
           </li>
           <li>
-            <NavLink to="blog">Accessories</NavLink>
+            <NavLink to="accessories">Accessories</NavLink>
           </li>
           {user && (
             <li className={`favorite ${user ? 'show' : ''}`}>
@@ -64,15 +70,23 @@ const Navbar = ({ navClick, handleNavClose }) => {
             </li>
           )}
 
+          {user && (
+            <li className={`favorite ${user ? 'show' : ''}`}>
+              <NavLink to="order" onClick={handleNavLinkClick}>
+                Orders
+              </NavLink>
+            </li>
+          )}
+
           <li>
-            <NavLink to="contact">Sales</NavLink>
+            <NavLink to="contact">Contact</NavLink>
           </li>
           <div className="mobile-sign-in">
-            <p>
-              Become a Nike Member for the best products, inspiration and
-              stories in sport.
-            </p>
             <SignedOut>
+              <p>
+                Become a Nike Member for the best products, inspiration and
+                stories in sport.
+              </p>
               <div className="flex">
                 <SignUpButton mode="modal">
                   <button className="btn-filled">join us</button>
@@ -86,10 +100,7 @@ const Navbar = ({ navClick, handleNavClose }) => {
 
             {user && (
               <SignedIn>
-                <button
-                  className="btn-filled sign-out"
-                  onClick={() => signOut()}
-                >
+                <button className="btn-filled sign-out" onClick={handleSignOut}>
                   sign out
                 </button>
               </SignedIn>

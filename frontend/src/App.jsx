@@ -24,6 +24,7 @@ import Favorite from './components/Favorite';
 import Men from './pages/Men';
 import Kids from './pages/Kids';
 import Women from './pages/Women';
+import Accessories from './pages/Accessories';
 import CheckoutSuccess from './pages/CheckoutSuccess';
 import Order from './pages/Order';
 import NotFound from './components/NotFound';
@@ -92,6 +93,7 @@ const router = createBrowserRouter(
       <Route path="men" element={<Men />} />
       <Route path="kids" element={<Kids />} />
       <Route path="women" element={<Women />} />
+      <Route path="accessories" element={<Accessories />} />
 
       {/* Men's Layout */}
       <Route path="m" element={<MenLayout />}>

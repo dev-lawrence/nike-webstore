@@ -1,12 +1,14 @@
-import { useState } from 'react';
 import useFetchData from '../../hooks/useFetchData';
+import Hero from '../../components/Hero';
 import Shop from '../../components/Shop';
 const { VITE_API_URL } = import.meta.env;
 import { Loading } from '../../components/Loading';
+import useSelectedGenders from '../../hooks/useSelectedGenders';
+import useSelectedKidsAge from '../../hooks/useSelectedKidsAge';
 
 const MShoes = () => {
-  const [selectedGenders, setSelectedGenders] = useState(['men']);
-  const [selectedKidsAge, setSelectedKidsAge] = useState([]);
+  const { selectedGenders, handleGenderChange } = useSelectedGenders(['men']);
+  const { selectedKidsAge } = useSelectedKidsAge([]);
 
   const {
     data: products,
@@ -16,9 +18,10 @@ const MShoes = () => {
 
   if (!Array.isArray(products)) {
     return (
-      <>
+      <section className="shop">
+        <Hero text="Shop" />
         <Loading />
-      </>
+      </section>
     );
   }
 
@@ -44,13 +47,14 @@ const MShoes = () => {
   return (
     <Shop
       categoryTitle="Men's Shoes & Sneakers"
+      text="Shop"
       filterData={products}
       genderFilter={true}
       kidsFilter={false}
       priceFilter={true}
       colorFilter={true}
       selectedGenders={selectedGenders}
-      setSelectedGenders={setSelectedGenders}
+      handleGenderChange={handleGenderChange}
       filterProductsByGender={filterProductsByGender}
       filterProductsByKidsAge={filterProductsByKidsAge}
     />

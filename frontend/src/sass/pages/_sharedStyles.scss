@@ -33,3 +33,10 @@
     @include image-property(initial);
   }
 }
+
+.accessories {
+  .bg-img {
+    background: var(--background) url(../assets/accessories.jpg);
+    @include image-property(initial);
+  }
+}

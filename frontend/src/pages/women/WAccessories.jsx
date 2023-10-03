@@ -1,13 +1,14 @@
 import useFetchData from '../../hooks/useFetchData';
-import { useState } from 'react';
 import Shop from '../../components/Shop';
 import Hero from '../../components/Hero';
 const { VITE_API_URL } = import.meta.env;
 import { Loading } from '../../components/Loading';
+import useSelectedGenders from '../../hooks/useSelectedGenders';
+import useSelectedKidsAge from '../../hooks/useSelectedKidsAge';
 
 const WAccessories = () => {
-  const [selectedGenders, setSelectedGenders] = useState(['women']);
-  const [selectedKidsAge, setSelectedKidsAge] = useState([]);
+  const { selectedGenders, handleGenderChange } = useSelectedGenders(['women']);
+  const { selectedKidsAge } = useSelectedKidsAge([]);
 
   const {
     data: products,
@@ -46,6 +47,7 @@ const WAccessories = () => {
   return (
     <Shop
       categoryTitle="Women's Accessories & Equipment"
+      text="Shop"
       filterData={products}
       genderFilter={true}
       kidsFilter={false}
@@ -53,7 +55,7 @@ const WAccessories = () => {
       colorFilter={true}
       categoryFilter={true}
       selectedGenders={selectedGenders}
-      setSelectedGenders={setSelectedGenders}
+      handleGenderChange={handleGenderChange}
       filterProductsByGender={filterProductsByGender}
       filterProductsByKidsAge={filterProductsByKidsAge}
     />

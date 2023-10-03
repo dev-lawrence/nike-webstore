@@ -17,11 +17,14 @@ const Shop = ({
   colorFilter,
   kidsFilter,
   selectedGenders,
-  setSelectedGenders,
   filterProductsByGender,
   filterProductsByKidsAge,
   selectedKidsAge,
   setSelectedKidsAge,
+  text,
+  isAccessories,
+  handleGenderChange,
+  handleKidsAgeChange,
 }) => {
   const [openModal, setOpenModal] = useState(false);
   const [openSideBar, setOpenSideBar] = useState(false);
@@ -125,10 +128,17 @@ const Shop = ({
     .filter(filterProductsByColor)
     .filter(filterProductsByKidsAge);
 
+  // Filter products by subcategory
+  const accessoriesData = isAccessories
+    ? newFilteredData.filter((product) => product.subcategory === 'accessories')
+    : newFilteredData;
+
   return (
     <>
-      <section className={`shop | shoe`}>
-        <Hero text="Shop" />
+      <section
+        className={`shop | shoe | ${isAccessories ? 'accessories' : ''} `}
+      >
+        <Hero text={text} />
         <div className="container shop-section">
           <div className="title">
             <h2>{categoryTitle}</h2>
@@ -153,7 +163,7 @@ const Shop = ({
                   sortOption={sortOption}
                   handleSortChange={handleSortChange}
                   selectedGenders={selectedGenders}
-                  setSelectedGenders={setSelectedGenders}
+                  handleGenderChange={handleGenderChange}
                   selectedPrices={selectedPrices}
                   setSelectedPrices={setSelectedPrices}
                   priceRanges={priceRanges}
@@ -201,14 +211,14 @@ const Shop = ({
               {genderFilter && (
                 <Gender
                   selectedGenders={selectedGenders}
-                  setSelectedGenders={setSelectedGenders}
+                  handleGenderChange={handleGenderChange}
                 />
               )}
 
               {kidsFilter && (
                 <KidsAge
                   selectedKidsAge={selectedKidsAge}
-                  setSelectedKidsAge={setSelectedKidsAge}
+                  handleKidsAgeChange={handleKidsAgeChange}
                 />
               )}
 
@@ -230,8 +240,8 @@ const Shop = ({
             </aside>
 
             <div className="shop-products" ref={shopProductsRef}>
-              {newFilteredData &&
-                newFilteredData.map((product) => {
+              {accessoriesData &&
+                accessoriesData.map((product) => {
                   return (
                     <Card key={product._id} product={product} isShop={true} />
                   );
