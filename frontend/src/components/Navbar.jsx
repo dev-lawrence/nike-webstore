@@ -60,7 +60,7 @@ const Navbar = ({ navClick, handleNavClose }) => {
             </NavLink>
           </li>
           <li>
-            <NavLink to="blog">Accessories</NavLink>
+            <NavLink to="accessories">Accessories</NavLink>
           </li>
           {user && (
             <li className={`favorite ${user ? 'show' : ''}`}>

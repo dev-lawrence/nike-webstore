@@ -2,7 +2,6 @@ import Hero from '../components/Hero';
 import BigKids from '../assets/big-kids.webp';
 import LittleKids from '../assets/little-kids.webp';
 import BabiesToddlers from '../assets/babies-toddlers.webp';
-import KidsBg from '../assets/kids-bg-sec.jpg';
 import CardCategory from '../components/CardCategory';
 import { Helmet } from 'react-helmet-async';
 import Trending from '../components/Trending';
