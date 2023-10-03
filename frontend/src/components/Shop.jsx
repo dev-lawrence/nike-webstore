@@ -17,30 +17,43 @@ const Shop = ({
   colorFilter,
   kidsFilter,
   selectedGenders,
+  handleGenderChange,
   filterProductsByGender,
   filterProductsByKidsAge,
   selectedKidsAge,
-  setSelectedKidsAge,
+  handleKidsAgeChange,
   text,
   isAccessories,
-  handleGenderChange,
-  handleKidsAgeChange,
 }) => {
+  // State variables for managing component state
   const [openModal, setOpenModal] = useState(false);
   const [openSideBar, setOpenSideBar] = useState(false);
   const [sortOption, setSortOption] = useState('Sort by latest');
   const [selectedPrices, setSelectedPrices] = useState([]);
   const [selectedColors, setSelectedColors] = useState([]);
-
   const [sidebarTop, setSidebarTop] = useState(30);
   const shopProductsRef = useRef(null);
 
+  // Determine if the gender filter should be visible based on selected kids age
+  const isKidsFilterVisible =
+    selectedGenders.includes('men') ||
+    selectedGenders.includes('women') ||
+    selectedGenders.includes('unisex');
+
+  // Determine if the kids filter should be visible based on selected genders
+  const isGenderFilterVisible =
+    selectedKidsAge.includes('big-kids') ||
+    selectedKidsAge.includes('little-kids') ||
+    selectedKidsAge.includes('babies');
+
+  // Function to handle scroll events
   const handleScroll = () => {
     if (shopProductsRef.current) {
       setSidebarTop(shopProductsRef.current.scrollTop);
     }
   };
 
+  // Add scroll event listener when the component mounts and remove it when it unmounts
   useEffect(() => {
     if (shopProductsRef.current) {
       shopProductsRef.current.addEventListener('scroll', handleScroll);
@@ -53,6 +66,7 @@ const Shop = ({
     };
   }, []);
 
+  // Toggle filter modal visibility
   const popUpToggleModal = () => {
     setOpenModal(!openModal);
 
@@ -63,6 +77,7 @@ const Shop = ({
     }
   };
 
+  // Toggle sidebar visibility
   const hideToggleModal = () => {
     setOpenSideBar(!openSideBar);
   };
@@ -122,6 +137,7 @@ const Shop = ({
     sortedData = sortedData.filter((product) => product.justIn === true);
   }
 
+  // Filtered Data
   const newFilteredData = sortedData
     .filter(filterProductsByGender)
     .filter(filterProductsByPrice)
@@ -171,7 +187,7 @@ const Shop = ({
                   setSelectedColors={setSelectedColors}
                   genderFilter={genderFilter}
                   selectedKidsAge={selectedKidsAge}
-                  setSelectedKidsAge={setSelectedKidsAge}
+                  handleKidsAgeChange={handleKidsAgeChange}
                   kidsFilter={kidsFilter}
                 />
               )}
@@ -208,14 +224,14 @@ const Shop = ({
               className={`sidebar ${openSideBar ? 'hide' : ''}`}
               style={{ top: sidebarTop }}
             >
-              {genderFilter && (
+              {!isGenderFilterVisible && genderFilter && (
                 <Gender
                   selectedGenders={selectedGenders}
                   handleGenderChange={handleGenderChange}
                 />
               )}
 
-              {kidsFilter && (
+              {!isKidsFilterVisible && kidsFilter && (
                 <KidsAge
                   selectedKidsAge={selectedKidsAge}
                   handleKidsAgeChange={handleKidsAgeChange}

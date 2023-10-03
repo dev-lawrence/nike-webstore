@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom';
 import Slider from '../components/Slider';
 const { VITE_API_URL } = import.meta.env;
-import useFetchData from '../hooks/useFetchData.jsx';
+import useFetchData from '../hooks/useFetchData.js';
 import { Loading } from '../components/Loading';
 import SizeOptions from '../components/SizeOptions';
 import { Helmet } from 'react-helmet-async';
@@ -19,16 +19,22 @@ const Product = () => {
   const { user, openSignIn } = useClerk();
 
   const { slug } = useParams();
+
+  // Fetch product data based on the slug
   const {
     data: product,
     loading,
     error,
   } = useFetchData(`${VITE_API_URL}/products/slug/${slug}`);
-  const { addToCart } = useContext(CartContext);
-  const { showNotify } = useContext(NotificationContext);
+
+  // State variables for managing component state
   const [openModal, setOpenModal] = useState(false);
   const [selectedSize, setSelectedSize] = useState(null);
   const [addToCartError, setAddToCartError] = useState(null);
+
+  // Contexts for managing cart and notifications
+  const { addToCart } = useContext(CartContext);
+  const { showNotify } = useContext(NotificationContext);
 
   // Function to add all items to cart
   const handleAddToCart = () => {
@@ -59,6 +65,7 @@ const Product = () => {
         image: product.image,
       };
 
+      // Add the product to user favorites
       axios
         .post(`${VITE_API_URL}/users/${user.id}/favorites`, favoriteProduct)
         .then((response) => {
@@ -76,6 +83,7 @@ const Product = () => {
           console.error('Error adding product to favorites:', error);
         });
     } else {
+      // Open sign-in modal if the user is not authenticated
       openSignIn();
     }
   };

@@ -57,7 +57,7 @@ const Search = ({ searchClick, handleSearchClick, inputRef }) => {
   return (
     <div className="search-icon">
       <div className="search-icon-container">
-        <form
+        <div
           onSubmit={handleFormSubmit}
           className={`search-icon-box ${searchClick ? 'openSearchBox' : ''}`}
         >
@@ -84,7 +84,7 @@ const Search = ({ searchClick, handleSearchClick, inputRef }) => {
           >
             <SearchRoundedIcon className="icon-search" />
           </label>
-        </form>
+        </div>
 
         <button
           onClick={handleSearchClick}

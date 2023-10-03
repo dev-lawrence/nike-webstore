@@ -4,6 +4,7 @@ import WomenClothing from '../assets/women-clothing.webp';
 import WomenAccessories from '../assets/women-accessories.webp';
 import CardCategory from '../components/CardCategory';
 import { Helmet } from 'react-helmet-async';
+import Trending from '../components/Trending';
 
 const Women = () => {
   return (
@@ -48,6 +49,8 @@ const Women = () => {
             />
           </div>
         </section>
+
+        <Trending title="Popular items" />
       </div>
     </section>
   );

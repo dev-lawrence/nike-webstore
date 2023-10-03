@@ -79,7 +79,9 @@ const Navbar = ({ navClick, handleNavClose }) => {
           )}
 
           <li>
-            <NavLink to="contact">Contact</NavLink>
+            <NavLink to="contact" onClick={handleNavLinkClick}>
+              Contact
+            </NavLink>
           </li>
           <div className="mobile-sign-in">
             <SignedOut>

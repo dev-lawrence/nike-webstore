@@ -1,5 +1,4 @@
 import useFetchData from '../../hooks/useFetchData';
-import { useState } from 'react';
 import Shop from '../../components/Shop';
 import Hero from '../../components/Hero';
 const { VITE_API_URL } = import.meta.env;
