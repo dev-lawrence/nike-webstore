@@ -10,7 +10,7 @@ const FilterModal = ({
   sortOption,
   handleSortChange,
   selectedGenders,
-  setSelectedGenders,
+  handleGenderChange,
   selectedPrices,
   setSelectedPrices,
   priceRanges,
@@ -19,7 +19,7 @@ const FilterModal = ({
   genderFilter,
   kidsFilter,
   selectedKidsAge,
-  setSelectedKidsAge,
+  handleKidsAgeChange,
 }) => {
   return (
     <div className={`filter-modal `}>
@@ -48,7 +48,7 @@ const FilterModal = ({
             {genderFilter && (
               <Gender
                 selectedGenders={selectedGenders}
-                setSelectedGenders={setSelectedGenders}
+                handleGenderChange={handleGenderChange}
               />
             )}
           </div>
@@ -56,7 +56,7 @@ const FilterModal = ({
           {kidsFilter && (
             <KidsAge
               selectedKidsAge={selectedKidsAge}
-              setSelectedKidsAge={setSelectedKidsAge}
+              handleKidsAgeChange={handleKidsAgeChange}
             />
           )}
 

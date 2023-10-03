@@ -3,6 +3,7 @@ const KidsAgeCheckBox = ({ label, value, checked, onChange }) => {
     <label className="gender-price-option">
       <input
         type="checkbox"
+        autoComplete="false"
         name="kids-age"
         value={value}
         checked={checked}

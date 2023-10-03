@@ -1,5 +1,5 @@
 import OrderList from '../components/OrderList';
-import useFetchData from '../hooks/useFetchData';
+import useFetchData from '../hooks/useFetchData.js';
 const { VITE_API_URL } = import.meta.env;
 import { useClerk } from '@clerk/clerk-react';
 import { Link } from 'react-router-dom';

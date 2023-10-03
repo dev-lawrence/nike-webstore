@@ -1,7 +1,7 @@
 import { useClerk } from '@clerk/clerk-react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import useFetchData from '../hooks/useFetchData';
+import useFetchData from '../hooks/useFetchData.js';
 import EmptyItem from '../assets/Empty-amico.png';
 import Card from './Card';
 import { Loading } from './Loading';

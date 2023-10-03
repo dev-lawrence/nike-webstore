@@ -3,7 +3,7 @@ import { Splide, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/splide/dist/css/splide.min.css';
 import Card from './Card.jsx';
 const { VITE_API_URL } = import.meta.env;
-import useFetchData from '../hooks/useFetchData.jsx';
+import useFetchData from '../hooks/useFetchData.js';
 import { shuffleArray } from '../utils/ShuffleArray.js';
 import SkeletonTrending from './Skeleton/SkeletonTrending.jsx';
 

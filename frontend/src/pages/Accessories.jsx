@@ -8,7 +8,7 @@ import useSelectedKidsAge from '../hooks/useSelectedKidsAge';
 
 const Accessories = () => {
   const { selectedGenders, handleGenderChange } = useSelectedGenders([]);
-  const { selectedKidsAge } = useSelectedKidsAge([]);
+  const { selectedKidsAge, handleKidsAgeChange } = useSelectedKidsAge([]);
 
   const {
     data: products,
@@ -58,6 +58,7 @@ const Accessories = () => {
         selectedGenders={selectedGenders}
         handleGenderChange={handleGenderChange}
         selectedKidsAge={selectedKidsAge}
+        handleKidsAgeChange={handleKidsAgeChange}
         filterProductsByGender={filterProductsByGender}
         filterProductsByKidsAge={filterProductsByKidsAge}
       />

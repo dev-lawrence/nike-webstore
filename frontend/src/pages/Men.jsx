@@ -4,6 +4,7 @@ import MenClothing from '../assets/men-clothing.webp';
 import MenAccessories from '../assets/men-accessories.webp';
 import CardCategory from '../components/CardCategory';
 import { Helmet } from 'react-helmet-async';
+import Trending from '../components/Trending';
 
 const Men = () => {
   return (
@@ -48,6 +49,8 @@ const Men = () => {
             />
           </div>
         </section>
+
+        <Trending title="Products you might like" />
       </div>
     </section>
   );
