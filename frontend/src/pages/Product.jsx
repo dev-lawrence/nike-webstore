@@ -1,11 +1,11 @@
 import { useParams } from 'react-router-dom';
+import { useContext, useState } from 'react';
 import Slider from '../components/Slider';
 const { VITE_API_URL } = import.meta.env;
 import useFetchData from '../hooks/useFetchData.js';
 import SizeOptions from '../components/SizeOptions';
 import { Helmet } from 'react-helmet-async';
 import Modal from '../components/Modal';
-import { useContext, useState } from 'react';
 import CartContext from '../CartContext';
 import NotificationContext from '../NotificationContext';
 import { useClerk } from '@clerk/clerk-react';
@@ -13,6 +13,7 @@ import axios from 'axios';
 import Trending from '../components/Trending';
 import SkeletonProduct from '../components/Skeleton/SkeletonProduct';
 import BreadCrumbs from '../components/BreadCrumb';
+import Reviews from '../components/Reviews';
 
 const Product = () => {
   const { user, openSignIn } = useClerk();
@@ -170,6 +171,8 @@ const Product = () => {
                     )}
                   </div>
                 </div>
+
+                <Reviews product={product} />
               </div>
             </div>
           </div>

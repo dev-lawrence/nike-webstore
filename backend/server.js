@@ -7,6 +7,7 @@ import seedRouter from './routes/seedRoutes.js';
 import productRouter from './routes/productRoutes.js';
 import userRouter from './routes/userRoutes.js';
 import stripeRouter from './routes/stripeRoutes.js';
+import reviewRouter from './routes/reviewRoutes.js';
 
 dotenv.config();
 
@@ -24,6 +25,9 @@ app.use('/api/products', productRouter);
 
 // save user to database
 app.use('/api/users', userRouter);
+
+// save user reviews to database
+app.use('/api/reviews', reviewRouter);
 
 // make payments
 app.use('/api/stripe/', stripeRouter);
