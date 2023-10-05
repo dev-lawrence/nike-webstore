@@ -37,7 +37,7 @@ const Favorites = () => {
     return (
       <div className="pt-section | favorites | container">
         <img className="empty-img" src={EmptyItem} alt="" />
-        <Link className="cart-btn" to="/">
+        <Link className="cart-btn" to="shop">
           Continue Shopping
         </Link>
       </div>

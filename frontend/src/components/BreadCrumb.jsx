@@ -25,7 +25,7 @@ const BreadCrumbs = ({ slug }) => {
                 <span className="separator">{separator}</span>
               </>
             )}
-            <span className="crumb">{product?.title || crumb}</span>
+            <span className="crumb">{product?.name || crumb}</span>
           </div>
         );
       }
