@@ -31,6 +31,7 @@ const Product = () => {
   const [openModal, setOpenModal] = useState(false);
   const [selectedSize, setSelectedSize] = useState(null);
   const [addToCartError, setAddToCartError] = useState(null);
+  const [showReviews, setShowReviews] = useState(false);
 
   // Contexts for managing cart and notifications
   const { addToCart } = useContext(CartContext);
@@ -98,6 +99,11 @@ const Product = () => {
     }
   };
 
+  // Function to toggle show Reviews
+  const handleToggleReviews = () => {
+    setShowReviews(!showReviews);
+  };
+
   return (
     <section className="product-page pt-section">
       {loading ? (
@@ -146,10 +152,16 @@ const Product = () => {
                 )}
 
                 <div className="buttons">
-                  <button className="btn-filled" onClick={handleAddToCart}>
+                  <button
+                    className="btn-filled | w-full"
+                    onClick={handleAddToCart}
+                  >
                     Add to Bag
                   </button>
-                  <button className="btn-outline" onClick={handleAddToFavorite}>
+                  <button
+                    className="btn-outline | w-full"
+                    onClick={handleAddToFavorite}
+                  >
                     Favorite 💙
                   </button>
                 </div>
@@ -172,7 +184,15 @@ const Product = () => {
                   </div>
                 </div>
 
-                <Reviews product={product} />
+                <hr className="mt-3" />
+
+                <div className="reviews">
+                  <Reviews
+                    product={product}
+                    handleToggleReviews={handleToggleReviews}
+                    showReviews={showReviews}
+                  />
+                </div>
               </div>
             </div>
           </div>

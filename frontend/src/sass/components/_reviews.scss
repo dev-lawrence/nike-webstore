@@ -1,0 +1,287 @@
+@use '../abstracts' as *;
+
+.reviews {
+  margin-top: 2rem;
+
+  .no-review {
+    margin-bottom: 0.5rem;
+  }
+
+  .review {
+    &:not(:last-child) {
+      margin-bottom: 1rem;
+    }
+
+    &-output-title {
+      font-weight: 600;
+
+      @include small {
+        margin-bottom: 1rem;
+      }
+    }
+
+    &-flex {
+      @include flex(center, flex-start);
+      flex-wrap: wrap;
+      margin-bottom: 0.5rem;
+    }
+
+    .user-name {
+      margin-left: 1rem;
+      transform: translateY(-0.2rem);
+      color: var(--muted-foreground);
+
+      @include small {
+        margin-left: 0;
+      }
+    }
+  }
+
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba($color: #000000, $alpha: 0.7);
+    width: 100%;
+    height: 100vh;
+    opacity: 0;
+    z-index: -1;
+    transition: opacity 0.3s ease-in-out;
+
+    @include large {
+      &.show {
+        opacity: 1;
+        z-index: 800;
+        transition: opacity 0.3s ease-in-out;
+      }
+    }
+  }
+
+  &-text {
+    font-size: $fs-500;
+    font-weight: 600;
+
+    @include large {
+      font-size: $fs-600;
+    }
+  }
+
+  .icon {
+    font-size: $fs-700;
+  }
+
+  .flex {
+    @include flex(center, space-between);
+    width: 100%;
+    margin-bottom: 2rem;
+    color: var(--foreground);
+  }
+
+  .review-btn {
+    color: var(--foreground);
+    font-weight: 500;
+    font-size: $fs-300;
+    margin-bottom: 2rem;
+    text-decoration: underline;
+    transition: color 0.2s ease-out;
+
+    &:hover {
+      color: var(--muted-foreground);
+    }
+  }
+
+  .review-form {
+    background-color: var(--background);
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 2000;
+    overflow: auto;
+    padding-block: 3rem;
+
+    &-container {
+      padding-inline: 2rem;
+
+      @include small {
+        padding-inline: 1rem;
+      }
+    }
+
+    @include large {
+      max-width: 700px;
+      margin-inline: auto;
+      border-radius: $radius-200;
+      position: fixed;
+      left: 50%;
+      top: 2rem;
+      height: 550px;
+      transform: translateX(-50%);
+    }
+
+    .close-icon {
+      cursor: pointer;
+      font-size: $fs-700;
+      color: var(--background);
+      background-color: var(--foreground);
+      border-radius: $radius-400;
+      padding: 0.2rem;
+      position: absolute;
+      right: 1rem;
+      top: 1rem;
+    }
+
+    .review-title {
+      margin-bottom: 2rem;
+      @include flex(center, space-between);
+
+      h4 {
+        font-size: $fs-400;
+        font-weight: 500;
+      }
+
+      p {
+        font-size: $fs-300;
+        color: var(--muted-foreground);
+      }
+    }
+
+    .product-flex {
+      @include flex(flex-start, flex-start);
+      margin-bottom: 2rem;
+      img {
+        width: 70px;
+        margin-right: 0.8rem;
+        border-radius: $radius-sm;
+      }
+    }
+  }
+
+  .rating {
+    margin-bottom: 3rem;
+
+    h4 {
+      font-weight: 400;
+      font-size: $fs-300;
+    }
+
+    .stars {
+      @include flex(center, flex-start);
+      transform: translateY(0.3rem);
+
+      .star {
+        cursor: pointer;
+
+        &-icon {
+          font-size: $fs-800;
+        }
+      }
+    }
+
+    .error-message {
+      color: var(--destructive);
+      font-size: $fs-100;
+    }
+  }
+
+  .form {
+    input,
+    textarea {
+      padding: 0.7rem;
+      width: 100%;
+      border-radius: $radius-sm;
+      padding-left: 0.5rem;
+      border: 1.5px solid var(--input);
+      background-color: var(--card);
+      color: var(--foreground);
+      font-family: inherit;
+    }
+
+    h4 {
+      font-size: $fs-300;
+      font-weight: 400;
+      margin-bottom: 1rem;
+    }
+
+    caption {
+      text-align: left;
+      color: var(--muted-foreground);
+      font-size: $fs-100;
+    }
+
+    .review-input-title {
+      margin-block: 2rem;
+
+      input {
+        height: 48px;
+      }
+    }
+
+    &-btn {
+      width: 100%;
+    }
+  }
+
+  //  Submission form
+  .submission-form {
+    @include large {
+      height: auto;
+      width: auto;
+    }
+
+    .submission-message {
+      @include flex(center, center);
+      flex-direction: column;
+      height: 100%;
+      text-align: center;
+      padding-top: 3rem;
+      padding-inline: 3rem;
+
+      p {
+        font-weight: 400;
+        font-size: $fs-400;
+        margin-bottom: 2rem;
+      }
+
+      img {
+        width: 50px;
+        margin-bottom: 1rem;
+      }
+
+      .btn-filled {
+        width: 100%;
+        padding-block: 1rem;
+      }
+    }
+  }
+
+  .star {
+    color: #f5c136;
+  }
+
+  // Scroll bar
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  /* Scrollbar Track Background */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+
+  /* Scrollbar Thumb */
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 6px;
+    height: 6px;
+  }
+
+  /* On hover, style the scrollbar thumb */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+}

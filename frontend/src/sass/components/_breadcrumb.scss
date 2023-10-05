@@ -1,6 +1,12 @@
+@use '../abstracts' as *;
+
 .breadcrumbs {
   display: inline-block;
   margin-bottom: 1rem;
+
+  @include small {
+    margin-bottom: 0;
+  }
 
   .home {
     padding-top: 0;

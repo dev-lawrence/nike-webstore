@@ -29,7 +29,7 @@ export const getProductReviews = async (req, res) => {
 // @route POST /api/reviews/:productId/reviews
 export const addProductReview = async (req, res) => {
   const { productId } = req.params;
-  const { clerkUserId, text, rating, approved } = req.body;
+  const { clerkUserId, userName, text, title, rating, approved } = req.body;
 
   try {
     // Check if the user already exists
@@ -55,7 +55,9 @@ export const addProductReview = async (req, res) => {
       userId: clerkUserId,
       productId: productId,
       text: text,
+      userName: userName,
       rating: rating,
+      title: title,
       approved: approved,
     });
 
