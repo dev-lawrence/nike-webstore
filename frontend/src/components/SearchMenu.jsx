@@ -8,7 +8,7 @@ const SearchMenu = ({
   errorMessage,
   loading,
 }) => {
-  const slicedProducts = searchResults.slice(1, 4);
+  const displayedProducts = searchResults.slice(1, 4);
 
   return (
     <div className="search-menu">
@@ -40,7 +40,7 @@ const SearchMenu = ({
           <>
             <h3>Search Results</h3>
             <div className="grid">
-              {slicedProducts.map((product) => (
+              {displayedProducts.map((product) => (
                 <li
                   key={product.slug}
                   className="searched-product"
