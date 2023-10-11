@@ -11,12 +11,6 @@ import {
 const Navbar = ({ navClick, handleNavClose }) => {
   const { user, signOut } = useClerk();
 
-  if (user) {
-    console.log('signed in');
-  } else {
-    console.log('signed out');
-  }
-
   const handleSignOut = () => {
     signOut().then(() => {
       window.location.reload();
