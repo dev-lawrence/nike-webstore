@@ -6,11 +6,6 @@ const stripe = Stripe(process.env.STRIPE_SECRET_KEY);
 // This is your Stripe CLI webhook secret for testing your endpoint locally.
 const endpointSecret = process.env.ENDPOINT_SECRET_KEY;
 
-const CLIENT_URL =
-  process.env.NODE_ENV === 'production'
-    ? process.env.CLIENT_URL
-    : 'http://localhost:3000';
-
 // @desc Make Payment
 // @route POST /api/stripe/create-checkout-session
 export const makePayment = async (req, res) => {
@@ -106,8 +101,8 @@ export const makePayment = async (req, res) => {
       customer: customer.id,
       line_items: lineItems,
       mode: 'payment',
-      success_url: `${CLIENT_URL}/checkout-success`,
-      cancel_url: `${CLIENT_URL}/`,
+      success_url: `${process.env.CLIENT_URL}/checkout-success`,
+      cancel_url: `${process.env.CLIENT_URL}/`,
     });
 
     res.send({ stripeSession: session });
