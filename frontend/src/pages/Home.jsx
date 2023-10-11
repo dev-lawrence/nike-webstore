@@ -47,7 +47,7 @@ const Home = () => {
               Wherever you decide to run or hike, Nike Trail & Nike ACG are here
               for your next adventure
             </p>
-            <Link to="/" className="btn-filled cta">
+            <Link to="shop" className="btn-filled cta">
               Shop
             </Link>
           </div>

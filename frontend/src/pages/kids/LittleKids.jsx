@@ -48,6 +48,8 @@ const LittleKids = () => {
       categoryTitle="Little Kids' Products"
       text="Shop"
       filterData={products}
+      loading={loading}
+      error={error}
       genderFilter={false}
       priceFilter={true}
       colorFilter={true}

@@ -48,6 +48,8 @@ const BabiesToddlers = () => {
       categoryTitle="Babies & Toddlers (0-3 yrs)"
       text="Shop"
       filterData={products}
+      loading={loading}
+      error={error}
       genderFilter={false}
       priceFilter={true}
       colorFilter={true}

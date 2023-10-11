@@ -49,6 +49,8 @@ const BigKids = () => {
       categoryTitle="Big Kids' Products"
       text="Shop"
       filterData={products}
+      loading={loading}
+      error={error}
       genderFilter={false}
       priceFilter={true}
       colorFilter={true}

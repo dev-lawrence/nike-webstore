@@ -1,10 +1,8 @@
-import { useState, useEffect } from 'react';
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/splide/dist/css/splide.min.css';
 import Card from './Card.jsx';
 const { VITE_API_URL } = import.meta.env;
 import useFetchData from '../hooks/useFetchData.js';
-import { shuffleArray } from '../utils/ShuffleArray.js';
 import SkeletonPopular from './Skeleton/SkeletonPopular.jsx';
 
 const Popular = ({ title }) => {
@@ -14,22 +12,9 @@ const Popular = ({ title }) => {
     error,
   } = useFetchData(`${VITE_API_URL}/products`);
 
-  // const [shuffledProducts, setShuffledProducts] = useState([]);
-
   const filterProducts = products?.filter(
     (product) => product.subcategory === 'shoes'
   );
-
-  // To be uncommented when more products are added
-  // useEffect(() => {
-  //   if (filterProducts && filterProducts.length > 0) {
-  //     const shuffled = [...filterProducts];
-  //     shuffleArray(shuffled);
-  //     setShuffledProducts(shuffled);
-  //   }
-  // }, [filterProducts]);
-
-  // const slicedProducts = shuffledProducts.slice(1, 10);
 
   return (
     <section className="popular pt-section">
@@ -44,7 +29,7 @@ const Popular = ({ title }) => {
             <SkeletonPopular />
           </div>
         ) : error ? (
-          <div>{error}</div>
+          <div>Error Loading products</div>
         ) : (
           <Splide
             options={{

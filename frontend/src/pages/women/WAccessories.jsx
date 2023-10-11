@@ -49,6 +49,8 @@ const WAccessories = () => {
       categoryTitle="Women's Accessories & Equipment"
       text="Shop"
       filterData={products}
+      loading={loading}
+      error={error}
       genderFilter={true}
       kidsFilter={false}
       priceFilter={true}

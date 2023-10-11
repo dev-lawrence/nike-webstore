@@ -140,12 +140,14 @@ const Reviews = ({ product, handleToggleReviews, showReviews }) => {
   };
 
   // get date
-  const date = new Date();
-  const formatDate = date.toLocaleDateString('en-NG', {
-    month: 'short',
-    day: '2-digit',
-    year: 'numeric',
-  });
+  const formatDate = (createdAt) => {
+    const date = new Date(createdAt);
+    return date.toLocaleDateString('en-NG', {
+      month: 'short',
+      day: '2-digit',
+      year: 'numeric',
+    });
+  };
 
   return (
     <div className="reviews-section">
@@ -190,7 +192,7 @@ const Reviews = ({ product, handleToggleReviews, showReviews }) => {
 
                     <div className="user">
                       <p className="user-name">
-                        {review.userName} - {formatDate}.
+                        {review.userName} - {formatDate(review.createdAt)}.
                       </p>
                     </div>
                   </div>

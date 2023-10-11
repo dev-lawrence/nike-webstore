@@ -40,7 +40,7 @@ const Trending = ({ title, isProduct }) => {
             <SkeletonTrending />
           </div>
         ) : error ? (
-          <div>{error}</div>
+          <div>Error Loading Products</div>
         ) : (
           <Splide
             options={{
