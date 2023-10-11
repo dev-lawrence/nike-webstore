@@ -30,7 +30,7 @@ app.use('/api/users', userRouter);
 app.use('/api/reviews', reviewRouter);
 
 // make payments
-app.use('/api/stripe/', stripeRouter);
+app.use('/api/stripe', stripeRouter);
 
 const port = process.env.PORT || 7000;
 
