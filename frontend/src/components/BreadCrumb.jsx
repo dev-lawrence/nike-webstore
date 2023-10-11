@@ -42,7 +42,7 @@ const BreadCrumbs = ({ slug }) => {
       <span className="separator">{separator}</span>
     </div>
   );
-  // Add the additional breadcrumb to the beginning of the breadcrumbs arrays
+  // Add the additional breadcrumb to the beginning of the breadcrumbs array
   crumbs.unshift(additionalCrumb);
   return <div>{crumbs}</div>;
 };
