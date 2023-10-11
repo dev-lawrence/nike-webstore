@@ -17,14 +17,17 @@
 
   &-content {
     position: relative;
-    overflow: hidden;
 
-    &:hover .overlay {
-      opacity: 0.6;
-    }
+    @include large {
+      overflow: hidden;
 
-    &:hover .description {
-      bottom: 1rem;
+      &:hover .overlay {
+        opacity: 0.6;
+      }
+
+      &:hover .description {
+        bottom: 1rem;
+      }
     }
   }
 
@@ -34,7 +37,7 @@
 
   .description {
     position: absolute;
-    bottom: -3rem;
+    bottom: 1rem;
     left: 1rem;
     font-size: 1.1rem;
     color: var(--white);
@@ -48,6 +51,10 @@
 
     @include small {
       font-size: 1rem;
+    }
+
+    @include large {
+      bottom: -3rem;
     }
   }
 
