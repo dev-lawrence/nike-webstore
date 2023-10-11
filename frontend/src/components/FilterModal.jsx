@@ -20,6 +20,7 @@ const FilterModal = ({
   kidsFilter,
   selectedKidsAge,
   handleKidsAgeChange,
+  availableColors,
 }) => {
   return (
     <div className={`filter-modal `}>
@@ -78,6 +79,7 @@ const FilterModal = ({
             <Color
               selectedColors={selectedColors}
               setSelectedColors={setSelectedColors}
+              availableColors={availableColors}
             />
           </div>
         </div>

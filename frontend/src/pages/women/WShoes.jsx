@@ -49,6 +49,8 @@ const WShoes = () => {
       categoryTitle="Women's Shoes & Sneakers"
       text="Shop"
       filterData={products}
+      loading={loading}
+      error={error}
       genderFilter={true}
       kidsFilter={false}
       priceFilter={true}
@@ -56,7 +58,6 @@ const WShoes = () => {
       categoryFilter={true}
       selectedGenders={selectedGenders}
       handleGenderChange={handleGenderChange}
-      // setSelectedGenders={setSelectedGenders}
       filterProductsByGender={filterProductsByGender}
       filterProductsByKidsAge={filterProductsByKidsAge}
     />

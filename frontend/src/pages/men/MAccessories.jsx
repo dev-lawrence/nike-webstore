@@ -49,6 +49,8 @@ const MAccessories = () => {
       categoryTitle="Mens Accessories & Equipment"
       text="Shop"
       filterData={products}
+      loading={loading}
+      error={error}
       genderFilter={true}
       priceFilter={true}
       kidsFilter={false}
@@ -56,7 +58,6 @@ const MAccessories = () => {
       categoryFilter={true}
       selectedGenders={selectedGenders}
       handleGenderChange={handleGenderChange}
-      // setSelectedGenders={setSelectedGenders}
       filterProductsByGender={filterProductsByGender}
       filterProductsByKidsAge={filterProductsByKidsAge}
     />

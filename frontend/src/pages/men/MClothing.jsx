@@ -49,6 +49,8 @@ const MClothing = () => {
       categoryTitle="Mens Clothing"
       text="Shop"
       filterData={products}
+      loading={loading}
+      error={error}
       genderFilter={true}
       kidsFilter={false}
       priceFilter={true}

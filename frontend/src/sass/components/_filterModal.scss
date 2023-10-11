@@ -204,6 +204,34 @@
       background-color: brown;
     }
 
+    .white {
+      background-color: #e6e6e6;
+    }
+
+    .green {
+      background-color: green;
+    }
+
+    .pink {
+      background-color: pink;
+    }
+
+    .yellow {
+      background-color: yellow;
+    }
+
+    .lemon {
+      background-color: rgb(248, 228, 50);
+    }
+
+    .grey {
+      background-color: grey;
+    }
+
+    .mix {
+      background: linear-gradient(to right, #ff0000, #0000ff, #00ff00);
+    }
+
     input[type='checkbox']:checked + .checkbox::after {
       content: '\2713';
       font-size: 1.3rem;

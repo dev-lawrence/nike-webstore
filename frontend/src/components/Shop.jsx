@@ -9,10 +9,13 @@ import ByPrice from './ByPrice';
 import Color from './Color';
 import KidsAge from './KidsAge';
 import PageBreadCrumbs from './PageBreadCrumbs';
+import SkeletonPopular from './Skeleton/SkeletonPopular';
 
 const Shop = ({
   categoryTitle,
   filterData,
+  loading,
+  error,
   genderFilter,
   priceFilter,
   colorFilter,
@@ -115,6 +118,7 @@ const Shop = ({
     if (selectedColors.length === 0) {
       return true;
     } else {
+      console.log(selectedColors);
       return selectedColors.includes(product.color);
     }
   };
@@ -149,6 +153,11 @@ const Shop = ({
   const accessoriesData = isAccessories
     ? newFilteredData.filter((product) => product.subcategory === 'accessories')
     : newFilteredData;
+
+  // Extract available colors based on filtered products
+  const availableColors = Array.from(
+    new Set(accessoriesData.map((product) => product.color))
+  );
 
   return (
     <>
@@ -185,6 +194,7 @@ const Shop = ({
                   setSelectedPrices={setSelectedPrices}
                   priceRanges={priceRanges}
                   selectedColors={selectedColors}
+                  availableColors={availableColors}
                   setSelectedColors={setSelectedColors}
                   genderFilter={!isGenderFilterVisible && genderFilter}
                   selectedKidsAge={selectedKidsAge}
@@ -251,18 +261,27 @@ const Shop = ({
                 <Color
                   selectedColors={selectedColors}
                   setSelectedColors={setSelectedColors}
+                  availableColors={availableColors}
                   isSidebar={true}
                 />
               )}
             </aside>
 
             <div className="shop-products" ref={shopProductsRef}>
-              {accessoriesData &&
-                accessoriesData.map((product) => {
-                  return (
-                    <Card key={product._id} product={product} isShop={true} />
-                  );
-                })}
+              {loading ? (
+                <div>
+                  <SkeletonPopular />
+                </div>
+              ) : error ? (
+                <div>Error Loading products</div>
+              ) : (
+                <>
+                  {accessoriesData &&
+                    accessoriesData.map((product) => (
+                      <Card key={product._id} product={product} isShop={true} />
+                    ))}
+                </>
+              )}
             </div>
           </div>
         </div>

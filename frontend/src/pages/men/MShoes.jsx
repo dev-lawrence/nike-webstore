@@ -49,6 +49,8 @@ const MShoes = () => {
       categoryTitle="Men's Shoes & Sneakers"
       text="Shop"
       filterData={products}
+      loading={loading}
+      error={error}
       genderFilter={true}
       kidsFilter={false}
       priceFilter={true}

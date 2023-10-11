@@ -50,6 +50,8 @@ const Accessories = () => {
         text="Shop"
         isAccessories={true}
         filterData={products}
+        loading={loading}
+        error={error}
         genderFilter={true}
         priceFilter={true}
         kidsFilter={true}
