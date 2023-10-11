@@ -122,8 +122,8 @@ const createOrder = async (customer, data) => {
       customerId: data.customer,
       paymentIntentId: data.payment_intent,
       product: products,
-      subtotal: data.amount_subtotal / 100,
-      total: data.amount_total / 100,
+      subtotal: data.amount_subtotal,
+      total: data.amount_total,
       shipping: data.customer_details,
       payment_status: data.payment_status,
     });
