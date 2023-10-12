@@ -20,7 +20,7 @@ export const makePayment = async (req, res) => {
       name: product.name,
       price: product.price,
       quantity: product.quantity,
-      image: product.image,
+      // image: product.image,
       // size: product.size,
     }));
 
