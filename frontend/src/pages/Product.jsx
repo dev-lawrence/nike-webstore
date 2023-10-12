@@ -113,7 +113,9 @@ const Product = () => {
           </div>
         </>
       ) : error ? (
-        <div>{error}</div>
+        <div className="container">
+          <SkeletonProduct />
+        </div>
       ) : (
         <div className="container">
           <BreadCrumbs slug={slug} />

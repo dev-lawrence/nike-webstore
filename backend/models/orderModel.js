@@ -6,7 +6,6 @@ const orderSchema = new mongoose.Schema(
     customerId: { type: String },
     paymentIntentId: { type: String },
     product: [],
-
     subtotal: { type: Number, required: true },
     total: { type: Number, required: true },
     shipping: { type: Object, required: true },

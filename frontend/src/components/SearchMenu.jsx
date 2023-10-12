@@ -16,20 +16,22 @@ const SearchMenu = ({
         {searchResults.length === 0 && !loading && !errorMessage && (
           <>
             <h3>Popular Search Terms</h3>
-            <li>
-              <Link to="/">Jordan</Link>
+            <li onClick={handleSearchClick}>
+              <Link to="/product/air-jordan-5-retro-se">Jordan</Link>
             </li>
 
-            <li>
-              <Link to="shop">Air Max</Link>
+            <li onClick={handleSearchClick}>
+              <Link to="/product/dunk-low-big-kids-shoes">Nike Dunk</Link>
             </li>
 
-            <li>
-              <Link to="about">Blazer</Link>
+            <li onClick={handleSearchClick}>
+              <Link to="/product/club-unstructured-swoosh-cap">Nike Club</Link>
             </li>
 
-            <li>
-              <Link to="blog">Nike Shoes</Link>
+            <li onClick={handleSearchClick}>
+              <Link to="/product/sportswear-lightweight-synthetic-fill-big-kids-loose-hooded-jacket">
+                Nike Sportswear
+              </Link>
             </li>
           </>
         )}

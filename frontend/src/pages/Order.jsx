@@ -28,7 +28,7 @@ const Order = () => {
     return (
       <div className="pt-section | favorites | container">
         <p className="mb-1">No orders to show</p>
-        <Link className="btn-filled" to="/">
+        <Link className="btn-filled" to="/shop">
           Continue Shopping
         </Link>
       </div>

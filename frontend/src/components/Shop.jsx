@@ -278,7 +278,9 @@ const Shop = ({
                   <SkeletonPopular />
                 </div>
               ) : error ? (
-                <div>Error Loading products</div>
+                <div>
+                  <SkeletonPopular />
+                </div>
               ) : (
                 <>
                   {accessoriesData &&
