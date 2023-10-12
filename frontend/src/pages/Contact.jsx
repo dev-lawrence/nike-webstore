@@ -2,6 +2,7 @@ import Hero from '../components/Hero';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import { useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 
 const Contact = () => {
   const navigate = useNavigate();
@@ -63,6 +64,9 @@ const Contact = () => {
   return (
     <>
       <section className="contact">
+        <Helmet>
+          <title>Contact</title>
+        </Helmet>
         <Hero text="contact us" />
         <div className="container pt-section">
           <div className="content d-grid">

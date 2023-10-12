@@ -3,7 +3,6 @@ import dotenv from 'dotenv';
 import Order from '../models/orderModel.js';
 dotenv.config();
 const stripe = Stripe(process.env.STRIPE_SECRET_KEY);
-// This is your Stripe CLI webhook secret for testing your endpoint locally.
 const endpointSecret = process.env.ENDPOINT_SECRET_KEY;
 
 // @desc Make Payment

@@ -47,24 +47,6 @@ const Reviews = ({ product, handleToggleReviews, showReviews }) => {
     }
   }, [fetchedReviews, setReviews]);
 
-  //   useEffect(() => {
-  //     const fetchReviews = async () => {
-  //       try {
-  //         setIsLoading(true);
-  //         const response = await axios.get(
-  //           `${VITE_API_URL}/reviews/${product._id}/reviews?approved=true`
-  //         );
-  //         setReviews(response.data);
-  //       } catch (error) {
-  //         console.error('Error fetching product reviews:', error);
-  //       } finally {
-  //         setIsLoading(false);
-  //       }
-  //     };
-
-  //     fetchReviews();
-  //   }, []);
-
   const submitReview = async (e) => {
     e.preventDefault();
 
@@ -124,11 +106,6 @@ const Reviews = ({ product, handleToggleReviews, showReviews }) => {
   // Function to toggle the modal and body scroll
   const toggleModal = () => {
     setOpenModal(!openModal);
-    // if (!openModal) {
-    //   document.body.classList.add('modal-open');
-    // } else {
-    //   document.body.classList.remove('modal-open');
-    // }
   };
 
   const handleReviewTextChange = (e) => {

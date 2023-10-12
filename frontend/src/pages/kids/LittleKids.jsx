@@ -5,6 +5,7 @@ const { VITE_API_URL } = import.meta.env;
 import { Loading } from '../../components/Loading';
 import useSelectedGenders from '../../hooks/useSelectedGenders';
 import useSelectedKidsAge from '../../hooks/useSelectedKidsAge';
+import { Helmet } from 'react-helmet-async';
 
 const LittleKids = () => {
   const { selectedGenders, handleGenderChange } = useSelectedGenders([]);
