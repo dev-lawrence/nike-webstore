@@ -106,11 +106,6 @@ const Reviews = ({ product, handleToggleReviews, showReviews }) => {
   // Function to toggle the modal and body scroll
   const toggleModal = () => {
     setOpenModal(!openModal);
-    // if (!openModal) {
-    //   document.body.classList.add('modal-open');
-    // } else {
-    //   document.body.classList.remove('modal-open');
-    // }
   };
 
   const handleReviewTextChange = (e) => {

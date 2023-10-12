@@ -1,12 +1,10 @@
 import { Link } from 'react-router-dom';
-import ShoppingCartRoundedIcon from '@mui/icons-material/ShoppingCartRounded';
 import DeleteRoundedIcon from '@mui/icons-material/DeleteRounded';
 import { useContext } from 'react';
 import NotificationContext from '../NotificationContext';
 import { useClerk } from '@clerk/clerk-react';
 const { VITE_API_URL } = import.meta.env;
 import axios from 'axios';
-import SkeletonPopular from './Skeleton/SkeletonPopular.jsx';
 
 const Card = ({
   product,
@@ -71,14 +69,6 @@ const Card = ({
             <DeleteRoundedIcon className="delete" />
           </button>
         )}
-
-        {/* {!isFavorite && !isSearchedItems && (
-          <button>
-            <span className="cart">
-              <ShoppingCartRoundedIcon />
-            </span>
-          </button>
-        )} */}
       </div>
     </div>
   );

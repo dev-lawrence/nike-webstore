@@ -29,7 +29,9 @@ const Popular = ({ title }) => {
             <SkeletonPopular />
           </div>
         ) : error ? (
-          <div>Error Loading products</div>
+          <div>
+            <SkeletonPopular />
+          </div>
         ) : (
           <Splide
             options={{

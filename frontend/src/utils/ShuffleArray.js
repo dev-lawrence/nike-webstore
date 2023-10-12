@@ -3,7 +3,7 @@ export const shuffleArray = (array) => {
     randomIndex,
     tempValue;
 
-  // While there remain elements to shuffle...
+  // While there remain elements to shuffle
   while (currentIndex !== 0) {
     // Pick a remaining element...
     randomIndex = Math.floor(Math.random() * currentIndex);
@@ -17,7 +17,3 @@ export const shuffleArray = (array) => {
 
   return array;
 };
-
-// export const shuffleArray = (array) => {
-//   return array.sort(() => Math.random() - 0.5);
-// };
