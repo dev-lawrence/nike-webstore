@@ -21,7 +21,7 @@ export const makePayment = async (req, res) => {
       price: product.price,
       quantity: product.quantity,
       image: product.image,
-      size: product.size,
+      // size: product.size,
     }));
 
     const cartJson = JSON.stringify(cartData);
