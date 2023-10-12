@@ -6,13 +6,13 @@ const orderSchema = new mongoose.Schema(
     customerId: { type: String },
     paymentIntentId: { type: String },
     product: [
-      {
-        name: { type: String },
-        price: { type: String },
-        quantity: { type: Number },
-        image: { type: String },
-        size: { type: String },
-      },
+      // {
+      //   name: { type: String },
+      //   price: { type: String },
+      //   quantity: { type: Number },
+      //   image: { type: String },
+      //   size: { type: String },
+      // },
     ],
 
     subtotal: { type: Number, required: true },

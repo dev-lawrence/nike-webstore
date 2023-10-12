@@ -1,7 +1,6 @@
 import Stripe from 'stripe';
 import dotenv from 'dotenv';
 import Order from '../models/orderModel.js';
-import Product from '../models/productModel.js';
 dotenv.config();
 const stripe = Stripe(process.env.STRIPE_SECRET_KEY);
 const endpointSecret = process.env.ENDPOINT_SECRET_KEY;
@@ -17,9 +16,6 @@ export const makePayment = async (req, res) => {
       return res.status(400).json({ error: 'Invalid products data' });
     }
 
-    // Get an array of product IDs (_id) from the products in the request
-    const productIds = products.map((product) => product._id);
-
     // const cartData = products.map((product) => ({
     //   name: product.name,
     //   price: product.price,
@@ -34,7 +30,7 @@ export const makePayment = async (req, res) => {
       metadata: {
         userId: userId,
         // cart: cartJson,
-        cart: JSON.stringify(productIds),
+        // cart: [],
       },
     });
 
@@ -44,7 +40,7 @@ export const makePayment = async (req, res) => {
           currency: 'usd',
           product_data: {
             name: `${product.name} - Size: ${product.size}`,
-            images: [product.image],
+            images: [product.image.url],
           },
           unit_amount: product.price * 100,
         },
@@ -117,19 +113,15 @@ export const makePayment = async (req, res) => {
 };
 
 // @desc Create Order
-const createOrder = async (customer, data) => {
+const createOrder = async (customer, data, lineItems) => {
   try {
     // const products = JSON.parse(customer.metadata.cart);
-    const productIds = JSON.parse(customer.metadata.products);
-
-    // Fetch product details from the database using product IDs (_id)
-    const products = await Product.find({ _id: { $in: productIds } });
 
     const newOrder = new Order({
       userId: customer.metadata.userId,
       customerId: data.customer,
       paymentIntentId: data.payment_intent,
-      product: products,
+      product: lineItems.data,
       subtotal: data.amount_subtotal,
       total: data.amount_total,
       shipping: data.customer_details,
@@ -137,6 +129,7 @@ const createOrder = async (customer, data) => {
     });
 
     await newOrder.save();
+
     console.log('Order saved to database');
   } catch (err) {
     console.log(`Order Error: ${err.message}`);
@@ -182,8 +175,14 @@ export const stripeWebHook = async (request, response) => {
       // Retrieve the customer's data from Stripe using the customerId
       const customer = await stripe.customers.retrieve(customerId);
       //   console.log('Customer Data:', customer);
-
-      createOrder(customer, data);
+      stripe.checkout.sessions.listLineItems(
+        data.id,
+        {},
+        function (err, lineItems) {
+          console.log('LineItems:', lineItems);
+          createOrder(customer, data, lineItems);
+        }
+      );
     } catch (err) {
       console.log(`Event Error: ${err.message}`);
       return;
