@@ -71,5 +71,3 @@ const Popular = ({ title }) => {
 };
 
 export default Popular;
-
-// fkfasfkhasfaskhfkafhsofdko
