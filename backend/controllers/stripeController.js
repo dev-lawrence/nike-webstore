@@ -1,6 +1,7 @@
 import Stripe from 'stripe';
 import dotenv from 'dotenv';
 import Order from '../models/orderModel.js';
+import Product from '../models/productModel.js';
 dotenv.config();
 const stripe = Stripe(process.env.STRIPE_SECRET_KEY);
 const endpointSecret = process.env.ENDPOINT_SECRET_KEY;
@@ -20,8 +21,8 @@ export const makePayment = async (req, res) => {
       name: product.name,
       price: product.price,
       quantity: product.quantity,
-      // image: product.image,
-      // size: product.size,
+      image: product.image,
+      size: product.size,
     }));
 
     const cartJson = JSON.stringify(cartData);
@@ -116,11 +117,24 @@ const createOrder = async (customer, data) => {
   try {
     const products = JSON.parse(customer.metadata.cart);
 
+    const productDetails = [];
+
+    for (const product of products) {
+      const productInfo = await Product.findOne({ name: product.name });
+      productDetails.push({
+        name: product.name,
+        quantity: product.quantity,
+        price: product.price,
+        image: productInfo.image,
+        size: productInfo.sizes,
+      });
+    }
+
     const newOrder = new Order({
       userId: customer.metadata.userId,
       customerId: data.customer,
       paymentIntentId: data.payment_intent,
-      product: products,
+      product: productDetails,
       subtotal: data.amount_subtotal,
       total: data.amount_total,
       shipping: data.customer_details,
