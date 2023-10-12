@@ -10,6 +10,7 @@ import Color from './Color';
 import KidsAge from './KidsAge';
 import PageBreadCrumbs from './PageBreadCrumbs';
 import SkeletonPopular from './Skeleton/SkeletonPopular';
+import { Helmet } from 'react-helmet-async';
 
 const Shop = ({
   categoryTitle,
@@ -94,6 +95,7 @@ const Shop = ({
     { label: 'Over $150', minPrice: 150, maxPrice: 1000 },
   ];
 
+  // Filter products by price
   const filterProductsByPrice = (product) => {
     if (selectedPrices.length === 0) {
       return true;
@@ -165,6 +167,9 @@ const Shop = ({
         className={`shop | shoe | ${isAccessories ? 'accessories' : ''} `}
       >
         <Hero text={text} />
+        <Helmet>
+          <title>{categoryTitle}</title>
+        </Helmet>
         <div className="container shop-section">
           <div className="title">
             <h2>
