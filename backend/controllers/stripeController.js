@@ -17,20 +17,24 @@ export const makePayment = async (req, res) => {
       return res.status(400).json({ error: 'Invalid products data' });
     }
 
-    const cartData = products.map((product) => ({
-      name: product.name,
-      price: product.price,
-      quantity: product.quantity,
-      image: product.image,
-      size: product.size,
-    }));
+    // Get an array of product IDs (_id) from the products in the request
+    const productIds = products.map((product) => product._id);
 
-    const cartJson = JSON.stringify(cartData);
+    // const cartData = products.map((product) => ({
+    //   name: product.name,
+    //   price: product.price,
+    //   quantity: product.quantity,
+    //   image: product.image,
+    //   size: product.size,
+    // }));
+
+    // const cartJson = JSON.stringify(cartData);
 
     const customer = await stripe.customers.create({
       metadata: {
         userId: userId,
-        cart: cartJson,
+        // cart: cartJson,
+        cart: JSON.stringify(productIds),
       },
     });
 
@@ -115,7 +119,11 @@ export const makePayment = async (req, res) => {
 // @desc Create Order
 const createOrder = async (customer, data) => {
   try {
-    const products = JSON.parse(customer.metadata.cart);
+    // const products = JSON.parse(customer.metadata.cart);
+    const productIds = JSON.parse(customer.metadata.products);
+
+    // Fetch product details from the database using product IDs (_id)
+    const products = await Product.find({ _id: { $in: productIds } });
 
     const newOrder = new Order({
       userId: customer.metadata.userId,
