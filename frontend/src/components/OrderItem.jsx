@@ -21,19 +21,17 @@ const OrderItem = ({ order }) => (
 
     <div className="order-flex">
       {order.product.map((item) => (
-        <div key={item._id} className="item">
-          <img src={item.image} alt="" />
+        <div key={item.id} className="item">
           <div className="items-details">
-            <h4 className="name">{item.name}</h4>
-            <h4 className="price">${item.price}</h4>
+            <h4 className="name">{item.description}</h4>
+            <h4 className="price">${item.amount_total / 100}</h4>
             <span className="quantity">Quantity: {item.quantity}</span>
-            <span className="size">Size: {item.size}</span>
           </div>
         </div>
       ))}
     </div>
 
-    <p className="total">Total: ${order.subtotal}</p>
+    <p className="total">Total: ${order.subtotal / 100}</p>
   </div>
 );
 

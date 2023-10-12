@@ -16,21 +16,9 @@ export const makePayment = async (req, res) => {
       return res.status(400).json({ error: 'Invalid products data' });
     }
 
-    // const cartData = products.map((product) => ({
-    //   name: product.name,
-    //   price: product.price,
-    //   quantity: product.quantity,
-    //   image: product.image,
-    //   size: product.size,
-    // }));
-
-    // const cartJson = JSON.stringify(cartData);
-
     const customer = await stripe.customers.create({
       metadata: {
         userId: userId,
-        // cart: cartJson,
-        // cart: [],
       },
     });
 
@@ -115,8 +103,6 @@ export const makePayment = async (req, res) => {
 // @desc Create Order
 const createOrder = async (customer, data, lineItems) => {
   try {
-    // const products = JSON.parse(customer.metadata.cart);
-
     const newOrder = new Order({
       userId: customer.metadata.userId,
       customerId: data.customer,
@@ -179,7 +165,7 @@ export const stripeWebHook = async (request, response) => {
         data.id,
         {},
         function (err, lineItems) {
-          console.log('LineItems:', lineItems);
+          // console.log('LineItems:', lineItems);
           createOrder(customer, data, lineItems);
         }
       );

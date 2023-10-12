@@ -62,31 +62,15 @@
   .item {
     @include flex(center, flex-start);
     margin-top: 1rem;
-
-    img {
-      max-width: 80px;
-      max-height: 80px;
-      margin-right: 1rem;
-      border-radius: $radius-sm;
-    }
   }
 
   .name,
   .price,
-  .quantity,
-  .size {
+  .quantity {
     font-size: $fs-200;
 
     @include medium {
       font-size: $fs-300;
-    }
-  }
-
-  .size {
-    margin-left: 1rem;
-
-    @include small {
-      margin-left: 0;
     }
   }
 
