@@ -35,7 +35,7 @@ const ReviewModal = ({
           <div className="submission-message">
             <img src={SuccessImg} alt="" />
             <p>{submissionMessage}</p>
-            <Link className="btn-filled width" to="/">
+            <Link className="btn-filled width" to="/shop">
               Continue Shopping
             </Link>
 
@@ -48,7 +48,7 @@ const ReviewModal = ({
         {alreadySubmittedMessage && (
           <div className="submission-message">
             <p>{alreadySubmittedMessage}</p>
-            <Link className="btn-filled width" to="/">
+            <Link className="btn-filled width" to="/shop">
               Continue Shopping
             </Link>
 
