@@ -7,6 +7,7 @@ const SearchMenu = ({
   searchResults,
   errorMessage,
   loading,
+  inputRef,
 }) => {
   const displayedProducts = searchResults.slice(1, 4);
 
@@ -16,7 +17,14 @@ const SearchMenu = ({
         {searchResults.length === 0 && !loading && !errorMessage && (
           <>
             <h3>Popular Search Terms</h3>
-            <li onClick={handleSearchClick}>
+            <li
+              onClick={() => {
+                handleSearchClick();
+                if (inputRef.current) {
+                  inputRef.current.blur();
+                }
+              }}
+            >
               <Link to="/product/air-jordan-5-retro-se">Jordan</Link>
             </li>
 

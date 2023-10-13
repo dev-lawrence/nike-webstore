@@ -27,8 +27,6 @@ const Search = ({ searchClick, handleSearchClick, inputRef }) => {
             setErrorMessage(null);
             setSearchResults(response.data);
           }
-
-          inputRef.current.blur();
         } catch (error) {
           console.error('Error searching for products:', error);
         } finally {
@@ -94,6 +92,7 @@ const Search = ({ searchClick, handleSearchClick, inputRef }) => {
       {searchClick && (
         <SearchMenu
           handleSearchClick={handleSearchClick}
+          inputRef={inputRef}
           searchClick={searchClick}
           searchResults={searchResults}
           errorMessage={errorMessage}
