@@ -11,32 +11,32 @@ const SearchMenu = ({
 }) => {
   const displayedProducts = searchResults.slice(1, 4);
 
+  const handleRemoveKeypads = () => {
+    handleSearchClick;
+    if (inputRef.current) {
+      inputRef.current.blur();
+    }
+  };
+
   return (
     <div className="search-menu">
       <ul className="menu" role="list" aria-label="list">
         {searchResults.length === 0 && !loading && !errorMessage && (
           <>
             <h3>Popular Search Terms</h3>
-            <li
-              onClick={() => {
-                handleSearchClick();
-                if (inputRef.current) {
-                  inputRef.current.blur();
-                }
-              }}
-            >
+            <li onClick={handleRemoveKeypads}>
               <Link to="/product/air-jordan-5-retro-se">Jordan</Link>
             </li>
 
-            <li onClick={handleSearchClick}>
+            <li onClick={handleRemoveKeypads}>
               <Link to="/product/dunk-low-big-kids-shoes">Nike Dunk</Link>
             </li>
 
-            <li onClick={handleSearchClick}>
+            <li onClick={handleRemoveKeypads}>
               <Link to="/product/club-unstructured-swoosh-cap">Nike Club</Link>
             </li>
 
-            <li onClick={handleSearchClick}>
+            <li onClick={handleRemoveKeypads}>
               <Link to="/product/sportswear-lightweight-synthetic-fill-big-kids-loose-hooded-jacket">
                 Nike Sportswear
               </Link>
@@ -54,7 +54,7 @@ const SearchMenu = ({
                 <li
                   key={product.slug}
                   className="searched-product"
-                  onClick={handleSearchClick}
+                  onClick={handleRemoveKeypads}
                 >
                   <Card product={product} isSearchedItems={true} />
                 </li>
