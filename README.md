@@ -12,7 +12,7 @@ Nike Webstore is minimalistic e-commerce website where you can shop for the late
 
 You can visit the live version of the Nike webstore by clicking the link below 👇
 
-[nike-webstore.netlify.app](https://nike-webstores.netlify.app)
+<a href="https://nike-webstores.netlify.app" target="_blank">nike-webstore.netlify.app</a>
 
 ## 🧰 Technologies Used
 
