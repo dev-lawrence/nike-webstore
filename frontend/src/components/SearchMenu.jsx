@@ -12,7 +12,7 @@ const SearchMenu = ({
   const displayedProducts = searchResults.slice(1, 4);
 
   const handleRemoveKeypads = () => {
-    handleSearchClick;
+    handleSearchClick();
     if (inputRef.current) {
       inputRef.current.blur();
     }
