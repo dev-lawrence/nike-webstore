@@ -41,10 +41,6 @@ const Search = ({ searchClick, handleSearchClick, inputRef }) => {
     fetchSearchResults();
   }, [searchQuery]);
 
-  // const handleFormSubmit = (event) => {
-  //   event.preventDefault();
-  // };
-
   const handleClearInput = () => {
     setSearchQuery('');
     setSearchResults([]);
@@ -58,7 +54,6 @@ const Search = ({ searchClick, handleSearchClick, inputRef }) => {
     <div className="search-icon">
       <div className="search-icon-container">
         <div
-          // onSubmit={handleFormSubmit}
           className={`search-icon-box ${searchClick ? 'openSearchBox' : ''}`}
         >
           <input
