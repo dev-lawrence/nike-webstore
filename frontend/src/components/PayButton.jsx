@@ -43,12 +43,14 @@ const PayButton = ({ products }) => {
 
   return (
     <>
-      <button
-        className="cta"
-        onClick={() => handleCheckout()}
-        disabled={isProcessing}
-      >
-        {isProcessing ? <Spinner /> : user ? 'Checkout' : 'Sign In to pay'}
+      <button className="cta" onClick={() => handleCheckout()}>
+        {isProcessing ? (
+          <Spinner />
+        ) : user ? (
+          'Checkout with stripe'
+        ) : (
+          'Sign In to pay'
+        )}
       </button>
     </>
   );

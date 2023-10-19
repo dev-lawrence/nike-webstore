@@ -29,6 +29,7 @@ import Contact from './pages/Contact';
 import Success from './components/Success';
 import Shopping from './pages/Shopping';
 import CheckoutSuccess from './pages/CheckoutSuccess';
+
 import Order from './pages/Order';
 import NotFound from './components/NotFound';
 
@@ -93,6 +94,7 @@ const router = createBrowserRouter(
           </>
         }
       />
+
       <Route path="men" element={<Men />} />
       <Route path="kids" element={<Kids />} />
       <Route path="women" element={<Women />} />

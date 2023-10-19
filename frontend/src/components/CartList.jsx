@@ -4,6 +4,7 @@ import { useContext, useState, useEffect } from 'react';
 import CartItem from './CartItem';
 import PayButton from './PayButton';
 import { motion } from 'framer-motion';
+import StackButton from './StackButton';
 
 const CartList = ({ cartClick, handleCartClick }) => {
   const { products } = useContext(CartContext);
@@ -69,8 +70,11 @@ const CartList = ({ cartClick, handleCartClick }) => {
               <div className="subtotal">
                 <span>Subtotal: ${calculateSubTotal()}</span>
               </div>
-
               <PayButton products={products} />
+              <StackButton
+                products={products}
+                totalAmount={calculateSubTotal()}
+              />
             </div>
           )}
         </div>

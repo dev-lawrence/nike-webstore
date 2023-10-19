@@ -8,6 +8,7 @@ import productRouter from './routes/productRoutes.js';
 import userRouter from './routes/userRoutes.js';
 import stripeRouter from './routes/stripeRoutes.js';
 import reviewRouter from './routes/reviewRoutes.js';
+import paystackRouter from './routes/paystackRoutes.js';
 
 dotenv.config();
 
@@ -31,6 +32,8 @@ app.use('/api/reviews', reviewRouter);
 
 // make payments
 app.use('/api/stripe', stripeRouter);
+
+app.use('/api/paystack', paystackRouter);
 
 const port = process.env.PORT || 7000;
 

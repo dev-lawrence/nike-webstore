@@ -51,7 +51,7 @@
     .content {
       margin-top: 1rem;
       @include flex(flex-start, center);
-      height: 70%;
+      height: 60%;
       overflow-x: hidden;
       overflow-y: auto;
 
@@ -160,7 +160,6 @@
 
       .cta {
         margin-top: 1rem;
-        margin-bottom: 1rem;
         background-color: var(--foreground);
         color: var(--background);
         padding: 0.6rem 1.8rem;
@@ -169,6 +168,10 @@
         font-weight: 600;
         width: 100%;
         text-transform: uppercase;
+      }
+
+      .w-full {
+        width: 100%;
       }
     }
   }

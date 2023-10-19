@@ -19,6 +19,7 @@
     "express-jwt": "^8.4.1",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^7.5.1",
+    "paystack": "^2.0.1",
     "stripe": "^13.6.0",
     "svix": "^1.12.0"
   },

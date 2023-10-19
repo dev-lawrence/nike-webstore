@@ -1,3 +1,4 @@
+import { Loading } from '../components/Loading';
 import OrderList from '../components/OrderList';
 import useFetchData from '../hooks/useFetchData.js';
 const { VITE_API_URL } = import.meta.env;
@@ -8,24 +9,37 @@ const Order = () => {
   const { user } = useClerk();
 
   const {
-    data: orders,
-    loading,
-    error,
+    data: stripeOrders,
+    loading: stripeLoading,
+    error: stripeError,
   } = useFetchData(`${VITE_API_URL}/stripe/orders/`);
 
-  if (loading) {
-    return <p className="loading">Loading...</p>;
+  const {
+    data: paystackOrders,
+    loading: paystackLoading,
+    error: paystackError,
+  } = useFetchData(`${VITE_API_URL}/paystack/orders/`);
+
+  if (stripeLoading || paystackLoading) {
+    return (
+      <>
+        <Loading />
+      </>
+    );
   }
 
-  if (error) {
+  if (stripeError || paystackError) {
     return <p className="error">Error occurred: {error.message}</p>;
   }
 
   // Filter orders for the current user
-  const userOrders = orders.filter((order) => order.userId === user?.id);
+  const userStripeOrders =
+    stripeOrders?.filter((order) => order.userId === user?.id) || [];
+  const userPaystackOrders =
+    paystackOrders?.filter((order) => order.userId === user?.id) || [];
 
-  if (!userOrders || userOrders.length === 0) {
-    return (
+  {
+    userStripeOrders.length === 0 && userPaystackOrders.length === 0 && (
       <div className="pt-section | favorites | container">
         <p className="mb-1">No orders to show</p>
         <Link className="btn-filled" to="/shop">
@@ -35,7 +49,12 @@ const Order = () => {
     );
   }
 
-  return <OrderList orders={userOrders} />;
+  return (
+    <>
+      <OrderList orders={userStripeOrders} gateway="Stripe" />
+      <OrderList orders={userPaystackOrders} gateway="Paystack" />
+    </>
+  );
 };
 
 export default Order;
