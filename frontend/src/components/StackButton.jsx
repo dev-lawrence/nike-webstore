@@ -7,7 +7,7 @@ const { VITE_API_URL } = import.meta.env;
 
 const StackButton = ({ products, totalAmount, disabled }) => {
   const [loading, setLoading] = useState(false);
-  const { user } = useClerk();
+  const { user, openSignIn } = useClerk();
   const email = user?.emailAddresses?.[0]?.emailAddress || '';
 
   const initializePayment = async () => {
