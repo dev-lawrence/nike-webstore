@@ -12,7 +12,7 @@ export const makePayment = async (req, res) => {
     const { products, userId } = req.body;
 
     if (!Array.isArray(products) || products.length === 0) {
-      // Handle the case where products is undefined or empty
+      // Handle the case where products is undefined
       return res.status(400).json({ error: 'Invalid products data' });
     }
 
