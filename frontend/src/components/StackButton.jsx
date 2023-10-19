@@ -55,7 +55,7 @@ const StackButton = ({ products, totalAmount, disabled }) => {
       ) : user ? (
         'Checkout with paystack'
       ) : (
-        'Sign In to pay'
+        'Sign In to pay with paystack'
       )}
     </button>
   );
