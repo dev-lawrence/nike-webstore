@@ -133,7 +133,7 @@ export const getOrders = async (req, res) => {
   }
 };
 
-// @desc Stripe Webhook
+// @desc Stripe Webhooks
 // @route POST /api/stripe/webhook
 export const stripeWebHook = async (request, response) => {
   const sig = request.headers['stripe-signature'];
