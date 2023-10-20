@@ -28,7 +28,7 @@ export const makePayment = async (req, res) => {
           currency: 'usd',
           product_data: {
             name: `${product.name} - Size: ${product.size}`,
-            images: [product.image],
+            images: [product.image.url],
           },
           unit_amount: product.price * 100,
         },
