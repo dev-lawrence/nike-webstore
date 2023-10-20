@@ -1,22 +1,3 @@
-// import OrderItem from './OrderItem';
-// import { Helmet } from 'react-helmet-async';
-
-// const OrderList = ({ orders, gateway }) => (
-//   <>
-//     <div className="orders pt-section">
-//       <Helmet>
-//         <title>Order History</title>
-//       </Helmet>
-//       <div className="container">
-//         <h2>Order History for {gateway}</h2>
-//         {orders.map((order) => (
-//           <OrderItem key={order._id} order={order} gateway={gateway} />
-//         ))}
-//       </div>
-//     </div>
-//   </>
-// );
-
 // export default OrderList;
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
