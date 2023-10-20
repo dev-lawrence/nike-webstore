@@ -38,8 +38,8 @@ const Order = () => {
   const userPaystackOrders =
     paystackOrders?.filter((order) => order.userId === user?.id) || [];
 
-  {
-    userStripeOrders.length === 0 && userPaystackOrders.length === 0 && (
+  if (!userStripeOrders.length && !userPaystackOrders.length) {
+    return (
       <div className="pt-section | favorites | container">
         <p className="mb-1">No orders to show</p>
         <Link className="btn-filled" to="/shop">
