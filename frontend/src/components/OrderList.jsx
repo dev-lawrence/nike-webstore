@@ -9,11 +9,7 @@ const OrderList = ({ orders, gateway }) => {
   }
 
   return (
-    <div
-      className={`orders ${
-        gateway === 'Stripe' ? 'pt-stripe' : 'pt-paystack'
-      } `}
-    >
+    <div className={`orders ${gateway === 'Stripe' ? 'pt-stripe' : 'pt-3'} `}>
       <Helmet>
         <title>Order History</title>
       </Helmet>
