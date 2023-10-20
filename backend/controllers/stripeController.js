@@ -138,9 +138,6 @@ export const getOrders = async (req, res) => {
 export const stripeWebHook = async (request, response) => {
   const sig = request.headers['stripe-signature'];
 
-  console.log(sig);
-  console.log(request.body);
-
   let event;
   let data;
   let eventType;
