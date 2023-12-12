@@ -84,8 +84,8 @@ const Reviews = ({ product, handleToggleReviews, showReviews }) => {
       }
     } catch (error) {
       console.error('Error submitting product review:', error);
+      setAlreadySubmittedMessage('');
       setIsLoading(false);
-      setAlreadySubmittedMessage('You have already reviewed this product.');
     }
   };
 
