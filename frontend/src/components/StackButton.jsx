@@ -5,7 +5,7 @@ import Spinner from './Spinner';
 
 const { VITE_API_URL } = import.meta.env;
 
-const StackButton = ({ products, totalAmount, disabled }) => {
+const StackButton = ({ products, totalAmount}) => {
   const [loading, setLoading] = useState(false);
   const { user, openSignIn } = useClerk();
   const email = user?.emailAddresses?.[0]?.emailAddress || '';
@@ -49,7 +49,7 @@ const StackButton = ({ products, totalAmount, disabled }) => {
   };
 
   return (
-    <button className="cta" onClick={initializePayment} disabled={disabled}>
+    <button className="cta" onClick={initializePayment}>
       {loading ? (
         <Spinner />
       ) : user ? (

@@ -56,7 +56,7 @@ const Header = () => {
         <div className="container">
           <div className="content d-flex">
             {/* Logo */}
-            <Link href="#" className="logo">
+            <Link to="/" className="logo">
               <Logo />
             </Link>
 
