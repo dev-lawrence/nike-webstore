@@ -33,11 +33,7 @@ const Reviews = ({ product, handleToggleReviews, showReviews }) => {
     setNewReview({ ...newReview, rating: star });
   };
 
-  const {
-    data: fetchedReviews,
-    loading,
-    error,
-  } = useFetchData(
+  const { data: fetchedReviews, loading } = useFetchData(
     `${VITE_API_URL}/reviews/${product._id}/reviews?approved=true`
   );
 
