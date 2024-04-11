@@ -19,7 +19,7 @@ const Home = () => {
         <div className="hero-container">
           <div className="hero-text">
             <div className="outline">
-              <h1>THE NEW 2023</h1>
+              <h1>THE NEW {new Date().getFullYear()}</h1>
             </div>
 
             <div className="main-text">
