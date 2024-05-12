@@ -1,0 +1,46 @@
+@use '../abstracts' as *;
+
+.maintenance {
+  height: 100vh;
+  @include flex(center, center);
+  flex-direction: column;
+  background: var(--background) url(../assets/maintenance.jpg);
+  @include image-property(initial);
+  position: relative;
+  z-index: 1;
+
+  .flow {
+    max-width: 700px;
+    margin-right: auto;
+  }
+
+  @include large {
+    h1 {
+      font-size: 3.2rem;
+      line-height: 1;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      font-size: 1.1rem;
+    }
+
+    h2 {
+      font-size: 2rem;
+      line-height: 1;
+      margin-bottom: 1rem;
+    }
+  }
+
+  .content {
+    margin-bottom: 2rem;
+  }
+
+  .overlay {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: -1;
+  }
+}

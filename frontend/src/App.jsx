@@ -29,6 +29,7 @@ import Contact from './pages/Contact';
 import Success from './components/Success';
 import Shopping from './pages/Shopping';
 import CheckoutSuccess from './pages/CheckoutSuccess';
+import Maintenance from './pages/Maintenance';
 
 import Order from './pages/Order';
 import NotFound from './components/NotFound';
@@ -131,6 +132,14 @@ const router = createBrowserRouter(
 );
 
 const App = () => {
+  // Check if the website is under maintenance
+  const isUnderMaintenance = true; // Set this to true when under maintenance
+
+  // Conditionally render the maintenance page if under maintenance
+  if (isUnderMaintenance) {
+    return <Maintenance />;
+  }
+
   return (
     <>
       <NotificationProvider>
